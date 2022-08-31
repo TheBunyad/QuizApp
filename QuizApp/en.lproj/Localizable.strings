@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  QuizApp
+
+  Created by Bunyad Majidzade on 30.08.22.
+  
+*/
+
+
+"name" = "Bunyad";
+"mail" = "the.bunyad@gmail.com";
+"password" = "11111111";
+"app_title_name" = "QuizApp";
