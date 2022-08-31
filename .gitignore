@@ -1,0 +1,7 @@
+reports/*
+/reports
+fastlane/report.xml
+Gemfile.lock
+Package.resolved
+DerivedData/*
+/DerivedData

@@ -1,2 +1,17 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<testsuites tests='0' failures='0'/>
+<testsuites name='QuizAppUITests.xctest' tests='8' failures='0'>
+  <testsuite name='QuizAppTests.QuizAppTests' tests='2' failures='0'>
+    <testcase classname='QuizAppTests.QuizAppTests' name='testExample' time='0.001'/>
+    <testcase classname='QuizAppTests.QuizAppTests' name='testPerformanceExample' time='0.297'/>
+  </testsuite>
+  <testsuite name='QuizAppUITests.QuizAppUITests' tests='2' failures='0'>
+    <testcase classname='QuizAppUITests.QuizAppUITests' name='testExample' time='2.384'/>
+    <testcase classname='QuizAppUITests.QuizAppUITests' name='testLaunchPerformance' time='79.949'/>
+  </testsuite>
+  <testsuite name='QuizAppUITests.QuizAppUITestsLaunchTests' tests='4' failures='0'>
+    <testcase classname='QuizAppUITests.QuizAppUITestsLaunchTests' name='testLaunch' time='3.679'/>
+    <testcase classname='QuizAppUITests.QuizAppUITestsLaunchTests' name='testLaunch' time='5.458'/>
+    <testcase classname='QuizAppUITests.QuizAppUITestsLaunchTests' name='testLaunch' time='3.554'/>
+    <testcase classname='QuizAppUITests.QuizAppUITestsLaunchTests' name='testLaunch' time='5.505'/>
+  </testsuite>
+</testsuites>

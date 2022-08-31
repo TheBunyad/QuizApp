@@ -20,6 +20,7 @@ platform :ios do
   lane :test do
     # add actions here: https://docs.fastlane.tools/actions
     scan(
+      derived_data_path: "./DerivedData",
       output_directory: "./reports",
       scheme: "QuizApp"
     )
