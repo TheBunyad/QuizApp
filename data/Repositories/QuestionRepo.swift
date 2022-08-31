@@ -23,7 +23,7 @@ public class QuestionRepo: QuestionRepoProtocol {
     public func observerQuestion() -> Observable<QuestionEntity> {
         let behaviourSubject = BehaviorSubject<QuestionEntity?>.init(value: nil)
         
-        // return observed data
+        // return observed datassc
         
         return behaviourSubject
             .filter { question in
