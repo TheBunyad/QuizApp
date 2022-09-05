@@ -13,12 +13,20 @@ jobs:
 
     steps:
 
+     
+
       - name: Checkout the code
         uses: actions/checkout@v3
 
+      - name: Install Homebrew
+        run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+      - name: Install swiftgen
+        run: brew install swiftgen
       - name: Bundle install
         run: bundle install
 
       - name: Build and test
         run:  |
           bundle exec fastlane test
+

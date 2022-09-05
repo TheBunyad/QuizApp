@@ -21,6 +21,12 @@
 		BD5BDDC128BFC17D00A8A09C /* data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD53032C28BA51330057BD1F /* data.framework */; platformFilter = ios; };
 		BD5BDDE328BFC1DF00A8A09C /* dataUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BDDE228BFC1DF00A8A09C /* dataUITest.swift */; };
 		BD5BDDE528BFC1DF00A8A09C /* dataUITestLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BDDE428BFC1DF00A8A09C /* dataUITestLaunchTests.swift */; };
+		BD5BDE1128C3A6E600A8A09C /* QuestionRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BDE1028C3A6E600A8A09C /* QuestionRemoteDataSource.swift */; };
+		BD5BDE1328C3A88200A8A09C /* QuestionRemoteDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BDE1228C3A88200A8A09C /* QuestionRemoteDataSourceProtocol.swift */; };
+		BD5BDE1528C3A8C600A8A09C /* QuestionRemoteDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BDE1428C3A8C600A8A09C /* QuestionRemoteDTO.swift */; };
+		BD5BDE1728C3B43400A8A09C /* QuestionLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BDE1628C3B43400A8A09C /* QuestionLocalDataSource.swift */; };
+		BD5BDE1928C3B45300A8A09C /* QuestionLocalDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BDE1828C3B45300A8A09C /* QuestionLocalDataSourceProtocol.swift */; };
+		BD5BDE1B28C3B47000A8A09C /* QuestionLocalDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BDE1A28C3B47000A8A09C /* QuestionLocalDTO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +66,12 @@
 		BD5BDDE028BFC1DF00A8A09C /* dataUITest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = dataUITest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD5BDDE228BFC1DF00A8A09C /* dataUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataUITest.swift; sourceTree = "<group>"; };
 		BD5BDDE428BFC1DF00A8A09C /* dataUITestLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataUITestLaunchTests.swift; sourceTree = "<group>"; };
+		BD5BDE1028C3A6E600A8A09C /* QuestionRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionRemoteDataSource.swift; sourceTree = "<group>"; };
+		BD5BDE1228C3A88200A8A09C /* QuestionRemoteDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionRemoteDataSourceProtocol.swift; sourceTree = "<group>"; };
+		BD5BDE1428C3A8C600A8A09C /* QuestionRemoteDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionRemoteDTO.swift; sourceTree = "<group>"; };
+		BD5BDE1628C3B43400A8A09C /* QuestionLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionLocalDataSource.swift; sourceTree = "<group>"; };
+		BD5BDE1828C3B45300A8A09C /* QuestionLocalDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionLocalDataSourceProtocol.swift; sourceTree = "<group>"; };
+		BD5BDE1A28C3B47000A8A09C /* QuestionLocalDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionLocalDTO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +166,9 @@
 		BD5303CE28BD137F0057BD1F /* Remote data source */ = {
 			isa = PBXGroup;
 			children = (
+				BD5BDE1028C3A6E600A8A09C /* QuestionRemoteDataSource.swift */,
+				BD5BDE1228C3A88200A8A09C /* QuestionRemoteDataSourceProtocol.swift */,
+				BD5BDE1428C3A8C600A8A09C /* QuestionRemoteDTO.swift */,
 			);
 			path = "Remote data source";
 			sourceTree = "<group>";
@@ -161,6 +176,9 @@
 		BD5303CF28BD13930057BD1F /* Local data source */ = {
 			isa = PBXGroup;
 			children = (
+				BD5BDE1628C3B43400A8A09C /* QuestionLocalDataSource.swift */,
+				BD5BDE1828C3B45300A8A09C /* QuestionLocalDataSourceProtocol.swift */,
+				BD5BDE1A28C3B47000A8A09C /* QuestionLocalDTO.swift */,
 			);
 			path = "Local data source";
 			sourceTree = "<group>";
@@ -330,10 +348,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD5BDE1528C3A8C600A8A09C /* QuestionRemoteDTO.swift in Sources */,
+				BD5BDE1B28C3B47000A8A09C /* QuestionLocalDTO.swift in Sources */,
+				BD5BDE1328C3A88200A8A09C /* QuestionRemoteDataSourceProtocol.swift in Sources */,
 				BD5303BB28BCF0480057BD1F /* UserRepo.swift in Sources */,
 				BD5303D328BD38680057BD1F /* QuestionRepo.swift in Sources */,
+				BD5BDE1128C3A6E600A8A09C /* QuestionRemoteDataSource.swift in Sources */,
 				BD5303C928BD00E80057BD1F /* DataAssembly.swift in Sources */,
+				BD5BDE1728C3B43400A8A09C /* QuestionLocalDataSource.swift in Sources */,
 				BD5303D928BD3C480057BD1F /* StatsRepo.swift in Sources */,
+				BD5BDE1928C3B45300A8A09C /* QuestionLocalDataSourceProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
