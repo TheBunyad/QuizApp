@@ -6,3 +6,20 @@
 //
 
 import Foundation
+import RxSwift
+import Promises
+import RealmSwift
+
+//class QuestionLocalDataSource: QuestionLocalDataSourceProtocol {
+//
+//
+//    func save(questionDTO: QuestionLocalDTO) -> Promise<Void> {
+//        <#code#>
+//    }
+//
+//    func observeQuestion() -> Observable<QuestionLocalDTO> {
+//        <#code#>
+//    }
+    
+    
+//}

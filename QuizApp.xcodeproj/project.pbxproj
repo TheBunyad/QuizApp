@@ -23,17 +23,18 @@
 		BD53037428BA52C60057BD1F /* domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BD53036F28BA52220057BD1F /* domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BD53037528BA52C60057BD1F /* presentation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD53030728BA50A30057BD1F /* presentation.framework */; platformFilter = ios; };
 		BD53037628BA52C60057BD1F /* presentation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BD53030728BA50A30057BD1F /* presentation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BD53040528BD44810057BD1F /* Poppins-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD5303FD28BD44810057BD1F /* Poppins-ExtraBold.ttf */; };
-		BD53040628BD44810057BD1F /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD5303FE28BD44810057BD1F /* Poppins-SemiBold.ttf */; };
-		BD53040728BD44810057BD1F /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD5303FF28BD44810057BD1F /* Poppins-Bold.ttf */; };
-		BD53040828BD44810057BD1F /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD53040028BD44810057BD1F /* Poppins-Regular.ttf */; };
-		BD53040928BD44810057BD1F /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD53040128BD44810057BD1F /* Poppins-Medium.ttf */; };
-		BD53040A28BD44810057BD1F /* Poppins-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD53040228BD44810057BD1F /* Poppins-ExtraLight.ttf */; };
-		BD53040B28BD44810057BD1F /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD53040328BD44810057BD1F /* Poppins-Light.ttf */; };
-		BD53040C28BD44810057BD1F /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD53040428BD44810057BD1F /* Poppins-Thin.ttf */; };
 		BD5BDDF028BFC24400A8A09C /* QuizAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BDDEF28BFC24400A8A09C /* QuizAppTests.swift */; };
 		BD5BDE0028BFC24D00A8A09C /* QuizAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BDDFF28BFC24D00A8A09C /* QuizAppUITests.swift */; };
 		BD5BDE0228BFC24D00A8A09C /* QuizAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BDE0128BFC24D00A8A09C /* QuizAppUITestsLaunchTests.swift */; };
+		BD5BDE4028C635D600A8A09C /* Poppins-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD5BDE3828C635D600A8A09C /* Poppins-ExtraLight.ttf */; };
+		BD5BDE4128C635D600A8A09C /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD5BDE3928C635D600A8A09C /* Poppins-Light.ttf */; };
+		BD5BDE4228C635D600A8A09C /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD5BDE3A28C635D600A8A09C /* Poppins-Medium.ttf */; };
+		BD5BDE4328C635D600A8A09C /* Poppins-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD5BDE3B28C635D600A8A09C /* Poppins-ExtraBold.ttf */; };
+		BD5BDE4428C635D600A8A09C /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD5BDE3C28C635D600A8A09C /* Poppins-Regular.ttf */; };
+		BD5BDE4528C635D600A8A09C /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD5BDE3D28C635D600A8A09C /* Poppins-Bold.ttf */; };
+		BD5BDE4628C635D600A8A09C /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD5BDE3E28C635D600A8A09C /* Poppins-Thin.ttf */; };
+		BD5BDE4728C635D600A8A09C /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD5BDE3F28C635D600A8A09C /* Poppins-SemiBold.ttf */; };
+		BD5BDE4928C6363200A8A09C /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BDE4828C6363200A8A09C /* Fonts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,14 +121,6 @@
 		BD53030228BA50A20057BD1F /* presentation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = presentation.xcodeproj; path = presentation/presentation.xcodeproj; sourceTree = "<group>"; };
 		BD53033628BA51330057BD1F /* data.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = data.xcodeproj; path = data/data.xcodeproj; sourceTree = "<group>"; };
 		BD53036A28BA52220057BD1F /* domain.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = domain.xcodeproj; path = domain/domain.xcodeproj; sourceTree = "<group>"; };
-		BD5303FD28BD44810057BD1F /* Poppins-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBold.ttf"; sourceTree = "<group>"; };
-		BD5303FE28BD44810057BD1F /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
-		BD5303FF28BD44810057BD1F /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
-		BD53040028BD44810057BD1F /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
-		BD53040128BD44810057BD1F /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
-		BD53040228BD44810057BD1F /* Poppins-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraLight.ttf"; sourceTree = "<group>"; };
-		BD53040328BD44810057BD1F /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
-		BD53040428BD44810057BD1F /* Poppins-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Thin.ttf"; sourceTree = "<group>"; };
 		BD5BDDCD28BFC1A700A8A09C /* QuizAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizAppUITests.swift; sourceTree = "<group>"; };
 		BD5BDDCF28BFC1A700A8A09C /* QuizAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		BD5BDDED28BFC24400A8A09C /* QuizAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuizAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,6 +128,15 @@
 		BD5BDDFD28BFC24D00A8A09C /* QuizAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuizAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD5BDDFF28BFC24D00A8A09C /* QuizAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizAppUITests.swift; sourceTree = "<group>"; };
 		BD5BDE0128BFC24D00A8A09C /* QuizAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		BD5BDE3828C635D600A8A09C /* Poppins-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraLight.ttf"; sourceTree = "<group>"; };
+		BD5BDE3928C635D600A8A09C /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
+		BD5BDE3A28C635D600A8A09C /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
+		BD5BDE3B28C635D600A8A09C /* Poppins-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBold.ttf"; sourceTree = "<group>"; };
+		BD5BDE3C28C635D600A8A09C /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		BD5BDE3D28C635D600A8A09C /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		BD5BDE3E28C635D600A8A09C /* Poppins-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Thin.ttf"; sourceTree = "<group>"; };
+		BD5BDE3F28C635D600A8A09C /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+		BD5BDE4828C6363200A8A09C /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Fonts.swift; path = ../../presentation/Fonts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 		BD42B69728BDF48A00F09579 /* Generated */ = {
 			isa = PBXGroup;
 			children = (
+				BD5BDE4828C6363200A8A09C /* Fonts.swift */,
 				BD42B69828BDF83500F09579 /* XCAssets+Image+Generated.swift */,
 				BD42B6A828BE037300F09579 /* String.swift */,
 			);
@@ -189,7 +192,6 @@
 			children = (
 				BD42B6AD28BE302D00F09579 /* fastlane */,
 				BD42B69128BDF33400F09579 /* swiftgen.yml */,
-				BD53040D28BD44880057BD1F /* Fonts */,
 				BD53033628BA51330057BD1F /* data.xcodeproj */,
 				BD53036A28BA52220057BD1F /* domain.xcodeproj */,
 				BD53030228BA50A20057BD1F /* presentation.xcodeproj */,
@@ -215,6 +217,7 @@
 		BD53028828BA4E090057BD1F /* QuizApp */ = {
 			isa = PBXGroup;
 			children = (
+				BD5BDE3728C635D600A8A09C /* Fonts */,
 				BD42B6A728BE009800F09579 /* Localizable.strings */,
 				BD42B69728BDF48A00F09579 /* Generated */,
 				BD53028928BA4E090057BD1F /* AppDelegate.swift */,
@@ -258,21 +261,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		BD53040D28BD44880057BD1F /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				BD5303FF28BD44810057BD1F /* Poppins-Bold.ttf */,
-				BD5303FD28BD44810057BD1F /* Poppins-ExtraBold.ttf */,
-				BD53040228BD44810057BD1F /* Poppins-ExtraLight.ttf */,
-				BD53040328BD44810057BD1F /* Poppins-Light.ttf */,
-				BD53040128BD44810057BD1F /* Poppins-Medium.ttf */,
-				BD53040028BD44810057BD1F /* Poppins-Regular.ttf */,
-				BD5303FE28BD44810057BD1F /* Poppins-SemiBold.ttf */,
-				BD53040428BD44810057BD1F /* Poppins-Thin.ttf */,
-			);
-			name = Fonts;
-			sourceTree = "<group>";
-		};
 		BD5BDDCC28BFC1A700A8A09C /* QuizAppUITests */ = {
 			isa = PBXGroup;
 			children = (
@@ -297,6 +285,21 @@
 				BD5BDE0128BFC24D00A8A09C /* QuizAppUITestsLaunchTests.swift */,
 			);
 			path = QuizAppUITests;
+			sourceTree = "<group>";
+		};
+		BD5BDE3728C635D600A8A09C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				BD5BDE3828C635D600A8A09C /* Poppins-ExtraLight.ttf */,
+				BD5BDE3928C635D600A8A09C /* Poppins-Light.ttf */,
+				BD5BDE3A28C635D600A8A09C /* Poppins-Medium.ttf */,
+				BD5BDE3B28C635D600A8A09C /* Poppins-ExtraBold.ttf */,
+				BD5BDE3C28C635D600A8A09C /* Poppins-Regular.ttf */,
+				BD5BDE3D28C635D600A8A09C /* Poppins-Bold.ttf */,
+				BD5BDE3E28C635D600A8A09C /* Poppins-Thin.ttf */,
+				BD5BDE3F28C635D600A8A09C /* Poppins-SemiBold.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -457,21 +460,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD5BDE4728C635D600A8A09C /* Poppins-SemiBold.ttf in Resources */,
 				BD42B6B328BE33FA00F09579 /* Scanfile in Resources */,
+				BD5BDE4628C635D600A8A09C /* Poppins-Thin.ttf in Resources */,
+				BD5BDE4128C635D600A8A09C /* Poppins-Light.ttf in Resources */,
 				BD53029628BA4E0A0057BD1F /* LaunchScreen.storyboard in Resources */,
+				BD5BDE4428C635D600A8A09C /* Poppins-Regular.ttf in Resources */,
 				BD42B6A528BE009800F09579 /* Localizable.strings in Resources */,
-				BD53040B28BD44810057BD1F /* Poppins-Light.ttf in Resources */,
-				BD53040928BD44810057BD1F /* Poppins-Medium.ttf in Resources */,
-				BD53040628BD44810057BD1F /* Poppins-SemiBold.ttf in Resources */,
-				BD53040728BD44810057BD1F /* Poppins-Bold.ttf in Resources */,
-				BD53040A28BD44810057BD1F /* Poppins-ExtraLight.ttf in Resources */,
-				BD53040828BD44810057BD1F /* Poppins-Regular.ttf in Resources */,
 				BD42B6B128BE302D00F09579 /* Fastfile in Resources */,
-				BD53040528BD44810057BD1F /* Poppins-ExtraBold.ttf in Resources */,
+				BD5BDE4028C635D600A8A09C /* Poppins-ExtraLight.ttf in Resources */,
 				BD42B69228BDF33400F09579 /* swiftgen.yml in Resources */,
+				BD5BDE4528C635D600A8A09C /* Poppins-Bold.ttf in Resources */,
+				BD5BDE4328C635D600A8A09C /* Poppins-ExtraBold.ttf in Resources */,
 				BD42B6B028BE302D00F09579 /* Appfile in Resources */,
 				BD53029328BA4E0A0057BD1F /* Assets.xcassets in Resources */,
-				BD53040C28BD44810057BD1F /* Poppins-Thin.ttf in Resources */,
+				BD5BDE4228C635D600A8A09C /* Poppins-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,6 +520,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD5BDE4928C6363200A8A09C /* Fonts.swift in Sources */,
 				BD42B6A928BE037300F09579 /* String.swift in Sources */,
 				BD53028A28BA4E090057BD1F /* AppDelegate.swift in Sources */,
 				BD42B69928BDF83500F09579 /* XCAssets+Image+Generated.swift in Sources */,

@@ -7,13 +7,16 @@
 
 import UIKit
 import SnapKit
+import SwiftUI
 
 public class MainViewController: BaseViewController<MainViewModel> {
+    
+    
     
     private lazy var quizApp_lbl: UILabel = {
         let view = UILabel()
         self.view.addSubview(view)
-        view.font = UIFont(name: "Poppins-Medium", size: 32)
+        view.font = UIFont(name: FontFamily.Poppins.bold.name, size: 32)
         view.textColor = .cyan
         view.text = L10n.appTitleName
         
