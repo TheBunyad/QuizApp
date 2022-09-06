@@ -184,17 +184,9 @@
 			path = fastlane;
 			sourceTree = "<group>";
 		};
-		BD42B6B428BE36D800F09579 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "New Group";
-			sourceTree = "<group>";
-		};
 		BD53027D28BA4E090057BD1F = {
 			isa = PBXGroup;
 			children = (
-				BD42B6B428BE36D800F09579 /* New Group */,
 				BD42B6AD28BE302D00F09579 /* fastlane */,
 				BD42B69128BDF33400F09579 /* swiftgen.yml */,
 				BD53040D28BD44880057BD1F /* Fonts */,
@@ -516,7 +508,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/opt/homebrew/bin/swiftgen config run\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nswiftgen config run\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
