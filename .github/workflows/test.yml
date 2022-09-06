@@ -12,6 +12,10 @@ jobs:
     runs-on: macos-latest
 
     steps:
+      - uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+
       - name: Checkout the code
         uses: actions/checkout@v3
 
@@ -19,7 +23,7 @@ jobs:
         run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
       - name: Install swiftgen
-        run: brew install swiftgen; 
+        run: brew install swiftgen
 
       - name: Bundle install
         run: bundle install
