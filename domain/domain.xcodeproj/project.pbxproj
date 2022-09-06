@@ -436,16 +436,16 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = exactVersion;
+				version = 6.5.0;
 			};
 		};
 		BD53039E28BCEAC90057BD1F /* XCRemoteSwiftPackageReference "Swinject" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Swinject/Swinject.git";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = exactVersion;
+				version = 2.8.2;
 			};
 		};
 		BD5303B628BCEF640057BD1F /* XCRemoteSwiftPackageReference "promises" */ = {
