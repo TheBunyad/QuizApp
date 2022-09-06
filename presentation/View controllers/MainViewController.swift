@@ -98,8 +98,8 @@ public class MainViewController: BaseViewController<MainViewModel> {
             make.centerX.equalTo(self.view.snp.centerX)
         }
         
-        changeQuestion(questionNumber: 0)
-        print(self.question_lbl.text)
+//        changeQuestion(questionNumber: 0)
+//        print(self.question_lbl.text)
         
         self.question_lbl.snp.makeConstraints { make in
             make.top.equalTo(self.quizApp_lbl.snp.bottom).offset(40)
@@ -128,13 +128,13 @@ public class MainViewController: BaseViewController<MainViewModel> {
     }
     
     
-    func changeQuestion(questionNumber: Int) {
-        self.question_lbl.text = self.questions[questionNumber].question
-        print("question: \(self.questions[questionNumber].question)")
-        self.answer1_lbl.text = self.questions[questionNumber].correctAnswer
-        self.answer2_lbl.text = self.questions[questionNumber].incorrectAnswers[0]
-        self.answer3_lbl.text = self.questions[questionNumber].incorrectAnswers[1]
-        self.answer4_lbl.text = self.questions[questionNumber].incorrectAnswers[2]
-    }
+//    func changeQuestion(questionNumber: Int) {
+//        self.question_lbl.text = self.questions[questionNumber].question
+//        print("question: \(self.questions[questionNumber].question)")
+//        self.answer1_lbl.text = self.questions[questionNumber].correctAnswer
+//        self.answer2_lbl.text = self.questions[questionNumber].incorrectAnswers[0]
+//        self.answer3_lbl.text = self.questions[questionNumber].incorrectAnswers[1]
+//        self.answer4_lbl.text = self.questions[questionNumber].incorrectAnswers[2]
+//    }
     
 }
