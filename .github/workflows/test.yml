@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - name: XCode setup
-      - uses: maxim-lobanov/setup-xcode@v1
+        uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: '13.3'
 
