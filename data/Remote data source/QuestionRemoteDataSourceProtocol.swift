@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import Promises
 
 
 protocol QuestionRemoteDataSourceProtocol {
-    func fetchQuestions() -> QuestionRemoteDTO
+    func fetchQuestions() -> Promise<QuestionRemoteDTO>
 }

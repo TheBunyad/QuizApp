@@ -7,20 +7,39 @@
 
 import Foundation
 
-public struct QuestionEntity {
+public struct QuestionEntity: Decodable {
     
-    public let question: String
-    public let correctAnswer: String
-    public let answer1: String
-    public let answer2: String
-    public let answer3: String
+    public let responseCode: Int
+    public let results: [Result]
     
-    public init(question: String, correctAnswer: String, answer1: String, answer2: String, answer3: String) {
-        self.question = question
-        self.correctAnswer = correctAnswer
-        self.answer1 = answer1
-        self.answer2 = answer2
-        self.answer3 = answer3
+    enum CodingKeys: String, CodingKey {
+        case results, responseCode = "response_code"
     }
     
+    public init(responseCode: Int, results: [Result]) {
+        self.responseCode = responseCode
+        self.results = results
+    }
+}
+
+public struct Result: Decodable {
+    public let category: String
+    public let type: String
+    public let difficulty: String
+    public let question: String
+    public let correctAnswer: String
+    public let incorrectAnswers: [String]
+    
+    enum CodingKeys: String, CodingKey {
+        case category, type, difficulty, question, correctAnswer = "correct_answer", incorrectAnswers = "incorrect_answers"
+    }
+    
+    init(category: String, type: String, difficulty: String, question: String, correctAnswer: String, incorrectAnswers: [String]) {
+        self.category = category
+        self.type = type
+        self.difficulty = difficulty
+        self.question = question
+        self.correctAnswer = correctAnswer
+        self.incorrectAnswers = incorrectAnswers
+    }
 }

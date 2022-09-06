@@ -10,18 +10,15 @@ import domain
 import RealmSwift
 
 class QuestionLocalDTO: Object {
-    @Persisted var question: String = ""
-    @Persisted var correctAnswer: String = ""
-    @Persisted var answer1: String = ""
-    @Persisted var answer2: String = ""
-    @Persisted var answer3: String = ""
+    public let responseCode: Int = 0
+    public let results: [Result] = []
+    
+    enum CodingKeys: String, CodingKey {
+        case results, responseCode = "response_code"
+    }
     
     func toDomain() -> QuestionEntity {
         return QuestionEntity(
-            question: self.question,
-            correctAnswer: self.correctAnswer,
-            answer1: self.answer1,
-            answer2: self.answer2,
-            answer3: self.answer3)
+            responseCode: responseCode, results: results)
     }
 }

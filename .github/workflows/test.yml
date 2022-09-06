@@ -12,9 +12,6 @@ jobs:
     runs-on: macos-latest
 
     steps:
-
-     
-
       - name: Checkout the code
         uses: actions/checkout@v3
 
@@ -22,11 +19,14 @@ jobs:
         run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
       - name: Install swiftgen
-        run: brew install swiftgen
+        run: brew install swiftgen; 
+
       - name: Bundle install
         run: bundle install
 
       - name: Build and test
         run:  |
-          bundle exec fastlane test
-
+          bundle exec fastlane test \
+          sonar_login:"$SONAR_TOKEN "
+        env: 
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

@@ -8,20 +8,17 @@
 import Foundation
 import domain
 
-struct QuestionRemoteDTO: Decodable, Equatable {
+struct QuestionRemoteDTO: Decodable {
     
-    public let question: String
-    public let correctAnswer: String
-    public let answer1: String
-    public let answer2: String
-    public let answer3: String
+    public let responseCode: Int
+    public let results: [Result]
+    
+    enum CodingKeys: String, CodingKey {
+        case results, responseCode = "response_code"
+    }
     
     func toDomain() -> QuestionEntity {
         return QuestionEntity(
-            question: self.question,
-            correctAnswer: self.correctAnswer,
-            answer1: self.answer1,
-            answer2: self.answer2,
-            answer3: self.answer3)
+            responseCode: responseCode, results: results)
     }
 }

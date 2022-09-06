@@ -8,6 +8,7 @@
 import Foundation
 import Swinject
 import domain
+import Alamofire
 
 public class DataAssembly: Assembly {
     
@@ -21,12 +22,26 @@ public class DataAssembly: Assembly {
         }
         
         container.register(QuestionRepoProtocol.self) { r in
-            QuestionRepo()
+            QuestionRepo(remoteDataSource: r.resolve(QuestionRemoteDataSourceProtocol.self)!,
+                         localDataSource: r.resolve(QuestionLocalDataSourceProtocol.self)!
+            )
         }
         
         container.register(StatsRepoProtocol.self) { r in
             StatsRepo()
         }
+        
+        container.register(QuestionRemoteDataSourceProtocol.self) { r in
+            QuestionRemoteDataSource(networkProvider: r.resolve(Session.self)!)
+        }
+        
+        container.register(Session.self) { _ in
+            return AF
+        }
+        
+        container.register(QuestionLocalDataSourceProtocol.self) { r in
+            QuestionLocalDataSource()
+        }.inObjectScope(.container)
     }
     
     

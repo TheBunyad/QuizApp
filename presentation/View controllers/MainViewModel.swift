@@ -14,6 +14,7 @@ public class MainViewModel {
     private var getUserUseCase: GetUserUseCase?
     private var getQuestionUseCase: GetQuestionUseCase?
     
+    
     public init(getUserUseCase: GetUserUseCase?, getQuestionUseCase: GetQuestionUseCase?) {
         self.getUserUseCase = getUserUseCase
         self.getQuestionUseCase = getQuestionUseCase
@@ -30,5 +31,7 @@ public class MainViewModel {
         
         return useCase?.execute()
     }
+    
+    
 }
 

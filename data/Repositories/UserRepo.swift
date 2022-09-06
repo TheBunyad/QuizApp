@@ -37,7 +37,12 @@ class UserRepo: UserRepoProtocol {
                 user!
             })
             .asObservable()
+    }
+    
+    func syncQuestion() -> Promise<Void> {
+        let promise = Promise<Void>.pending()
         
+        return promise
     }
     
     
