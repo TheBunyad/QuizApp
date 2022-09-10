@@ -27,6 +27,7 @@
 		BD5BDE1728C3B43400A8A09C /* QuestionLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BDE1628C3B43400A8A09C /* QuestionLocalDataSource.swift */; };
 		BD5BDE1928C3B45300A8A09C /* QuestionLocalDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BDE1828C3B45300A8A09C /* QuestionLocalDataSourceProtocol.swift */; };
 		BD5BDE1B28C3B47000A8A09C /* QuestionLocalDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BDE1A28C3B47000A8A09C /* QuestionLocalDTO.swift */; };
+		BD5BDE5728C8F87500A8A09C /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BDE5628C8F87500A8A09C /* Questions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		BD5BDE1628C3B43400A8A09C /* QuestionLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionLocalDataSource.swift; sourceTree = "<group>"; };
 		BD5BDE1828C3B45300A8A09C /* QuestionLocalDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionLocalDataSourceProtocol.swift; sourceTree = "<group>"; };
 		BD5BDE1A28C3B47000A8A09C /* QuestionLocalDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionLocalDTO.swift; sourceTree = "<group>"; };
+		BD5BDE5628C8F87500A8A09C /* Questions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,9 +178,10 @@
 		BD5303CF28BD13930057BD1F /* Local data source */ = {
 			isa = PBXGroup;
 			children = (
-				BD5BDE1628C3B43400A8A09C /* QuestionLocalDataSource.swift */,
 				BD5BDE1828C3B45300A8A09C /* QuestionLocalDataSourceProtocol.swift */,
+				BD5BDE1628C3B43400A8A09C /* QuestionLocalDataSource.swift */,
 				BD5BDE1A28C3B47000A8A09C /* QuestionLocalDTO.swift */,
+				BD5BDE5628C8F87500A8A09C /* Questions.swift */,
 			);
 			path = "Local data source";
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				BD5303BB28BCF0480057BD1F /* UserRepo.swift in Sources */,
 				BD5303D328BD38680057BD1F /* QuestionRepo.swift in Sources */,
 				BD5BDE1128C3A6E600A8A09C /* QuestionRemoteDataSource.swift in Sources */,
+				BD5BDE5728C8F87500A8A09C /* Questions.swift in Sources */,
 				BD5303C928BD00E80057BD1F /* DataAssembly.swift in Sources */,
 				BD5BDE1728C3B43400A8A09C /* QuestionLocalDataSource.swift in Sources */,
 				BD5303D928BD3C480057BD1F /* StatsRepo.swift in Sources */,

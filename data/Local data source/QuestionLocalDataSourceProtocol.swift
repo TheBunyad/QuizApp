@@ -9,7 +9,8 @@ import Foundation
 import RxSwift
 import Promises
 
-protocol QuestionLocalDataSourceProtocol {
-    func save(questionDTO: QuestionLocalDTO) -> Promise<Void>
-    func observeQuestion() -> Observable<QuestionLocalDTO>
+protocol QuestionLocalDataSourceProtocol { 
+    func save(questionDTO: [Questions]) -> Promise<Void>
+    func observeQuestion() -> Observable<[Questions]>
+    
 }

@@ -1,14 +1,14 @@
 //
-//  GetQuestionUseCase.swift
+//  SyncQuestionUseCase.swift
 //  domain
 //
-//  Created by Bunyad Majidzade on 29.08.22.
+//  Created by Bunyad Majidzade on 07.09.22.
 //
 
 import Foundation
 import Promises
 
-public class GetQuestionUseCase {
+public class SyncQuestionUseCase {
     
     private let repo: QuestionRepoProtocol
     
@@ -16,7 +16,7 @@ public class GetQuestionUseCase {
         self.repo = repo
     }
         
-    public func execute() -> Promise<[QuestionEntity]> {
-        repo.getQuestion()
+    public func execute() -> Promise<Void> {
+        repo.syncQuestion()
     }
 }

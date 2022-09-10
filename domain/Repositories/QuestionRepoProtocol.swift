@@ -10,6 +10,7 @@ import Promises
 import RxSwift
 
 public protocol QuestionRepoProtocol {
-    func getQuestion() -> Promise<QuestionEntity>
-    func observerQuestion() -> Observable<QuestionEntity>
+    func getQuestion() -> Promise<[QuestionEntity]>
+    func observerQuestion() -> Observable<[QuestionEntity]>
+    func syncQuestion () -> Promise<Void>
 }

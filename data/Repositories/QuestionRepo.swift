@@ -11,7 +11,6 @@ import RxSwift
 import Promises
 
 public class QuestionRepo: QuestionRepoProtocol {
-    
     private let localDataSource: QuestionLocalDataSourceProtocol
     private let remoteDataSource: QuestionRemoteDataSourceProtocol
     
@@ -20,21 +19,41 @@ public class QuestionRepo: QuestionRepoProtocol {
         self.remoteDataSource = remoteDataSource
         self.localDataSource = localDataSource
     }
-    public func getQuestion() -> Promise<QuestionEntity> {
+    
+    public func getQuestion() -> Promise<[QuestionEntity]> {
+        let promise: Promise<[QuestionEntity]> = .pending()
         self.remoteDataSource.fetchQuestions()
-            .then { dto in
-                dto.toDomain()
+            .then { remoteDTOs in
+                promise.fulfill(remoteDTOs.toDomain())
+            }.catch { error in
+                promise.reject(error)
+            }
+        
+        return promise
+    }
+    
+    public func observerQuestion() -> Observable<[QuestionEntity]> {
+        self.localDataSource.observeQuestion()
+            .map { localDTOs in
+                localDTOs.map { $0.toDomain() }
             }
     }
     
-    public func observerQuestion() -> Observable<QuestionEntity> {
-       
-        
-        // return observed datassc
-        
-        return localDataSource.observeQuestion().map { dto in
-                dto.toDomain()
+    public func syncQuestion() -> Promise<Void> {
+        let promise = Promise<Void>.pending()
+        self.remoteDataSource.fetchQuestions()
+            .then { dto -> Promise<Void> in
+                let local = dto.toLocal()
+                return self.localDataSource.save(questionDTO: local)
             }
+            .then { void in
+                promise.fulfill(void)
+            }
+            .catch { err in
+                promise.reject(err)
+            }
+        
+        return promise
     }
     
     

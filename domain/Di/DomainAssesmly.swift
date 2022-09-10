@@ -28,6 +28,14 @@ public class DomainAssembly: Assembly {
         container.register(GetStatUseCase.self) { r in
             GetStatUseCase(repo: r.resolve(StatsRepoProtocol.self)!)
         }
+        
+        container.register(SyncQuestionUseCase.self) { r in
+            SyncQuestionUseCase(repo: r.resolve(QuestionRepoProtocol.self)!)
+        }
+        
+        container.register(ObserveQuestionUseCase.self) { r in
+            ObserveQuestionUseCase(repo: r.resolve(QuestionRepoProtocol.self)!)
+        }
     }
     
     

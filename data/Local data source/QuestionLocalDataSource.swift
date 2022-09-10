@@ -13,22 +13,19 @@ import RxRelay
 
 class QuestionLocalDataSource: QuestionLocalDataSourceProtocol {
     
-    private let promise = Promise<Void>.pending()
-    private let questionRelay = BehaviorRelay<QuestionLocalDTO?>.init(value: nil)
+    
+    private let questionRelay = BehaviorRelay<[Questions]>.init(value: [])
 
-    func save(questionDTO: QuestionLocalDTO) -> Promise<Void> {
+    func save(questionDTO: [Questions]) -> Promise<Void> {
+        let promise = Promise<Void>.pending()
+        self.questionRelay.accept(questionDTO)
+        promise.fulfill(Void())
+        
         return promise
     }
 
-    func observeQuestion() -> Observable<QuestionLocalDTO> {
-        return self.questionRelay
-            .filter { dto in
-                dto != nil
-            }
-            .map { dto in
-                dto!
-            }
-            .asObservable()
+    func observeQuestion() -> Observable<[Questions]> {
+        return self.questionRelay.asObservable()
     }
     
     

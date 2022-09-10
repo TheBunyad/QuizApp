@@ -22,6 +22,8 @@
 		BD5303D528BD39D30057BD1F /* GetQuestionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5303D428BD39D30057BD1F /* GetQuestionUseCase.swift */; };
 		BD5303D728BD3BA60057BD1F /* StatsRepoProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5303D628BD3BA60057BD1F /* StatsRepoProtocol.swift */; };
 		BD5303DB28BD3D6E0057BD1F /* GetStatUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5303DA28BD3D6E0057BD1F /* GetStatUseCase.swift */; };
+		BD5BDE5328C8EBF000A8A09C /* SyncQuestionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BDE5228C8EBF000A8A09C /* SyncQuestionUseCase.swift */; };
+		BD5BDE5528C8EC6700A8A09C /* ObserveQuestionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BDE5428C8EC6700A8A09C /* ObserveQuestionUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		BD5303D428BD39D30057BD1F /* GetQuestionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetQuestionUseCase.swift; sourceTree = "<group>"; };
 		BD5303D628BD3BA60057BD1F /* StatsRepoProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsRepoProtocol.swift; sourceTree = "<group>"; };
 		BD5303DA28BD3D6E0057BD1F /* GetStatUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStatUseCase.swift; sourceTree = "<group>"; };
+		BD5BDE5228C8EBF000A8A09C /* SyncQuestionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncQuestionUseCase.swift; sourceTree = "<group>"; };
+		BD5BDE5428C8EC6700A8A09C /* ObserveQuestionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObserveQuestionUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +112,8 @@
 				BD5303BD28BCF3CA0057BD1F /* GetUserUseCase.swift */,
 				BD5303D428BD39D30057BD1F /* GetQuestionUseCase.swift */,
 				BD5303DA28BD3D6E0057BD1F /* GetStatUseCase.swift */,
+				BD5BDE5228C8EBF000A8A09C /* SyncQuestionUseCase.swift */,
+				BD5BDE5428C8EC6700A8A09C /* ObserveQuestionUseCase.swift */,
 			);
 			path = "Use cases";
 			sourceTree = "<group>";
@@ -217,9 +223,11 @@
 				BD5303D728BD3BA60057BD1F /* StatsRepoProtocol.swift in Sources */,
 				BD5303B528BCEEAC0057BD1F /* UserRepoProtocol.swift in Sources */,
 				BD5303D528BD39D30057BD1F /* GetQuestionUseCase.swift in Sources */,
+				BD5BDE5528C8EC6700A8A09C /* ObserveQuestionUseCase.swift in Sources */,
 				BD5303B228BCEDDB0057BD1F /* StatsEntity.swift in Sources */,
 				BD5303B028BCEDC40057BD1F /* QuestionEntity.swift in Sources */,
 				BD5303DB28BD3D6E0057BD1F /* GetStatUseCase.swift in Sources */,
+				BD5BDE5328C8EBF000A8A09C /* SyncQuestionUseCase.swift in Sources */,
 				BD5303AE28BCEDAF0057BD1F /* UserEntity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

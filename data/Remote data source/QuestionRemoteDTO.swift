@@ -17,8 +17,28 @@ struct QuestionRemoteDTO: Decodable {
         case results, responseCode = "response_code"
     }
     
-    func toDomain() -> QuestionEntity {
-        return QuestionEntity(
-            responseCode: responseCode, results: results)
+    func toDomain() -> [QuestionEntity] {
+        self.results.map { result in
+            QuestionEntity(
+                category: result.category,
+                type: result.type,
+                difficulty: result.difficulty,
+                question: result.question,
+                correctAnswer: result.correctAnswer,
+                incorrectAnswers: result.incorrectAnswers
+            )
+        }
+    }
+    
+    func toLocal() -> [Questions] {
+        return results.map { remoteDTO in
+            Questions(
+                category: remoteDTO.category,
+                type: remoteDTO.type,
+                difficulty: remoteDTO.difficulty,
+                question: remoteDTO.question,
+                correctAnswer: remoteDTO.correctAnswer,
+                incorrectAnswers: remoteDTO.incorrectAnswers)
+        }
     }
 }
