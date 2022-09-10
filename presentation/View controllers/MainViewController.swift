@@ -13,12 +13,16 @@ import RxSwift
 
 public class MainViewController: BaseViewController<MainViewModel> {
     
+    //MARK: - Variables
+    
     private var questions: [QuestionEntity] = []
+    private var numberOfQuestion = 0
     private var questionSubscriptin: Disposable? = nil
     private var disposeBag = DisposeBag()
     private var blue = UIColor(red: 0.208, green: 0.339, blue: 0.675, alpha: 1)
     private var white = UIColor.white
     
+    //MARK: - UI Elements
     private lazy var quizApp_lbl: UILabel = {
         let view = UILabel()
         self.view.addSubview(view)
@@ -127,13 +131,13 @@ public class MainViewController: BaseViewController<MainViewModel> {
         return button
     }()
 
-    
+    //MARK: - ViewDidLoad
     public override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor(red: 0.887, green: 0.523, blue: 0.473, alpha: 1)
         
-        self.vm?.syncQuestion()
+       
         
         self.quizApp_lbl.snp.makeConstraints { make in
             make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(40)
@@ -148,10 +152,10 @@ public class MainViewController: BaseViewController<MainViewModel> {
         }
         
         self.answer1_ui.snp.makeConstraints { make in
-            make.top.equalTo(self.question_lbl.snp.bottom).offset(40)
+            make.bottom.equalTo(self.answer2_ui.snp.top).offset(-24)
             make.left.equalTo(self.view.safeAreaLayoutGuide.snp.left).offset(16)
             make.right.equalTo(self.view.safeAreaLayoutGuide.snp.right).offset(-16)
-            make.height.equalTo(40)
+            make.height.equalTo(50)
         }
         
         self.answer1_lbl.snp.makeConstraints { make in
@@ -159,10 +163,10 @@ public class MainViewController: BaseViewController<MainViewModel> {
         }
         
         self.answer2_ui.snp.makeConstraints { make in
-            make.top.equalTo(self.answer1_ui.snp.bottom).offset(24)
+            make.bottom.equalTo(self.view.snp.centerY).offset(48)
             make.left.equalTo(self.view.safeAreaLayoutGuide.snp.left).offset(16)
             make.right.equalTo(self.view.safeAreaLayoutGuide.snp.right).offset(-16)
-            make.height.equalTo(40)
+            make.height.equalTo(50)
         }
         
         self.answer2_lbl.snp.makeConstraints { make in
@@ -170,10 +174,10 @@ public class MainViewController: BaseViewController<MainViewModel> {
         }
         
         self.answer3_ui.snp.makeConstraints { make in
-            make.top.equalTo(self.answer2_ui.snp.bottom).offset(24)
+            make.top.equalTo(self.view.snp.centerY).offset(72)
             make.left.equalTo(self.view.safeAreaLayoutGuide.snp.left).offset(16)
             make.right.equalTo(self.view.safeAreaLayoutGuide.snp.right).offset(-16)
-            make.height.equalTo(40)
+            make.height.equalTo(50)
         }
         
         self.answer3_lbl.snp.makeConstraints { make in
@@ -184,7 +188,7 @@ public class MainViewController: BaseViewController<MainViewModel> {
             make.top.equalTo(self.answer3_ui.snp.bottom).offset(24)
             make.left.equalTo(self.view.safeAreaLayoutGuide.snp.left).offset(16)
             make.right.equalTo(self.view.safeAreaLayoutGuide.snp.right).offset(-16)
-            make.height.equalTo(40)
+            make.height.equalTo(50)
         }
         
         self.answer4_lbl.snp.makeConstraints { make in
@@ -194,39 +198,62 @@ public class MainViewController: BaseViewController<MainViewModel> {
         self.next_btn.snp.makeConstraints { make in
             make.right.equalTo(self.view.safeAreaLayoutGuide.snp.right).offset(-16)
             make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-24)
-            make.height.equalTo(40)
+            make.height.equalTo(50)
             make.width.equalTo(100)
         }
     }
+    //MARK: - ViewDidAppear
     
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        self.vm?.syncQuestion()
+        self.vm?.syncQuestion()
     }
+    
+    //MARK: - ViewWillAppear
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         questionSubscriptin = self.vm?.observeQuestion().subscribe({ recieved in
             guard let data = recieved.element else { return }
-            print(data.first?.question)
-            self.question_lbl.text = data.first?.question
-            self.answer1_lbl.text = data.first?.correctAnswer
-            self.answer2_lbl.text = data.first?.incorrectAnswers[0]
-            self.answer3_lbl.text = data.first?.incorrectAnswers[1]
-            self.answer4_lbl.text = data.first?.incorrectAnswers[2]
+            print(data)
+            self.questions = data
+            self.nextQuestion(numberOfQuestion: self.numberOfQuestion)
         })
         
         questionSubscriptin?.disposed(by: disposeBag)
     }
+    
+    //MARK: ViewWillDisappear
     
     public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         questionSubscriptin?.dispose()
     }
     
+    //MARK: - Functions
+    
     @objc func next(_ sender: UIButton?) {
-        self.vm?.syncQuestion()
+        
+        
+        
+        
+        self.nextQuestion(numberOfQuestion: numberOfQuestion)
+    }
+    
+    func nextQuestion(numberOfQuestion: Int) {
+       
+        if questions.count == numberOfQuestion {
+            
+//            self.next_btn.setTitle("Finised", for: .normal)
+//            self.next_btn.setTitleColor(UIColor.red, for: .normal)
+            return
+        } else { self.numberOfQuestion += 1 }
+        self.question_lbl.text = self.questions[numberOfQuestion].question
+        self.answer1_lbl.text = self.questions[numberOfQuestion].correctAnswer
+        self.answer2_lbl.text = self.questions[numberOfQuestion].incorrectAnswers[0]
+        self.answer3_lbl.text = self.questions[numberOfQuestion].incorrectAnswers[1]
+        self.answer4_lbl.text = self.questions[numberOfQuestion].incorrectAnswers[2]
     }
     
     

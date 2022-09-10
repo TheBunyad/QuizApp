@@ -20,7 +20,7 @@ class QuestionRemoteDataSource: QuestionRemoteDataSourceProtocol {
     func fetchQuestions() -> Promise<QuestionRemoteDTO> {
         let promise = Promise<QuestionRemoteDTO>.pending()
         
-        self.networkProvider.request("https://opentdb.com/api.php?amount=10")
+        self.networkProvider.request("https://opentdb.com/api.php?amount=10&type=multiple")
             .responseDecodable(of: QuestionRemoteDTO.self) { response in
                 if let err = response.error {
                     promise.reject(err)
