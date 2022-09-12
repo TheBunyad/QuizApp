@@ -11,6 +11,6 @@ import Promises
 
 protocol QuestionLocalDataSourceProtocol { 
     func save(questionDTO: [Questions]) -> Promise<Void>
-    func observeQuestion() -> Observable<[Questions]>
+    func observeQuestions() -> Observable<[Questions]>
     
 }

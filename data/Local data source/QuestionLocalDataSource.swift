@@ -24,7 +24,7 @@ class QuestionLocalDataSource: QuestionLocalDataSourceProtocol {
         return promise
     }
 
-    func observeQuestion() -> Observable<[Questions]> {
+    func observeQuestions() -> Observable<[Questions]> {
         return self.questionRelay.asObservable()
     }
     

@@ -33,7 +33,7 @@ public class QuestionRepo: QuestionRepoProtocol {
     }
     
     public func observerQuestion() -> Observable<[QuestionEntity]> {
-        self.localDataSource.observeQuestion()
+        self.localDataSource.observeQuestions()
             .map { localDTOs in
                 localDTOs.map { $0.toDomain() }
             }

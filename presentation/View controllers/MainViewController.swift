@@ -15,10 +15,6 @@ public class MainViewController: BaseViewController<MainViewModel> {
     
     //MARK: - Variables
     
-    private var questions: [QuestionEntity] = []
-    private var numberOfQuestion = 0
-    private var questionSubscriptin: Disposable? = nil
-    private var disposeBag = DisposeBag()
     private var blue = UIColor(red: 0.208, green: 0.339, blue: 0.675, alpha: 1)
     private var white = UIColor.white
     
@@ -130,19 +126,18 @@ public class MainViewController: BaseViewController<MainViewModel> {
         
         return button
     }()
-
+    
     //MARK: - ViewDidLoad
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor(red: 0.887, green: 0.523, blue: 0.473, alpha: 1)
         
-       
-        
         self.quizApp_lbl.snp.makeConstraints { make in
             make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(40)
             make.centerX.equalTo(self.view.snp.centerX)
-           
+            
         }
         
         self.question_lbl.snp.makeConstraints { make in
@@ -205,8 +200,8 @@ public class MainViewController: BaseViewController<MainViewModel> {
     //MARK: - ViewDidAppear
     
     public override func viewDidAppear(_ animated: Bool) {
+        
         super.viewDidAppear(animated)
-        self.vm?.syncQuestion()
     }
     
     //MARK: - ViewWillAppear
@@ -214,47 +209,46 @@ public class MainViewController: BaseViewController<MainViewModel> {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        questionSubscriptin = self.vm?.observeQuestion().subscribe({ recieved in
-            guard let data = recieved.element else { return }
-            print(data)
-            self.questions = data
-            self.nextQuestion(numberOfQuestion: self.numberOfQuestion)
-        })
+        self.vm?.syncQuestion()
+        self.vm?.nextQuestion()
+        let subscriber = self.vm?.observeQuestion()
+            .subscribe(
+                onNext: { next in
+                    guard let data = next else { return }
+                    self.question_lbl.text = data.question
+                    self.answer1_lbl.text = data.correctAnswer
+                    self.answer2_lbl.text = data.incorrectAnswers[0]
+                    self.answer3_lbl.text = data.incorrectAnswers[1]
+                    self.answer4_lbl.text = data.incorrectAnswers[2]
+                }, onError: { err in
+                    print(err)
+                }, onCompleted: {
+                    self.next_btn.setTitle("Completed", for: .normal)
+                    
+                })
         
-        questionSubscriptin?.disposed(by: disposeBag)
+        vm?.dispose(of: subscriber)
     }
     
     //MARK: ViewWillDisappear
     
     public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        questionSubscriptin?.dispose()
     }
     
     //MARK: - Functions
     
     @objc func next(_ sender: UIButton?) {
+        if self.next_btn.titleLabel?.text == "Next" {
+            self.vm?.nextQuestion()
+        }
+        if self.next_btn.titleLabel?.text == "Completed" {
+            self.question_lbl.text = "Completed"
+        }
         
-        
-        
-        
-        self.nextQuestion(numberOfQuestion: numberOfQuestion)
     }
     
-    func nextQuestion(numberOfQuestion: Int) {
-       
-        if questions.count == numberOfQuestion {
-            
-//            self.next_btn.setTitle("Finised", for: .normal)
-//            self.next_btn.setTitleColor(UIColor.red, for: .normal)
-            return
-        } else { self.numberOfQuestion += 1 }
-        self.question_lbl.text = self.questions[numberOfQuestion].question
-        self.answer1_lbl.text = self.questions[numberOfQuestion].correctAnswer
-        self.answer2_lbl.text = self.questions[numberOfQuestion].incorrectAnswers[0]
-        self.answer3_lbl.text = self.questions[numberOfQuestion].incorrectAnswers[1]
-        self.answer4_lbl.text = self.questions[numberOfQuestion].incorrectAnswers[2]
+    @objc func result(_ sender: UIButton?) {
+        
     }
-    
-    
 }

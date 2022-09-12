@@ -24,6 +24,7 @@ class QuestionRemoteDataSource: QuestionRemoteDataSourceProtocol {
             .responseDecodable(of: QuestionRemoteDTO.self) { response in
                 if let err = response.error {
                     promise.reject(err)
+                    print("error RemoteDataSource")
                     return
                 }
                 
@@ -31,6 +32,7 @@ class QuestionRemoteDataSource: QuestionRemoteDataSourceProtocol {
                     promise.fulfill(data)
                 } else {
                     promise.reject(ParsingError())
+                    print("Parsing error RemoteDataSource")
                 }
                 
             }
