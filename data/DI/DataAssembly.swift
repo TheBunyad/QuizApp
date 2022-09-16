@@ -42,6 +42,14 @@ public class DataAssembly: Assembly {
         container.register(QuestionLocalDataSourceProtocol.self) { r in
             QuestionLocalDataSource()
         }.inObjectScope(.container)
+        
+        container.register(CategoryRemoteDataSource.self) { r in
+            CategoryRemoteDataSource(networkProvider: r.resolve(Session.self)!)
+        }
+        
+        container.register(CategoryRepoProtocol.self) { r in
+            CaregoryRepo(remoteDataSource: r.resolve(CategoryRemoteDataSource.self)!)
+        }
     }
     
     

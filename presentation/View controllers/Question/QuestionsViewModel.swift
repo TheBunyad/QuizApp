@@ -11,7 +11,7 @@ import domain
 import RxSwift
 import UIKit
 
-public class MainViewModel {
+public class QuestionsViewModel {
     
     private var getUserUseCase: GetUserUseCase
     private var getQuestionUseCase: GetQuestionUseCase
@@ -23,7 +23,10 @@ public class MainViewModel {
     private var questions: [QuestionEntity] = []
     private var questionNumber = -1
     private var numberOfQuestoins = 10
+    private var numberOfCorrectAnswers = 0
     public var disposebag = DisposeBag()
+    private var correctAnswer: String?
+    private var blue = UIColor(red: 0.208, green: 0.339, blue: 0.675, alpha: 1)
     
     public init(
         getUserUseCase: GetUserUseCase,
@@ -43,14 +46,14 @@ public class MainViewModel {
         return useCase.execute()
     }
     
-    func getQuestion() -> Promise<[QuestionEntity]> {
+    func getQuestion(category: Int) -> Promise<[QuestionEntity]> {
         let useCase = self.getQuestionUseCase
         
-        return useCase.execute()
+        return useCase.execute(category: category)
     }
     
-    func syncQuestion() {
-        let _ = self.syncQuestionUseCase.execute()
+    func syncQuestion(category: Int) {
+        let _ = self.syncQuestionUseCase.execute(category: category)
     }
     
     func observeQuestions() -> Observable<[QuestionEntity]> {
@@ -59,13 +62,14 @@ public class MainViewModel {
         return useCase.execute()
     }
     
-    func nextQuestion() {
+    func nextQuestion(category: Int) {
         
-        self.getQuestion()
+        self.getQuestion(category: category)
             .then { recieved in
                 self.questionNumber += 1
                 if self.questionNumber < self.numberOfQuestoins {
                     self.questionObserver.onNext(recieved[self.questionNumber])
+                    self.correctAnswer = recieved[self.questionNumber].correctAnswer
                 }
                 if self.questionNumber == self.numberOfQuestoins - 1 {
                     self.questionObserver.onCompleted()
@@ -79,6 +83,18 @@ public class MainViewModel {
     
     func dispose(of subscriber: Disposable?) {
         subscriber?.disposed(by: disposebag)
+    }
+    
+    func checkAnswer(answer: String?) -> UIColor {
+        if answer == self.correctAnswer {
+            self.numberOfCorrectAnswers += 1
+            return UIColor.systemGreen
+        }
+        return self.blue
+    }
+    
+    func sendNumberOfCorrectAnswers() -> Int {
+         numberOfCorrectAnswers
     }
     
 }

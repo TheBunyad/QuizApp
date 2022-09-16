@@ -16,7 +16,7 @@ public class SyncQuestionUseCase {
         self.repo = repo
     }
         
-    public func execute() -> Promise<Void> {
-        repo.syncQuestion()
+    public func execute(category: Int) -> Promise<Void> {
+        repo.syncQuestion(category: category)
     }
 }

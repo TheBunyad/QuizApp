@@ -10,5 +10,5 @@ import Promises
 
 
 protocol QuestionRemoteDataSourceProtocol {
-    func fetchQuestions() -> Promise<QuestionRemoteDTO>
+    func fetchQuestions(category: Int) -> Promise<QuestionRemoteDTO>
 }

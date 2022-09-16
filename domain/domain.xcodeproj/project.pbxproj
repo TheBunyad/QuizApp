@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD0244E828D0DD4200D6CDE7 /* CategoryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0244E728D0DD4200D6CDE7 /* CategoryEntity.swift */; };
+		BD0244F028D0E32A00D6CDE7 /* CategoryRepoProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0244EF28D0E32A00D6CDE7 /* CategoryRepoProtocol.swift */; };
+		BD0244F228D0E3B400D6CDE7 /* GetCategoryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0244F128D0E3B400D6CDE7 /* GetCategoryUseCase.swift */; };
 		BD53036428BA52220057BD1F /* domain.h in Headers */ = {isa = PBXBuildFile; fileRef = BD53036328BA52220057BD1F /* domain.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BD53039928BCEAB50057BD1F /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = BD53039828BCEAB50057BD1F /* RxRelay */; };
 		BD53039B28BCEAB50057BD1F /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BD53039A28BCEAB50057BD1F /* RxSwift */; };
@@ -27,6 +30,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BD0244E728D0DD4200D6CDE7 /* CategoryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEntity.swift; sourceTree = "<group>"; };
+		BD0244EF28D0E32A00D6CDE7 /* CategoryRepoProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRepoProtocol.swift; sourceTree = "<group>"; };
+		BD0244F128D0E3B400D6CDE7 /* GetCategoryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCategoryUseCase.swift; sourceTree = "<group>"; };
 		BD53036028BA52220057BD1F /* domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD53036328BA52220057BD1F /* domain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = domain.h; sourceTree = "<group>"; };
 		BD5303AD28BCEDAF0057BD1F /* UserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
@@ -90,8 +96,9 @@
 			isa = PBXGroup;
 			children = (
 				BD5303AD28BCEDAF0057BD1F /* UserEntity.swift */,
-				BD5303AF28BCEDC40057BD1F /* QuestionEntity.swift */,
 				BD5303B128BCEDDB0057BD1F /* StatsEntity.swift */,
+				BD5303AF28BCEDC40057BD1F /* QuestionEntity.swift */,
+				BD0244E728D0DD4200D6CDE7 /* CategoryEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -102,6 +109,7 @@
 				BD5303B428BCEEAC0057BD1F /* UserRepoProtocol.swift */,
 				BD5303D028BD377B0057BD1F /* QuestionRepoProtocol.swift */,
 				BD5303D628BD3BA60057BD1F /* StatsRepoProtocol.swift */,
+				BD0244EF28D0E32A00D6CDE7 /* CategoryRepoProtocol.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -110,10 +118,11 @@
 			isa = PBXGroup;
 			children = (
 				BD5303BD28BCF3CA0057BD1F /* GetUserUseCase.swift */,
-				BD5303D428BD39D30057BD1F /* GetQuestionUseCase.swift */,
 				BD5303DA28BD3D6E0057BD1F /* GetStatUseCase.swift */,
+				BD5303D428BD39D30057BD1F /* GetQuestionUseCase.swift */,
 				BD5BDE5228C8EBF000A8A09C /* SyncQuestionUseCase.swift */,
 				BD5BDE5428C8EC6700A8A09C /* ObserveQuestionUseCase.swift */,
+				BD0244F128D0E3B400D6CDE7 /* GetCategoryUseCase.swift */,
 			);
 			path = "Use cases";
 			sourceTree = "<group>";
@@ -219,7 +228,9 @@
 			files = (
 				BD5303D128BD377B0057BD1F /* QuestionRepoProtocol.swift in Sources */,
 				BD5303C628BD002F0057BD1F /* DomainAssesmly.swift in Sources */,
+				BD0244F228D0E3B400D6CDE7 /* GetCategoryUseCase.swift in Sources */,
 				BD5303BE28BCF3CA0057BD1F /* GetUserUseCase.swift in Sources */,
+				BD0244F028D0E32A00D6CDE7 /* CategoryRepoProtocol.swift in Sources */,
 				BD5303D728BD3BA60057BD1F /* StatsRepoProtocol.swift in Sources */,
 				BD5303B528BCEEAC0057BD1F /* UserRepoProtocol.swift in Sources */,
 				BD5303D528BD39D30057BD1F /* GetQuestionUseCase.swift in Sources */,
@@ -228,6 +239,7 @@
 				BD5303B028BCEDC40057BD1F /* QuestionEntity.swift in Sources */,
 				BD5303DB28BD3D6E0057BD1F /* GetStatUseCase.swift in Sources */,
 				BD5BDE5328C8EBF000A8A09C /* SyncQuestionUseCase.swift in Sources */,
+				BD0244E828D0DD4200D6CDE7 /* CategoryEntity.swift in Sources */,
 				BD5303AE28BCEDAF0057BD1F /* UserEntity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

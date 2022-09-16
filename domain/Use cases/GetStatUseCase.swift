@@ -17,6 +17,6 @@ public class GetStatUseCase {
     }
     
     public func execute() {
-        repo.getStats()
+//        repo.getStats()
     }
 }

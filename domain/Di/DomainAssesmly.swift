@@ -36,6 +36,10 @@ public class DomainAssembly: Assembly {
         container.register(ObserveQuestionUseCase.self) { r in
             ObserveQuestionUseCase(repo: r.resolve(QuestionRepoProtocol.self)!)
         }
+        
+        container.register(GetCategoryUseCase.self) { r in
+            GetCategoryUseCase(repo: r.resolve(CategoryRepoProtocol.self)!)
+        }
     }
     
     

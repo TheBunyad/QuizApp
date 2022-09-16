@@ -1,5 +1,5 @@
 //
-//  MainController.swift
+//  QuestionsViewController.swift
 //  presentation
 //
 //  Created by Bunyad Majidzade on 29.08.22.
@@ -11,14 +11,31 @@ import SwiftUI
 import domain
 import RxSwift
 
-public class MainViewController: BaseViewController<MainViewModel> {
+public class QuestionsViewController: BaseViewController<QuestionsViewModel> {
     
     //MARK: - Variables
+    
+    private var difficulty: String
+    private var category: Int
+    private var multiplayer: Bool
+    private var completed: Bool = false
+    
+    init(difficult: String, category: Int, multiplayer: Bool, vm: QuestionsViewModel, router: RouterProtocol) {
+        self.category = category
+        self.difficulty = difficult
+        self.multiplayer = multiplayer
+        super.init(vm: vm, router: router)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     private var blue = UIColor(red: 0.208, green: 0.339, blue: 0.675, alpha: 1)
     private var white = UIColor.white
     
     //MARK: - UI Elements
+    
     private lazy var quizApp_lbl: UILabel = {
         let view = UILabel()
         self.view.addSubview(view)
@@ -196,6 +213,19 @@ public class MainViewController: BaseViewController<MainViewModel> {
             make.height.equalTo(50)
             make.width.equalTo(100)
         }
+        
+        let chooseAnswer1 = UITapGestureRecognizer(target: self, action: #selector(chooseFirstAnswer(_:)))
+        self.answer1_ui.addGestureRecognizer(chooseAnswer1)
+        
+        let chooseAnswer2 = UITapGestureRecognizer(target: self, action: #selector(chooseSecondAnswer(_:)))
+        self.answer2_ui.addGestureRecognizer(chooseAnswer2)
+        
+        let chooseAnswer3 = UITapGestureRecognizer(target: self, action: #selector(chooseThirdAnswer(_:)))
+        self.answer3_ui.addGestureRecognizer(chooseAnswer3)
+        
+        let chooseAnswer4 = UITapGestureRecognizer(target: self, action: #selector(chooseFourthAnswer(_:)))
+        self.answer4_ui.addGestureRecognizer(chooseAnswer4)
+        
     }
     //MARK: - ViewDidAppear
     
@@ -209,25 +239,48 @@ public class MainViewController: BaseViewController<MainViewModel> {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.vm?.syncQuestion()
-        self.vm?.nextQuestion()
-        let subscriber = self.vm?.observeQuestion()
+        self.vm.syncQuestion(category: self.category)
+        self.vm.nextQuestion(category: self.category)
+        let subscriber = self.vm.observeQuestion()
             .subscribe(
                 onNext: { next in
                     guard let data = next else { return }
                     self.question_lbl.text = data.question
-                    self.answer1_lbl.text = data.correctAnswer
-                    self.answer2_lbl.text = data.incorrectAnswers[0]
-                    self.answer3_lbl.text = data.incorrectAnswers[1]
-                    self.answer4_lbl.text = data.incorrectAnswers[2]
+                    var list: [String] = [
+                        data.correctAnswer,
+                        data.incorrectAnswers[0],
+                        data.incorrectAnswers[1],
+                        data.incorrectAnswers[2]
+                    ]
+                    self.answer1_ui.backgroundColor = self.blue
+                    self.answer2_ui.backgroundColor = self.blue
+                    self.answer3_ui.backgroundColor = self.blue
+                    self.answer4_ui.backgroundColor = self.blue
+                    
+                    var temp = list.randomElement()
+                    list.remove(at: list.firstIndex(of: temp!)!)
+                    self.answer1_lbl.text = temp
+                    
+                    temp = list.randomElement()
+                    list.remove(at: list.firstIndex(of: temp!)!)
+                    self.answer2_lbl.text = temp
+                    
+                    temp = list.randomElement()
+                    list.remove(at: list.firstIndex(of: temp!)!)
+                    self.answer3_lbl.text = temp
+                    
+                    temp = list.randomElement()
+                    list.remove(at: list.firstIndex(of: temp!)!)
+                    self.answer4_lbl.text = temp
+                    
                 }, onError: { err in
                     print(err)
                 }, onCompleted: {
                     self.next_btn.setTitle("Completed", for: .normal)
-                    
+
                 })
         
-        vm?.dispose(of: subscriber)
+        vm.dispose(of: subscriber)
     }
     
     //MARK: ViewWillDisappear
@@ -240,15 +293,63 @@ public class MainViewController: BaseViewController<MainViewModel> {
     
     @objc func next(_ sender: UIButton?) {
         if self.next_btn.titleLabel?.text == "Next" {
-            self.vm?.nextQuestion()
+            self.vm.nextQuestion(category: self.category)
         }
         if self.next_btn.titleLabel?.text == "Completed" {
-            self.question_lbl.text = "Completed"
+            let vc = self.router.resultViewController(score: self.vm.sendNumberOfCorrectAnswers())
+            self.navigationController?.pushViewController(vc, animated: true)
         }
-        
-    }
+            }
     
     @objc func result(_ sender: UIButton?) {
         
+    }
+    
+    @objc func chooseFirstAnswer(_ sender: UITapGestureRecognizer) {
+        if sender.state == .ended {
+            self.answer1_ui.backgroundColor = vm.checkAnswer(answer: answer1_lbl.text)
+            self.answer2_ui.backgroundColor = vm.checkAnswer(answer: answer2_lbl.text)
+            self.answer3_ui.backgroundColor = vm.checkAnswer(answer: answer3_lbl.text)
+            self.answer4_ui.backgroundColor = vm.checkAnswer(answer: answer4_lbl.text)
+            if self.answer1_ui.backgroundColor == self.blue {
+                self.answer1_ui.backgroundColor = UIColor.systemRed
+            }
+        }
+    }
+    
+    @objc func chooseSecondAnswer(_ sender: UITapGestureRecognizer) {
+        if sender.state == .ended {
+            self.answer1_ui.backgroundColor = vm.checkAnswer(answer: answer1_lbl.text)
+            self.answer2_ui.backgroundColor = vm.checkAnswer(answer: answer2_lbl.text)
+            self.answer3_ui.backgroundColor = vm.checkAnswer(answer: answer3_lbl.text)
+            self.answer4_ui.backgroundColor = vm.checkAnswer(answer: answer4_lbl.text)
+            if self.answer2_ui.backgroundColor == self.blue {
+                self.answer2_ui.backgroundColor = UIColor.systemRed
+            }
+        }
+    }
+    
+    @objc func chooseThirdAnswer(_ sender: UITapGestureRecognizer) {
+        if sender.state == .ended {
+            self.answer1_ui.backgroundColor = vm.checkAnswer(answer: answer1_lbl.text)
+            self.answer2_ui.backgroundColor = vm.checkAnswer(answer: answer2_lbl.text)
+            self.answer3_ui.backgroundColor = vm.checkAnswer(answer: answer3_lbl.text)
+            self.answer4_ui.backgroundColor = vm.checkAnswer(answer: answer4_lbl.text)
+            if self.answer3_ui.backgroundColor == self.blue {
+                self.answer3_ui.backgroundColor = UIColor.systemRed
+            }
+        }
+    }
+    
+    @objc func chooseFourthAnswer(_ sender: UITapGestureRecognizer) {
+        if sender.state == .ended {
+            self.answer1_ui.backgroundColor = vm.checkAnswer(answer: answer1_lbl.text)
+            self.answer2_ui.backgroundColor = vm.checkAnswer(answer: answer2_lbl.text)
+            self.answer3_ui.backgroundColor = vm.checkAnswer(answer: answer3_lbl.text)
+            self.answer4_ui.backgroundColor = vm.checkAnswer(answer: answer4_lbl.text)
+            if self.answer4_ui.backgroundColor == self.blue {
+                self.answer4_ui.backgroundColor = UIColor.systemRed
+            }
+        }
     }
 }

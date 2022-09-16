@@ -1,15 +1,15 @@
 //
-//  QuestionRemoteDataSource.swift
+//  CategoryRemoteDataSource.swift
 //  data
 //
-//  Created by Bunyad Majidzade on 03.09.22.
+//  Created by Bunyad Majidzade on 13.09.22.
 //
 
-import Alamofire
 import Foundation
 import Promises
+import Alamofire
 
-class QuestionRemoteDataSource: QuestionRemoteDataSourceProtocol {
+class CategoryRemoteDataSource: CategoryRemoteDataSourceProtocol {
     
     private let networkProvider: Session
     
@@ -17,11 +17,11 @@ class QuestionRemoteDataSource: QuestionRemoteDataSourceProtocol {
         self.networkProvider = networkProvider
     }
     
-    func fetchQuestions() -> Promise<QuestionRemoteDTO> {
-        let promise = Promise<QuestionRemoteDTO>.pending()
+    func fetchCategory() -> Promise<CategoryRemoteDTO> {
+        let promise = Promise<CategoryRemoteDTO>.pending()
         
-        self.networkProvider.request("https://opentdb.com/api.php?amount=10&type=multiple")
-            .responseDecodable(of: QuestionRemoteDTO.self) { response in
+        self.networkProvider.request("https://opentdb.com/api_category.php")
+            .responseDecodable(of: CategoryRemoteDTO.self) { response in
                 if let err = response.error {
                     promise.reject(err)
                     print("error RemoteDataSource")
@@ -34,16 +34,9 @@ class QuestionRemoteDataSource: QuestionRemoteDataSourceProtocol {
                     promise.reject(ParsingError())
                     print("Parsing error RemoteDataSource")
                 }
-                
             }
-            
         
         return promise
     }
-    
-    
 }
 
-class ParsingError: Error{
-    
-}

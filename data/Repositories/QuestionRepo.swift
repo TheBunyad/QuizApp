@@ -20,9 +20,9 @@ public class QuestionRepo: QuestionRepoProtocol {
         self.localDataSource = localDataSource
     }
     
-    public func getQuestion() -> Promise<[QuestionEntity]> {
+    public func getQuestion(category: Int) -> Promise<[QuestionEntity]> {
         let promise: Promise<[QuestionEntity]> = .pending()
-        self.remoteDataSource.fetchQuestions()
+        self.remoteDataSource.fetchQuestions(category: category)
             .then { remoteDTOs in
                 promise.fulfill(remoteDTOs.toDomain())
             }.catch { error in
@@ -39,9 +39,9 @@ public class QuestionRepo: QuestionRepoProtocol {
             }
     }
     
-    public func syncQuestion() -> Promise<Void> {
+    public func syncQuestion(category: Int) -> Promise<Void> {
         let promise = Promise<Void>.pending()
-        self.remoteDataSource.fetchQuestions()
+        self.remoteDataSource.fetchQuestions(category: category)
             .then { dto -> Promise<Void> in
                 let local = dto.toLocal()
                 return self.localDataSource.save(questionDTO: local)
