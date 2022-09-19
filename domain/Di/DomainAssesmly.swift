@@ -21,8 +21,8 @@ public class DomainAssembly: Assembly {
             GetUserUseCase(repo: r.resolve(UserRepoProtocol.self)!)
         }
         
-        container.register(GetQuestionUseCase.self) { r in
-            GetQuestionUseCase(repo: r.resolve(QuestionRepoProtocol.self)!)
+        container.register(GetQuestionsUseCase.self) { r in
+            GetQuestionsUseCase(repo: r.resolve(QuestionRepoProtocol.self)!)
         }
         
         container.register(GetStatUseCase.self) { r in

@@ -24,5 +24,20 @@ public class CategoryViewModel {
         return useCase.execute()
     }
     
-    
+    func getDiffiluty(difficulty: String) -> Difficulty {
+        switch difficulty {
+        case "Easy":
+            return .easy
+        case "Medium":
+            return .medium
+        case "Hard":
+            return .hard
+        default:
+            return .easy
+        }
+    }
+}
+
+public enum Difficulty {
+    case easy, medium, hard
 }

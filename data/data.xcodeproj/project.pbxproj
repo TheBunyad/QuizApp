@@ -30,7 +30,6 @@
 		BD5BDE1528C3A8C600A8A09C /* QuestionRemoteDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BDE1428C3A8C600A8A09C /* QuestionRemoteDTO.swift */; };
 		BD5BDE1728C3B43400A8A09C /* QuestionLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BDE1628C3B43400A8A09C /* QuestionLocalDataSource.swift */; };
 		BD5BDE1928C3B45300A8A09C /* QuestionLocalDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BDE1828C3B45300A8A09C /* QuestionLocalDataSourceProtocol.swift */; };
-		BD5BDE1B28C3B47000A8A09C /* QuestionLocalDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BDE1A28C3B47000A8A09C /* QuestionLocalDTO.swift */; };
 		BD5BDE5728C8F87500A8A09C /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BDE5628C8F87500A8A09C /* Questions.swift */; };
 /* End PBXBuildFile section */
 
@@ -80,7 +79,6 @@
 		BD5BDE1428C3A8C600A8A09C /* QuestionRemoteDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionRemoteDTO.swift; sourceTree = "<group>"; };
 		BD5BDE1628C3B43400A8A09C /* QuestionLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionLocalDataSource.swift; sourceTree = "<group>"; };
 		BD5BDE1828C3B45300A8A09C /* QuestionLocalDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionLocalDataSourceProtocol.swift; sourceTree = "<group>"; };
-		BD5BDE1A28C3B47000A8A09C /* QuestionLocalDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionLocalDTO.swift; sourceTree = "<group>"; };
 		BD5BDE5628C8F87500A8A09C /* Questions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -208,7 +206,6 @@
 			children = (
 				BD5BDE1828C3B45300A8A09C /* QuestionLocalDataSourceProtocol.swift */,
 				BD5BDE1628C3B43400A8A09C /* QuestionLocalDataSource.swift */,
-				BD5BDE1A28C3B47000A8A09C /* QuestionLocalDTO.swift */,
 				BD5BDE5628C8F87500A8A09C /* Questions.swift */,
 			);
 			path = "Local data source";
@@ -380,7 +377,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD5BDE1528C3A8C600A8A09C /* QuestionRemoteDTO.swift in Sources */,
-				BD5BDE1B28C3B47000A8A09C /* QuestionLocalDTO.swift in Sources */,
 				BD5BDE1328C3A88200A8A09C /* QuestionRemoteDataSourceProtocol.swift in Sources */,
 				BD0244EC28D0E06F00D6CDE7 /* CategoryRemoteDataSourceProtocol.swift in Sources */,
 				BD0244EA28D0DDC200D6CDE7 /* CategoryRemoteDTO.swift in Sources */,

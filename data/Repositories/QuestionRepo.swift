@@ -20,7 +20,8 @@ public class QuestionRepo: QuestionRepoProtocol {
         self.localDataSource = localDataSource
     }
     
-    public func getQuestion(category: Int) -> Promise<[QuestionEntity]> {
+    public func getQuestions(category: Int) -> Promise<[QuestionEntity]> {
+        
         let promise: Promise<[QuestionEntity]> = .pending()
         self.remoteDataSource.fetchQuestions(category: category)
             .then { remoteDTOs in

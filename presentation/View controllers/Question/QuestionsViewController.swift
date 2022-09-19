@@ -15,24 +15,11 @@ public class QuestionsViewController: BaseViewController<QuestionsViewModel> {
     
     //MARK: - Variables
     
-    private var difficulty: String
-    private var category: Int
-    private var multiplayer: Bool
-    private var completed: Bool = false
-    
-    init(difficult: String, category: Int, multiplayer: Bool, vm: QuestionsViewModel, router: RouterProtocol) {
-        self.category = category
-        self.difficulty = difficult
-        self.multiplayer = multiplayer
-        super.init(vm: vm, router: router)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     private var blue = UIColor(red: 0.208, green: 0.339, blue: 0.675, alpha: 1)
     private var white = UIColor.white
+    
+    private var subscription: Disposable? = nil
+    private let disposeBag: DisposeBag = DisposeBag()
     
     //MARK: - UI Elements
     
@@ -144,6 +131,17 @@ public class QuestionsViewController: BaseViewController<QuestionsViewModel> {
         return button
     }()
     
+    private lazy var timer_lbl: UILabel = {
+        let lbl = UILabel()
+        self.view.addSubview(lbl)
+        lbl.font = UIFont(name: FontFamily.Poppins.medium.name, size: 24)
+        lbl.textColor = .blue
+        
+        return lbl
+    }()
+    
+    
+    
     //MARK: - ViewDidLoad
     
     public override func viewDidLoad() {
@@ -214,16 +212,21 @@ public class QuestionsViewController: BaseViewController<QuestionsViewModel> {
             make.width.equalTo(100)
         }
         
-        let chooseAnswer1 = UITapGestureRecognizer(target: self, action: #selector(chooseFirstAnswer(_:)))
+        self.timer_lbl.snp.makeConstraints { make in
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(16)
+            make.right.equalTo(self.view.safeAreaLayoutGuide.snp.right).offset(-16)
+        }
+        
+        let chooseAnswer1 = UITapGestureRecognizer(target: self, action: #selector(chooseAnswer(_:)))
         self.answer1_ui.addGestureRecognizer(chooseAnswer1)
         
-        let chooseAnswer2 = UITapGestureRecognizer(target: self, action: #selector(chooseSecondAnswer(_:)))
+        let chooseAnswer2 = UITapGestureRecognizer(target: self, action: #selector(chooseAnswer(_:)))
         self.answer2_ui.addGestureRecognizer(chooseAnswer2)
         
-        let chooseAnswer3 = UITapGestureRecognizer(target: self, action: #selector(chooseThirdAnswer(_:)))
+        let chooseAnswer3 = UITapGestureRecognizer(target: self, action: #selector(chooseAnswer(_:)))
         self.answer3_ui.addGestureRecognizer(chooseAnswer3)
         
-        let chooseAnswer4 = UITapGestureRecognizer(target: self, action: #selector(chooseFourthAnswer(_:)))
+        let chooseAnswer4 = UITapGestureRecognizer(target: self, action: #selector(chooseAnswer(_:)))
         self.answer4_ui.addGestureRecognizer(chooseAnswer4)
         
     }
@@ -239,117 +242,139 @@ public class QuestionsViewController: BaseViewController<QuestionsViewModel> {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.vm.syncQuestion(category: self.category)
-        self.vm.nextQuestion(category: self.category)
-        let subscriber = self.vm.observeQuestion()
-            .subscribe(
-                onNext: { next in
-                    guard let data = next else { return }
-                    self.question_lbl.text = data.question
-                    var list: [String] = [
-                        data.correctAnswer,
-                        data.incorrectAnswers[0],
-                        data.incorrectAnswers[1],
-                        data.incorrectAnswers[2]
-                    ]
-                    self.answer1_ui.backgroundColor = self.blue
-                    self.answer2_ui.backgroundColor = self.blue
-                    self.answer3_ui.backgroundColor = self.blue
-                    self.answer4_ui.backgroundColor = self.blue
-                    
-                    var temp = list.randomElement()
-                    list.remove(at: list.firstIndex(of: temp!)!)
-                    self.answer1_lbl.text = temp
-                    
-                    temp = list.randomElement()
-                    list.remove(at: list.firstIndex(of: temp!)!)
-                    self.answer2_lbl.text = temp
-                    
-                    temp = list.randomElement()
-                    list.remove(at: list.firstIndex(of: temp!)!)
-                    self.answer3_lbl.text = temp
-                    
-                    temp = list.randomElement()
-                    list.remove(at: list.firstIndex(of: temp!)!)
-                    self.answer4_lbl.text = temp
-                    
-                }, onError: { err in
-                    print(err)
-                }, onCompleted: {
-                    self.next_btn.setTitle("Completed", for: .normal)
-
-                })
+        self.subscription = self.vm.observeGameState()
+            .subscribe({ received in
+                guard let state = received.element else { return }
+                
+                self.handle(state)
+            })
         
-        vm.dispose(of: subscriber)
+        self.subscription?.disposed(by: self.disposeBag)
     }
     
     //MARK: ViewWillDisappear
     
     public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
     }
     
     //MARK: - Functions
     
-    @objc func next(_ sender: UIButton?) {
-        if self.next_btn.titleLabel?.text == "Next" {
-            self.vm.nextQuestion(category: self.category)
-        }
-        if self.next_btn.titleLabel?.text == "Completed" {
-            let vc = self.router.resultViewController(score: self.vm.sendNumberOfCorrectAnswers())
+    func handle(_ state: GameState) {
+        switch state {
+        case .pending:
+            break
+        case .inProgress(let question, let state):
+            
+            if self.vm.isLastQuestion() {
+                self.next_btn.setTitle("Completed", for: .normal)
+            } else {
+                self.setup(question: question)
+            }
+            
+            switch state {
+            case .pending(let remainingSec):
+                self.timer_lbl.text = String(remainingSec)
+            case .wrong(let option):
+                if self.answer1_lbl.text == option {
+                    self.answer1_ui.backgroundColor = .systemRed
+                } else if answer2_lbl.text == option {
+                    self.answer2_ui.backgroundColor = .systemRed
+                } else if answer3_lbl.text == option {
+                    self.answer3_ui.backgroundColor = .systemRed
+                } else if answer4_lbl.text == option {
+                    self.answer4_ui.backgroundColor = .systemRed
+                }
+                
+                if self.answer1_lbl.text == question.correctAnswer {
+                    self.answer1_ui.backgroundColor = .systemGreen
+                } else if answer2_lbl.text == question.correctAnswer {
+                    self.answer2_ui.backgroundColor = .systemGreen
+                } else if answer3_lbl.text == question.correctAnswer {
+                    self.answer3_ui.backgroundColor = .systemGreen
+                } else if answer4_lbl.text == question.correctAnswer {
+                    self.answer4_ui.backgroundColor = .systemGreen
+                }
+                
+            case .correct:
+                if self.answer1_lbl.text == question.correctAnswer {
+                    self.answer1_ui.backgroundColor = .systemGreen
+                } else if answer2_lbl.text == question.correctAnswer {
+                    self.answer2_ui.backgroundColor = .systemGreen
+                } else if answer3_lbl.text == question.correctAnswer {
+                    self.answer3_ui.backgroundColor = .systemGreen
+                } else if answer4_lbl.text == question.correctAnswer {
+                    self.answer4_ui.backgroundColor = .systemGreen
+                }
+            case .timeout:
+                if self.answer1_lbl.text == question.correctAnswer {
+                    self.answer1_ui.backgroundColor = .systemYellow
+                } else if answer2_lbl.text == question.correctAnswer {
+                    self.answer2_ui.backgroundColor = .systemYellow
+                } else if answer3_lbl.text == question.correctAnswer {
+                    self.answer3_ui.backgroundColor = .systemYellow
+                } else if answer4_lbl.text == question.correctAnswer {
+                    self.answer4_ui.backgroundColor = .systemYellow
+                }
+            }
+        case .completed:
+            let vc = self.router.resultViewController(score: self.vm.correctAnswerCount)
             self.navigationController?.pushViewController(vc, animated: true)
         }
-            }
+    }
     
-    @objc func result(_ sender: UIButton?) {
+    func setup(question: QuestionEntity) {
+        self.question_lbl.text = question.question
+        var list: [String] = [
+            question.correctAnswer,
+            question.incorrectAnswers[0],
+            question.incorrectAnswers[1],
+            question.incorrectAnswers[2]
+        ]
+        
+        var temp = list.randomElement()
+        list.remove(at: list.firstIndex(of: temp!)!)
+        self.answer1_lbl.text = temp
+        
+        temp = list.randomElement()
+        list.remove(at: list.firstIndex(of: temp!)!)
+        self.answer2_lbl.text = temp
+        
+        temp = list.randomElement()
+        list.remove(at: list.firstIndex(of: temp!)!)
+        self.answer3_lbl.text = temp
+        
+        temp = list.randomElement()
+        list.remove(at: list.firstIndex(of: temp!)!)
+        self.answer4_lbl.text = temp
         
     }
     
-    @objc func chooseFirstAnswer(_ sender: UITapGestureRecognizer) {
-        if sender.state == .ended {
-            self.answer1_ui.backgroundColor = vm.checkAnswer(answer: answer1_lbl.text)
-            self.answer2_ui.backgroundColor = vm.checkAnswer(answer: answer2_lbl.text)
-            self.answer3_ui.backgroundColor = vm.checkAnswer(answer: answer3_lbl.text)
-            self.answer4_ui.backgroundColor = vm.checkAnswer(answer: answer4_lbl.text)
-            if self.answer1_ui.backgroundColor == self.blue {
-                self.answer1_ui.backgroundColor = UIColor.systemRed
-            }
-        }
+    
+    @objc func next(_ sender: UIButton?) {
+        self.vm.next()
     }
     
-    @objc func chooseSecondAnswer(_ sender: UITapGestureRecognizer) {
+    @objc func chooseAnswer(_ sender: UITapGestureRecognizer) {
         if sender.state == .ended {
-            self.answer1_ui.backgroundColor = vm.checkAnswer(answer: answer1_lbl.text)
-            self.answer2_ui.backgroundColor = vm.checkAnswer(answer: answer2_lbl.text)
-            self.answer3_ui.backgroundColor = vm.checkAnswer(answer: answer3_lbl.text)
-            self.answer4_ui.backgroundColor = vm.checkAnswer(answer: answer4_lbl.text)
-            if self.answer2_ui.backgroundColor == self.blue {
-                self.answer2_ui.backgroundColor = UIColor.systemRed
-            }
-        }
-    }
-    
-    @objc func chooseThirdAnswer(_ sender: UITapGestureRecognizer) {
-        if sender.state == .ended {
-            self.answer1_ui.backgroundColor = vm.checkAnswer(answer: answer1_lbl.text)
-            self.answer2_ui.backgroundColor = vm.checkAnswer(answer: answer2_lbl.text)
-            self.answer3_ui.backgroundColor = vm.checkAnswer(answer: answer3_lbl.text)
-            self.answer4_ui.backgroundColor = vm.checkAnswer(answer: answer4_lbl.text)
-            if self.answer3_ui.backgroundColor == self.blue {
-                self.answer3_ui.backgroundColor = UIColor.systemRed
-            }
-        }
-    }
-    
-    @objc func chooseFourthAnswer(_ sender: UITapGestureRecognizer) {
-        if sender.state == .ended {
-            self.answer1_ui.backgroundColor = vm.checkAnswer(answer: answer1_lbl.text)
-            self.answer2_ui.backgroundColor = vm.checkAnswer(answer: answer2_lbl.text)
-            self.answer3_ui.backgroundColor = vm.checkAnswer(answer: answer3_lbl.text)
-            self.answer4_ui.backgroundColor = vm.checkAnswer(answer: answer4_lbl.text)
-            if self.answer4_ui.backgroundColor == self.blue {
-                self.answer4_ui.backgroundColor = UIColor.systemRed
+            
+            switch sender.name {
+                
+            case "chooseAnswer1":
+                self.vm.select(option: self.answer1_lbl.text!)
+            case "chooseAnswer2":
+                self.vm.select(option: self.answer2_lbl.text!)
+            case "chooseAnswer3":
+                self.vm.select(option: self.answer3_lbl.text!)
+            case "chooseAnswer4":
+                self.vm.select(option: self.answer4_lbl.text!)
+            default:
+                break
             }
         }
     }
 }
+
+
+

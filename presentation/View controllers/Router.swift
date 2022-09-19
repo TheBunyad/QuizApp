@@ -12,7 +12,7 @@ import UIKit
 
 public protocol RouterProtocol {
     
-    func questionsViewController(difficulty: String, category: Int, multiplayer: Bool) -> QuestionsViewController
+    func questionsViewController(difficulty: Difficulty, category: Int, multiplayer: Bool) -> QuestionsViewController
     func catogoryViewController(difficulty: String, multiplayer: Bool) -> CategoryViewController
     func difficultyViewController(multiplayer: Bool) -> DifficultyViewController
     func startViewController() -> UINavigationController
@@ -28,10 +28,18 @@ public class Router: RouterProtocol {
         self.resolver = resolver
     }
     
-    public func questionsViewController(difficulty: String, category: Int, multiplayer: Bool) -> QuestionsViewController {
-        let vc = QuestionsViewController(difficult: difficulty, category: category, multiplayer: multiplayer, vm: self.resolver.resolve(QuestionsViewModel.self)!, router: self)
-
-        return vc
+    public func questionsViewController(difficulty: Difficulty, category: Int, multiplayer: Bool) -> QuestionsViewController {
+        
+        let question = resolver.resolve(GetQuestionsUseCase.self)!
+        
+        let vm = QuestionsViewModel(
+            difficult: difficulty,
+            category: category,
+            multiplayer: multiplayer,
+            getQuestionsUseCase: question
+        )
+        
+        return QuestionsViewController(vm: vm, router: self)
     }
     
     public func catogoryViewController(difficulty: String, multiplayer: Bool) -> CategoryViewController {

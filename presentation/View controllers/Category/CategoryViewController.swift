@@ -83,7 +83,7 @@ extension CategoryViewController: UITableViewDataSource, UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let item = categories[indexPath.row]
-        let vc = router.questionsViewController(difficulty: "medium", category: item.id, multiplayer: false)
+        let vc = router.questionsViewController(difficulty: self.vm.getDiffiluty(difficulty: difficulty), category: item.id, multiplayer: false)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
