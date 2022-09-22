@@ -8,15 +8,15 @@
 import Foundation
 import Promises
 
-public class SyncQuestionUseCase {
-    
-    private let repo: QuestionRepoProtocol
-    
-    public init(repo: QuestionRepoProtocol) {
-        self.repo = repo
-    }
-        
-    public func execute(category: Int) -> Promise<Void> {
-        repo.syncQuestion(category: category)
-    }
-}
+//public class SyncQuestionUseCase {
+//    
+//    private let repo: QuestionRepoProtocol
+//    
+//    public init(repo: QuestionRepoProtocol) {
+//        self.repo = repo
+//    }
+//        
+//    public func execute(category: Int) -> Promise<Void> {
+//        repo.syncQuestion(category: category)
+//    }
+//}

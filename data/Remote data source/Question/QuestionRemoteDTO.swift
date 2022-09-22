@@ -30,15 +30,15 @@ struct QuestionRemoteDTO: Decodable {
         }
     }
     
-    func toLocal() -> [Questions] {
-        return results.map { remoteDTO in
-            Questions(
-                category: remoteDTO.category,
-                type: remoteDTO.type,
-                difficulty: remoteDTO.difficulty,
-                question: remoteDTO.question,
-                correctAnswer: remoteDTO.correctAnswer,
-                incorrectAnswers: remoteDTO.incorrectAnswers)
-        }
-    }
+//    func toLocal() -> [Questions] {
+//        return results.map { remoteDTO in
+//            Questions(
+//                category: remoteDTO.category,
+//                type: remoteDTO.type,
+//                difficulty: remoteDTO.difficulty,
+//                question: remoteDTO.question,
+//                correctAnswer: remoteDTO.correctAnswer,
+//                incorrectAnswers: remoteDTO.incorrectAnswers)
+//        }
+//    }
 }

@@ -16,7 +16,7 @@ public protocol RouterProtocol {
     func catogoryViewController(difficulty: String, multiplayer: Bool) -> CategoryViewController
     func difficultyViewController(multiplayer: Bool) -> DifficultyViewController
     func startViewController() -> UINavigationController
-    func resultViewController(score: Int) -> ResultViewController
+    func resultViewController(score: Int, difficulty: Difficulty, category: Int) -> ResultViewController
     
 }
 
@@ -61,10 +61,15 @@ public class Router: RouterProtocol {
         return navVC
     }
     
-    public func resultViewController(score: Int) -> ResultViewController {
-        let vc = ResultViewController(score: score, vm: self.resolver.resolve(ResultViewModel.self)!, router: self)
+    public func resultViewController(score: Int, difficulty: Difficulty, category: Int) -> ResultViewController {
         
-        return vc
+        let vm = ResultViewModel(
+            score: score,
+            difficlty: difficulty,
+            category: category
+        )
+        
+        return ResultViewController(vm: vm, router: self)
     }
     
         

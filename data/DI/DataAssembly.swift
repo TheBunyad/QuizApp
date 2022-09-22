@@ -8,6 +8,8 @@
 import Foundation
 import Swinject
 import domain
+import Realm
+import RealmSwift
 import Alamofire
 
 public class DataAssembly: Assembly {
@@ -21,9 +23,12 @@ public class DataAssembly: Assembly {
             UserRepo()
         }
         
+        container.register(Realm.self) { r in
+            try! Realm(configuration: Realm.Configuration(schemaVersion: 1, deleteRealmIfMigrationNeeded: true))
+        }.inObjectScope(.container)
+        
         container.register(QuestionRepoProtocol.self) { r in
-            QuestionRepo(remoteDataSource: r.resolve(QuestionRemoteDataSourceProtocol.self)!,
-                         localDataSource: r.resolve(QuestionLocalDataSourceProtocol.self)!
+            QuestionRepo(remoteDataSource: r.resolve(QuestionRemoteDataSourceProtocol.self)!
             )
         }
         
@@ -39,9 +44,9 @@ public class DataAssembly: Assembly {
             return AF
         }
         
-        container.register(QuestionLocalDataSourceProtocol.self) { r in
-            QuestionLocalDataSource()
-        }.inObjectScope(.container)
+//        container.register(QuestionLocalDataSourceProtocol.self) { r in
+//            QuestionLocalDataSource(realm: r.resolve(Realm.self)!)
+//        }.inObjectScope(.container)
         
         container.register(CategoryRemoteDataSource.self) { r in
             CategoryRemoteDataSource(networkProvider: r.resolve(Session.self)!)

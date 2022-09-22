@@ -14,8 +14,7 @@ import RxSwift
 public class QuestionsViewController: BaseViewController<QuestionsViewModel> {
     
     //MARK: - Variables
-    
-    private var blue = UIColor(red: 0.208, green: 0.339, blue: 0.675, alpha: 1)
+   
     private var white = UIColor.white
     
     private var subscription: Disposable? = nil
@@ -23,21 +22,22 @@ public class QuestionsViewController: BaseViewController<QuestionsViewModel> {
     
     //MARK: - UI Elements
     
-    private lazy var quizApp_lbl: UILabel = {
-        let view = UILabel()
-        self.view.addSubview(view)
-        view.font = UIFont(name: FontFamily.Poppins.bold.name, size: 32)
-        view.textColor = .cyan
-        view.text = L10n.appTitleName
+    private lazy var pageTitle_lbl: UILabel = {
+        let lbl = UILabel()
+        self.view.addSubview(lbl)
+        lbl.text = "QuizApp"
+        lbl.font = UIFont(font: FontFamily.Poppins.semiBold, size: 20)
+        lbl.textColor = bluePageTitle
+        lbl.textAlignment = .center
         
-        return view
+        return lbl
     }()
     
     private lazy var question_lbl: UILabel = {
         let view = UILabel()
         self.view.addSubview(view)
-        view.font = UIFont(name: FontFamily.Poppins.medium.name, size: 24)
-        view.textColor = .black
+        view.font = UIFont(font: FontFamily.Poppins.regular, size: 18)
+        view.textColor = black
         view.numberOfLines = 0
         
         return view
@@ -46,8 +46,8 @@ public class QuestionsViewController: BaseViewController<QuestionsViewModel> {
     private lazy var answer1_ui: UIView = {
         let view = UIView()
         self.view.addSubview(view)
-        view.backgroundColor = self.blue
-        view.layer.cornerRadius = 16
+        view.backgroundColor = blueButtonBackground
+        view.layer.cornerRadius = 6
         view.clipsToBounds = true
         
         return view
@@ -56,8 +56,8 @@ public class QuestionsViewController: BaseViewController<QuestionsViewModel> {
     private lazy var answer1_lbl: UILabel = {
         let view = UILabel()
         self.answer1_ui.addSubview(view)
-        view.font = UIFont(name: FontFamily.Poppins.medium.name, size: 20)
-        view.textColor = .black
+        view.font = UIFont(font: FontFamily.Poppins.regular, size: 16)
+        view.textColor = black
         
         return view
     }()
@@ -65,8 +65,8 @@ public class QuestionsViewController: BaseViewController<QuestionsViewModel> {
     private lazy var answer2_ui: UIView = {
         let view = UIView()
         self.view.addSubview(view)
-        view.backgroundColor = self.blue
-        view.layer.cornerRadius = 16
+        view.backgroundColor = blueButtonBackground
+        view.layer.cornerRadius = 6
         view.clipsToBounds = true
         
         return view
@@ -75,8 +75,8 @@ public class QuestionsViewController: BaseViewController<QuestionsViewModel> {
     private lazy var answer2_lbl: UILabel = {
         let view = UILabel()
         self.answer2_ui.addSubview(view)
-        view.font = UIFont(name: FontFamily.Poppins.medium.name, size: 20)
-        view.textColor = .black
+        view.font = UIFont(font: FontFamily.Poppins.regular, size: 16)
+        view.textColor = black
         
         return view
     }()
@@ -84,8 +84,8 @@ public class QuestionsViewController: BaseViewController<QuestionsViewModel> {
     private lazy var answer3_ui: UIView = {
         let view = UIView()
         self.view.addSubview(view)
-        view.backgroundColor = self.blue
-        view.layer.cornerRadius = 16
+        view.backgroundColor = blueButtonBackground
+        view.layer.cornerRadius = 6
         view.clipsToBounds = true
         
         return view
@@ -94,8 +94,8 @@ public class QuestionsViewController: BaseViewController<QuestionsViewModel> {
     private lazy var answer3_lbl: UILabel = {
         let view = UILabel()
         self.answer3_ui.addSubview(view)
-        view.font = UIFont(name: FontFamily.Poppins.medium.name, size: 20)
-        view.textColor = .black
+        view.font = UIFont(font: FontFamily.Poppins.regular, size: 16)
+        view.textColor = black
         
         
         return view
@@ -104,8 +104,8 @@ public class QuestionsViewController: BaseViewController<QuestionsViewModel> {
     private lazy var answer4_ui: UIView = {
         let view = UIView()
         self.view.addSubview(view)
-        view.backgroundColor = self.blue
-        view.layer.cornerRadius = 16
+        view.backgroundColor = blueButtonBackground
+        view.layer.cornerRadius = 6
         view.clipsToBounds = true
         
         return view
@@ -114,8 +114,8 @@ public class QuestionsViewController: BaseViewController<QuestionsViewModel> {
     private lazy var answer4_lbl: UILabel = {
         let view = UILabel()
         self.answer4_ui.addSubview(view)
-        view.font = UIFont(name: FontFamily.Poppins.medium.name, size: 20)
-        view.textColor = .black
+        view.font = UIFont(font: FontFamily.Poppins.regular, size: 16)
+        view.textColor = black
         
         return view
     }()
@@ -123,99 +123,56 @@ public class QuestionsViewController: BaseViewController<QuestionsViewModel> {
     private lazy var next_btn: UIButton = {
         let button = UIButton()
         self.view.addSubview(button)
-        button.backgroundColor = self.blue
+        button.backgroundColor = orange
         button.setTitle("Next", for: .normal)
-        button.setTitleColor(self.white, for: .normal)
+        button.setTitleColor(black, for: .normal)
+        button.titleLabel?.font = UIFont(font: FontFamily.Poppins.regular, size: 16)
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 6
         button.addTarget(self, action: #selector(next(_:)), for: .touchUpInside)
         
         return button
     }()
     
+    private lazy var timerBackround_ui: UIView = {
+        let view = UIView()
+        self.view.addSubview(view)
+        view.backgroundColor = orange
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 22
+        
+        return view
+    }()
+    
     private lazy var timer_lbl: UILabel = {
         let lbl = UILabel()
-        self.view.addSubview(lbl)
-        lbl.font = UIFont(name: FontFamily.Poppins.medium.name, size: 24)
-        lbl.textColor = .blue
+        self.timerBackround_ui.addSubview(lbl)
+        lbl.font = UIFont(font: FontFamily.Poppins.medium, size: 16)
+        lbl.textColor = black
         
         return lbl
     }()
     
-    
+    private lazy var questionNumber_lbl: UILabel = {
+        let lbl = UILabel()
+        self.view.addSubview(lbl)
+        lbl.textColor = black
+        lbl.font = UIFont(font: FontFamily.Poppins.medium, size: 16)
+        lbl.textAlignment = .right
+        
+        return lbl
+    }()
     
     //MARK: - ViewDidLoad
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.hidesBackButton = true
+        self.navigationController?.navigationBar.isUserInteractionEnabled = false
         
-        view.backgroundColor = UIColor(red: 0.887, green: 0.523, blue: 0.473, alpha: 1)
+        view.backgroundColor = self.backgournd
         
-        self.quizApp_lbl.snp.makeConstraints { make in
-            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(40)
-            make.centerX.equalTo(self.view.snp.centerX)
-            
-        }
-        
-        self.question_lbl.snp.makeConstraints { make in
-            make.top.equalTo(self.quizApp_lbl.snp.bottom).offset(40)
-            make.left.equalTo(self.view.safeAreaLayoutGuide.snp.left).offset(16)
-            make.right.equalTo(self.view.safeAreaLayoutGuide.snp.right).offset(-16)
-        }
-        
-        self.answer1_ui.snp.makeConstraints { make in
-            make.bottom.equalTo(self.answer2_ui.snp.top).offset(-24)
-            make.left.equalTo(self.view.safeAreaLayoutGuide.snp.left).offset(16)
-            make.right.equalTo(self.view.safeAreaLayoutGuide.snp.right).offset(-16)
-            make.height.equalTo(50)
-        }
-        
-        self.answer1_lbl.snp.makeConstraints { make in
-            make.center.equalTo(self.answer1_ui.snp.center)
-        }
-        
-        self.answer2_ui.snp.makeConstraints { make in
-            make.bottom.equalTo(self.view.snp.centerY).offset(48)
-            make.left.equalTo(self.view.safeAreaLayoutGuide.snp.left).offset(16)
-            make.right.equalTo(self.view.safeAreaLayoutGuide.snp.right).offset(-16)
-            make.height.equalTo(50)
-        }
-        
-        self.answer2_lbl.snp.makeConstraints { make in
-            make.center.equalTo(self.answer2_ui.snp.center)
-        }
-        
-        self.answer3_ui.snp.makeConstraints { make in
-            make.top.equalTo(self.view.snp.centerY).offset(72)
-            make.left.equalTo(self.view.safeAreaLayoutGuide.snp.left).offset(16)
-            make.right.equalTo(self.view.safeAreaLayoutGuide.snp.right).offset(-16)
-            make.height.equalTo(50)
-        }
-        
-        self.answer3_lbl.snp.makeConstraints { make in
-            make.center.equalTo(self.answer3_ui.snp.center)
-        }
-        
-        self.answer4_ui.snp.makeConstraints { make in
-            make.top.equalTo(self.answer3_ui.snp.bottom).offset(24)
-            make.left.equalTo(self.view.safeAreaLayoutGuide.snp.left).offset(16)
-            make.right.equalTo(self.view.safeAreaLayoutGuide.snp.right).offset(-16)
-            make.height.equalTo(50)
-        }
-        
-        self.answer4_lbl.snp.makeConstraints { make in
-            make.center.equalTo(self.answer4_ui.snp.center)
-        }
-        
-        self.next_btn.snp.makeConstraints { make in
-            make.right.equalTo(self.view.safeAreaLayoutGuide.snp.right).offset(-16)
-            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-24)
-            make.height.equalTo(50)
-            make.width.equalTo(100)
-        }
-        
-        self.timer_lbl.snp.makeConstraints { make in
-            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(16)
-            make.right.equalTo(self.view.safeAreaLayoutGuide.snp.right).offset(-16)
-        }
+        self.setUpUI()
         
         let chooseAnswer1 = UITapGestureRecognizer(target: self, action: #selector(chooseAnswer(_:)))
         self.answer1_ui.addGestureRecognizer(chooseAnswer1)
@@ -242,6 +199,7 @@ public class QuestionsViewController: BaseViewController<QuestionsViewModel> {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        
         self.subscription = self.vm.observeGameState()
             .subscribe({ received in
                 guard let state = received.element else { return }
@@ -265,72 +223,81 @@ public class QuestionsViewController: BaseViewController<QuestionsViewModel> {
         switch state {
         case .pending:
             break
-        case .inProgress(let question, let state):
-            
+        case .inProgress(let question):
             if self.vm.isLastQuestion() {
                 self.next_btn.setTitle("Completed", for: .normal)
-            } else {
-                self.setup(question: question)
             }
+            self.setup(question: question)
             
-            switch state {
-            case .pending(let remainingSec):
-                self.timer_lbl.text = String(remainingSec)
-            case .wrong(let option):
-                if self.answer1_lbl.text == option {
-                    self.answer1_ui.backgroundColor = .systemRed
-                } else if answer2_lbl.text == option {
-                    self.answer2_ui.backgroundColor = .systemRed
-                } else if answer3_lbl.text == option {
-                    self.answer3_ui.backgroundColor = .systemRed
-                } else if answer4_lbl.text == option {
-                    self.answer4_ui.backgroundColor = .systemRed
+            
+            let questionSubscribtion = self.vm.observeQuestionState()
+                .subscribe { recieved in
+                    guard let questionState = recieved.element else { return }
+                    let correctAnswer = self.vm.getCorrectAnswer(correctAnswer: question.correctAnswer)
+                    switch questionState {
+                        
+                    case .pending(let remainingSec):
+                        self.timer_lbl.text = String(remainingSec)
+                    case .correct:
+                        if self.answer1_lbl.text == correctAnswer {
+                            self.answer1_ui.backgroundColor = .systemGreen
+                        } else if self.answer2_lbl.text == correctAnswer {
+                            self.answer2_ui.backgroundColor = .systemGreen
+                        } else if self.answer3_lbl.text == correctAnswer {
+                            self.answer3_ui.backgroundColor = .systemGreen
+                        } else if self.answer4_lbl.text == correctAnswer {
+                            self.answer4_ui.backgroundColor = .systemGreen
+                        }
+                    case .wrong(let option):
+                        if self.answer1_lbl.text == option {
+                            self.answer1_ui.backgroundColor = .systemRed
+                        } else if self.answer2_lbl.text == option {
+                            self.answer2_ui.backgroundColor = .systemRed
+                        } else if self.answer3_lbl.text == option {
+                            self.answer3_ui.backgroundColor = .systemRed
+                        } else if self.answer4_lbl.text == option {
+                            self.answer4_ui.backgroundColor = .systemRed
+                        }
+                        
+                        if self.answer1_lbl.text == correctAnswer {
+                            self.answer1_ui.backgroundColor = .systemGreen
+                        } else if self.answer2_lbl.text == correctAnswer {
+                            self.answer2_ui.backgroundColor = .systemGreen
+                        } else if self.answer3_lbl.text == correctAnswer {
+                            self.answer3_ui.backgroundColor = .systemGreen
+                        } else if self.answer4_lbl.text == correctAnswer {
+                            self.answer4_ui.backgroundColor = .systemGreen
+                        }
+                    case .timeout:
+                        if self.answer1_lbl.text == correctAnswer {
+                            self.answer1_ui.backgroundColor = .systemYellow
+                        } else if self.answer2_lbl.text == correctAnswer {
+                            self.answer2_ui.backgroundColor = .systemYellow
+                        } else if self.answer3_lbl.text == correctAnswer {
+                            self.answer3_ui.backgroundColor = .systemYellow
+                        } else if self.answer4_lbl.text == correctAnswer {
+                            self.answer4_ui.backgroundColor = .systemYellow
+                        }
+                    }
                 }
-                
-                if self.answer1_lbl.text == question.correctAnswer {
-                    self.answer1_ui.backgroundColor = .systemGreen
-                } else if answer2_lbl.text == question.correctAnswer {
-                    self.answer2_ui.backgroundColor = .systemGreen
-                } else if answer3_lbl.text == question.correctAnswer {
-                    self.answer3_ui.backgroundColor = .systemGreen
-                } else if answer4_lbl.text == question.correctAnswer {
-                    self.answer4_ui.backgroundColor = .systemGreen
-                }
-                
-            case .correct:
-                if self.answer1_lbl.text == question.correctAnswer {
-                    self.answer1_ui.backgroundColor = .systemGreen
-                } else if answer2_lbl.text == question.correctAnswer {
-                    self.answer2_ui.backgroundColor = .systemGreen
-                } else if answer3_lbl.text == question.correctAnswer {
-                    self.answer3_ui.backgroundColor = .systemGreen
-                } else if answer4_lbl.text == question.correctAnswer {
-                    self.answer4_ui.backgroundColor = .systemGreen
-                }
-            case .timeout:
-                if self.answer1_lbl.text == question.correctAnswer {
-                    self.answer1_ui.backgroundColor = .systemYellow
-                } else if answer2_lbl.text == question.correctAnswer {
-                    self.answer2_ui.backgroundColor = .systemYellow
-                } else if answer3_lbl.text == question.correctAnswer {
-                    self.answer3_ui.backgroundColor = .systemYellow
-                } else if answer4_lbl.text == question.correctAnswer {
-                    self.answer4_ui.backgroundColor = .systemYellow
-                }
-            }
+            
+            questionSubscribtion.disposed(by: disposeBag)
+            
         case .completed:
-            let vc = self.router.resultViewController(score: self.vm.correctAnswerCount)
+            let vc = self.router.resultViewController(score: self.vm.correctAnswerCount, difficulty: vm.getDifficulty(), category: vm.getCategory())
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
+    //MARK: - Setup DATA
+    
     func setup(question: QuestionEntity) {
-        self.question_lbl.text = question.question
+        self.question_lbl.text = self.vm.stringFormatter(text: question.question)
         var list: [String] = [
-            question.correctAnswer,
-            question.incorrectAnswers[0],
-            question.incorrectAnswers[1],
-            question.incorrectAnswers[2]
+            self.vm.stringFormatter(text: question.correctAnswer),
+            self.vm.stringFormatter(text: question.incorrectAnswers[0]),
+            self.vm.stringFormatter(text: question.incorrectAnswers[1]),
+            self.vm.stringFormatter(text: question.incorrectAnswers[2])
         ]
         
         var temp = list.randomElement()
@@ -349,25 +316,115 @@ public class QuestionsViewController: BaseViewController<QuestionsViewModel> {
         list.remove(at: list.firstIndex(of: temp!)!)
         self.answer4_lbl.text = temp
         
+        self.questionNumber_lbl.text = "\(vm.getCurrentIndex() + 1) / 10"
+        
     }
     
+    //MARK: - Setup UI
+    
+    func setUpUI() {
+        
+        self.pageTitle_lbl.snp.makeConstraints { make in
+            make.centerX.equalTo(self.view.snp.centerX)
+            make.top.equalTo(self.view.snp.top).offset(screenHeight * 0.08)
+        }
+        
+        self.timerBackround_ui.snp.makeConstraints { make in
+            make.right.equalTo(self.view.safeAreaLayoutGuide.snp.right).offset(-16)
+            make.top.equalTo(self.pageTitle_lbl.snp.bottom).offset(30)
+            make.height.equalTo(screenHeight * 0.055)
+            make.width.equalTo(screenHeight * 0.055)
+        }
+        
+        self.timer_lbl.snp.makeConstraints { make in
+            make.center.equalTo(self.timerBackround_ui.snp.center)
+        }
+        
+        self.question_lbl.snp.makeConstraints { make in
+            make.top.equalTo(self.timerBackround_ui.snp.bottom).offset(screenHeight * 0.05)
+            make.left.equalTo(self.view.safeAreaLayoutGuide.snp.left).offset(16)
+            make.right.equalTo(self.view.safeAreaLayoutGuide.snp.right).offset(-16)
+        }
+        
+        self.answer1_ui.snp.makeConstraints { make in
+            make.bottom.equalTo(self.answer2_ui.snp.top).offset(-16)
+            make.left.equalTo(self.view.safeAreaLayoutGuide.snp.left).offset(16)
+            make.right.equalTo(self.view.safeAreaLayoutGuide.snp.right).offset(-16)
+            make.height.equalTo(screenHeight * 0.0675)
+        }
+        
+        self.answer1_lbl.snp.makeConstraints { make in
+            make.center.equalTo(self.answer1_ui.snp.center)
+        }
+        
+        self.answer2_ui.snp.makeConstraints { make in
+            make.bottom.equalTo(self.answer3_ui.snp.top).offset(-16)
+            make.left.equalTo(self.view.safeAreaLayoutGuide.snp.left).offset(16)
+            make.right.equalTo(self.view.safeAreaLayoutGuide.snp.right).offset(-16)
+            make.height.equalTo(screenHeight * 0.0675)
+        }
+        
+        self.answer2_lbl.snp.makeConstraints { make in
+            make.center.equalTo(self.answer2_ui.snp.center)
+        }
+        
+        self.answer3_ui.snp.makeConstraints { make in
+            make.bottom.equalTo(self.answer4_ui.snp.top).offset(-16)
+            make.left.equalTo(self.view.safeAreaLayoutGuide.snp.left).offset(16)
+            make.right.equalTo(self.view.safeAreaLayoutGuide.snp.right).offset(-16)
+            make.height.equalTo(screenHeight * 0.0675)
+        }
+        
+        self.answer3_lbl.snp.makeConstraints { make in
+            make.center.equalTo(self.answer3_ui.snp.center)
+        }
+        
+        self.answer4_ui.snp.makeConstraints { make in
+            make.bottom.equalTo(self.next_btn.snp.top).offset(-24)
+            make.left.equalTo(self.view.safeAreaLayoutGuide.snp.left).offset(16)
+            make.right.equalTo(self.view.safeAreaLayoutGuide.snp.right).offset(-16)
+            make.height.equalTo(screenHeight * 0.0675)
+        }
+        
+        self.answer4_lbl.snp.makeConstraints { make in
+            make.center.equalTo(self.answer4_ui.snp.center)
+        }
+        
+        self.next_btn.snp.makeConstraints { make in
+            make.right.equalTo(self.view.safeAreaLayoutGuide.snp.right).offset(-16)
+            make.left.equalTo(self.view.safeAreaLayoutGuide.snp.left).offset(screenWidth * 0.5)
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-16)
+            make.height.equalTo(screenHeight * 0.0675)
+        }
+        
+        self.questionNumber_lbl.snp.makeConstraints { make in
+            make.left.equalTo(self.view.safeAreaLayoutGuide.snp.left).offset(16)
+            make.top.equalTo(self.timer_lbl.snp.top)
+            make.width.equalTo(55)
+        }
+    }
     
     @objc func next(_ sender: UIButton?) {
+        
         self.vm.next()
+        self.answer1_ui.backgroundColor = blueButtonBackground
+        self.answer2_ui.backgroundColor = blueButtonBackground
+        self.answer3_ui.backgroundColor = blueButtonBackground
+        self.answer4_ui.backgroundColor = blueButtonBackground
     }
     
     @objc func chooseAnswer(_ sender: UITapGestureRecognizer) {
         if sender.state == .ended {
             
-            switch sender.name {
+            switch sender.view {
                 
-            case "chooseAnswer1":
+            case self.answer1_ui:
                 self.vm.select(option: self.answer1_lbl.text!)
-            case "chooseAnswer2":
+            case self.answer2_ui:
                 self.vm.select(option: self.answer2_lbl.text!)
-            case "chooseAnswer3":
+            case self.answer3_ui:
                 self.vm.select(option: self.answer3_lbl.text!)
-            case "chooseAnswer4":
+            case self.answer4_ui:
                 self.vm.select(option: self.answer4_lbl.text!)
             default:
                 break

@@ -29,12 +29,35 @@ public class CategoryViewController: BaseViewController<CategoryViewModel> {
     
     private var categories = [CategoryEntity]()
     
+    private lazy var pageTitle_lbl: UILabel = {
+        let lbl = UILabel()
+        self.view.addSubview(lbl)
+        lbl.text = "QuizApp"
+        lbl.font = UIFont(font: FontFamily.Poppins.semiBold, size: 20)
+        lbl.textColor = bluePageTitle
+        lbl.textAlignment = .center
+        
+        return lbl
+    }()
+    
+    private lazy var chooseCategory_lbl: UILabel = {
+        let lbl = UILabel()
+        self.view.addSubview(lbl)
+        lbl.text = "Choose Category"
+        lbl.font = UIFont(font: FontFamily.Poppins.medium, size: 20)
+        lbl.textColor = .black
+        
+        return lbl
+    }()
+    
     private lazy var categoryTable: UITableView = {
         let table = UITableView()
         self.view.addSubview(table)
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "\(UITableViewCell.self)")
+        table.register(CategoryTableViewCell.self, forCellReuseIdentifier: "category_cell")
         table.dataSource = self
         table.delegate = self
+        table.separatorStyle = .none
+        table.backgroundColor = backgournd
         
         return table
     }()
@@ -42,25 +65,30 @@ public class CategoryViewController: BaseViewController<CategoryViewModel> {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = .systemGray2
+        self.view.backgroundColor = backgournd
         self.vm.getCategory().then {[weak self] response in
             
             DispatchQueue.main.async {
                 self?.categories = response
                 self?.categoryTable.reloadData()
             }
-            
-            
         }
         
-//        let vc = self.router.questionsViewController(difficulty: "medium", category: 2, multiplayer: false)
-//        self.navigationController?.pushViewController(vc, animated: true)
+        self.pageTitle_lbl.snp.makeConstraints { make in
+            make.centerX.equalTo(self.view.snp.centerX)
+            make.top.equalTo(self.view.snp.top).offset(screenHeight * 0.08)
+        }
         
-        categoryTable.snp.makeConstraints { make in
-            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(10)
+        self.chooseCategory_lbl.snp.makeConstraints { make in
+            make.top.equalTo(self.pageTitle_lbl.snp.bottom).offset(screenHeight * 0.0625)
+            make.left.equalTo(self.categoryTable.snp.left)
+        }
+        
+        self.categoryTable.snp.makeConstraints { make in
+            make.top.equalTo(self.chooseCategory_lbl.snp.bottom).offset(24)
             make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-10)
-            make.left.equalTo(self.view.safeAreaLayoutGuide.snp.left).offset(10)
-            make.right.equalTo(self.view.safeAreaLayoutGuide.snp.right).offset(-10)
+            make.left.equalTo(self.view.safeAreaLayoutGuide.snp.left).offset(screenWidth * 0.045)
+            make.right.equalTo(self.view.safeAreaLayoutGuide.snp.right).offset(-(screenWidth * 0.045))
         }
         
     }
@@ -74,9 +102,11 @@ extension CategoryViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "\(UITableViewCell.self)")!
-        cell.textLabel?.text = categories[indexPath.row].name
-        cell.backgroundColor = .blue
+        let cell = tableView.dequeueReusableCell(withIdentifier: "category_cell") as! CategoryTableViewCell
+        let name = categories[indexPath.row].name
+        cell.backgroundColor = backgournd
+        cell.setData(category: name)
+    
         return cell
     }
     

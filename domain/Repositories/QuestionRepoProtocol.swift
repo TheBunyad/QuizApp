@@ -11,6 +11,7 @@ import RxSwift
 
 public protocol QuestionRepoProtocol {
     func getQuestions(category: Int) -> Promise<[QuestionEntity]>
-    func observerQuestion() -> Observable<[QuestionEntity]>
-    func syncQuestion (category: Int) -> Promise<Void>
+//    func observerQuestion() -> Observable<[QuestionEntity]>
+//    func syncQuestion (category: Int) -> Promise<Void>
+//    func getLocalQuestions(category: Int) -> Promise<[QuestionEntity]>
 }

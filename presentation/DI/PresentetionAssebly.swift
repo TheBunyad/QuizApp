@@ -31,8 +31,8 @@ public class PresentetionAssebly: Assembly {
             return StartViewModel()
         }
         
-        container.register(ResultViewModel.self) { r in
-            return ResultViewModel()
-        }
+//        container.register(ResultViewModel.self) { r in
+//            return ResultViewModel(score: <#T##Int#>, difficlty: <#T##Difficulty#>, category: <#T##Int#>)
+//        }
     }
 }
