@@ -45,7 +45,7 @@ class CategoryTableViewCell: UITableViewCell {
         
         self.contentView.layer.cornerRadius = 6
         self.contentView.clipsToBounds = true
-        self.contentView.backgroundColor = .red
+        self.contentView.backgroundColor = backgroundColor
         
         self.contentView.snp.makeConstraints { make in
             make.left.equalToSuperview()

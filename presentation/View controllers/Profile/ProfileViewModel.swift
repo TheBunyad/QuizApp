@@ -8,9 +8,13 @@
 import Foundation
 import domain
 
+protocol ProfileViewDelegate: AnyObject {
+    func reloadTableView()
+}
 
 public class ProfileViewModel {
     
+    private weak var delegate: ProfileViewDelegate?
     private var updateRecordUseCase: UpdateRecordUseCase
     private var updateHighestScoreUseCase: UpdateHighestScoreUseCase
     private var updateUserNameUseCase: UpdateUsernameUseCase
@@ -19,8 +23,11 @@ public class ProfileViewModel {
     private var getUserNameUseCase: GetUserNameUseCase
     private var setDataUseCase: SetDataUseCase
     
-    private var gameRecord: GameEntity?
-    private var count = 0
+    private var gameRecords: [GameEntity] = [] {
+        didSet {
+            self.delegate?.reloadTableView()
+        }
+    }
     
     init(
         updateRecordUseCase: UpdateRecordUseCase,
@@ -38,24 +45,23 @@ public class ProfileViewModel {
         self.getHighestScoreUseCase = getHighestScoreUseCase
         self.getUserNameUseCase = getUserNameUseCase
         self.setDataUseCase = setDataUseCase
+        
+        getRecordUseCase.execute().then { records in
+                self.gameRecords = records
+                print("Profile View Model: \(records)")
+        }
     }
     
-//    func getGameRecordsCount() -> Int {
-//        getRecordUseCase.execute().then { records in
-//            let count = records.count
-//            print(count)
-//            return count
-//        }
-//
-//
-//    }
+    func set(delegate: ProfileViewDelegate) {
+        self.delegate = delegate
+    }
+    
+    func getGameRecordsCount() -> Int {
+        gameRecords.count
+    }
     
     func getGameRecord(id: Int) -> GameEntity {
-        getRecordUseCase.execute().then({ records in
-            self.gameRecord = records[id]
-        })
-        print("view model\(self.gameRecord!)")
-        return self.gameRecord!
+       gameRecords[id]
     }
     
     func mockData() {
@@ -66,4 +72,3 @@ public class ProfileViewModel {
         }
     }
 }
-

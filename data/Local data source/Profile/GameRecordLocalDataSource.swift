@@ -23,31 +23,22 @@ class GameRecordLocalDataSource: GameRecordLocalDataSourceProtocol {
     
     func updateRecord(lastGame: GameRecord) -> Promises.Promise<Void> {
         let promise = Promise<Void>.pending()
-        if realm.objects(Profile.self).isEmpty {
-            try! realm.write({
-                realm.add(GameRecord(categoryName: "category", score: 10))
-            })
-        }
-        let profile = realm.objects(Profile.self)
+        let profiles = realm.objects(Profile.self)
         
-        
-        if profile.isEmpty {
-            print("empty")
-            
-        }
         do {
-            try self.realm.write({
-                print("profile\(profile)")
-                profile.forEach { profile in
-                    print("for each works")
+            if let profile = profiles.first {
+                try self.realm.write({
+                    print("update record: \(profile)")
                     if profile.records.count == 5 {
                         profile.records.removeFirst()
                         profile.records.append(lastGame)
                     } else {
                         profile.records.append(lastGame)
                     }
-                }
-            })
+                })
+            } else {
+                profiles.first?.records.append(lastGame)
+            }
             promise.fulfill(Void())
         } catch {
             promise.reject(error)
@@ -57,18 +48,20 @@ class GameRecordLocalDataSource: GameRecordLocalDataSourceProtocol {
     
     func updateHighestScore(gameScore: GameScore) -> Promises.Promise<Void> {
         let promise = Promise<Void>.pending()
-        let profile = realm.objects(Profile.self)
+        let profiles = realm.objects(Profile.self)
         
         do {
-            try self.realm.write({
-                profile.forEach { profile in
+            if let profile = profiles.first {
+                try self.realm.write({
                     profile.highScores.forEach { score in
                         if score.categoryName == gameScore.categoryName && score.score < gameScore.score {
                             score.score = gameScore.score
                         }
                     }
-                }
-            })
+                })
+            } else {
+                print("NO data updateHighestScore Local Data Source")
+            }
             promise.fulfill(Void())
         } catch {
             promise.reject(error)
@@ -79,14 +72,14 @@ class GameRecordLocalDataSource: GameRecordLocalDataSourceProtocol {
     
     func updateUserName(userName: String) -> Promise<Void> {
         let promise = Promise<Void>.pending()
-        let profile = self.realm.objects(Profile.self)
+        let profiles = self.realm.objects(Profile.self)
         
         do {
-            try self.realm.write({
-                profile.forEach { profile in
+            if let profile = profiles.first {
+                try realm.write({
                     profile.userName = userName
-                }
-            })
+                })
+            }
             promise.fulfill(Void())
         } catch {
             promise.reject(error)
@@ -97,19 +90,20 @@ class GameRecordLocalDataSource: GameRecordLocalDataSourceProtocol {
     
     func getRecords() -> Promise<[GameEntity]> {
         let promise = Promise<[GameEntity]>.pending()
-        let profile = self.realm.objects(Profile.self)
-        if profile.isEmpty {
-            print("empty")
-        }
-        profile.forEach { profile in
-//            print("profile \(profile.records)")
+        let profiles = self.realm.objects(Profile.self)
+        
+        if let profile = profiles.first {
             promise.fulfill(
                 profile.records.map({ record in
                     GameEntity(
                         categoryName: record.categoryName,
                         score: record.score
                     )
-                }))
+                })
+            )
+        }
+        else {
+            promise.reject(NSError(domain: "error", code: 404))
         }
         
         return promise

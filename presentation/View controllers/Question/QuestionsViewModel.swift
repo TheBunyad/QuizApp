@@ -51,7 +51,6 @@ public class QuestionsViewModel {
                 return 10
             }
         }
-        
     }
     
     public init(

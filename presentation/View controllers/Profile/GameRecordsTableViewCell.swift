@@ -16,7 +16,7 @@ class GameRecordsTableViewCell: UITableViewCell {
     
     private lazy var cellBackground_ui: UIView = {
         let view = UIView()
-        self.contentView.addSubview(view)
+        self.addSubview(view)
         view.backgroundColor = blueButtonBackground
         view.clipsToBounds = true
         view.layer.cornerRadius = 6
@@ -42,6 +42,7 @@ class GameRecordsTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        selectionStyle = .none
         setupView()
     }
     
@@ -50,27 +51,28 @@ class GameRecordsTableViewCell: UITableViewCell {
         setupView()
     }
     
-    
     func setupView() {
-        self.contentView.layer.cornerRadius = 6
-        self.contentView.clipsToBounds = true
-        self.contentView.backgroundColor = .white
+//        self.contentView.layer.cornerRadius = 6
+//        self.contentView.clipsToBounds = true
+//        self.contentView.backgroundColor = .white
         
-        self.contentView.snp.makeConstraints { make in
-            make.left.equalToSuperview()
-            make.right.equalToSuperview()
-            make.height.equalTo(60)
-        }
+//        self.contentView.snp.makeConstraints { make in
+//            make.left.equalToSuperview()
+//            make.right.equalToSuperview()
+//            make.height.equalTo(60)
+//        }
         
         self.cellBackground_ui.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.left.equalToSuperview()
+            make.right.equalToSuperview()
             make.height.equalTo(48)
         }
         
         self.categoryName_lbl.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(8)
+//            make.right.equalToSuperview().offset(-8)
         }
         
         self.score_lbl.snp.makeConstraints { make in

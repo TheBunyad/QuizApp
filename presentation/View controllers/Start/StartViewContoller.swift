@@ -155,7 +155,6 @@ public class StartViewController: BaseViewController<StartViewModel> {
     }
 
     @objc func profile(_ sender: UITapGestureRecognizer) {
-
         let vc = router.profileViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
