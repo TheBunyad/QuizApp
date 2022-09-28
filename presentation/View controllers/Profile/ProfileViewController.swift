@@ -60,6 +60,8 @@ public class ProfileViewController: BaseViewController<ProfileViewModel> {
         table.dataSource = self
         table.delegate = self
         table.separatorStyle = .none
+        table.isScrollEnabled = false
+        
         return table
     }()
     

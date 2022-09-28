@@ -43,6 +43,8 @@ public class PresentetionAssebly: Assembly {
                 setDataUseCase: r.resolve(SetDataUseCase.self)!)
         }
         
+        
+        
 //        container.register(ResultViewModel.self) { r in
 //            return ResultViewModel(score: <#T##Int#>, difficlty: <#T##Difficulty#>, category: <#T##Int#>)
 //        }

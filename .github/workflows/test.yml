@@ -26,11 +26,19 @@ jobs:
       - name: Install swiftgen
         run: brew install swiftgen
 
+      - name: Install python
+        run: brew install python3
+
+      - name: Install lizard
+        run: pip install lizard
+
       - name: Bundle install
         run: bundle install
 
       - name: Build and test
         run:  |
           bundle exec fastlane test sonar_login:"$SONAR_TOKEN"
+
+      
         env: 
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

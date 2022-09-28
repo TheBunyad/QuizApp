@@ -67,7 +67,7 @@ public class Router: RouterProtocol {
         let vm = ResultViewModel(
             score: score,
             difficlty: difficulty,
-            category: category
+            category: category, updateRecordUseCase: resolver.resolve(UpdateRecordUseCase.self)!, updateHighestScoreUseCase: resolver.resolve(UpdateHighestScoreUseCase.self)!
         )
         
         return ResultViewController(vm: vm, router: self)

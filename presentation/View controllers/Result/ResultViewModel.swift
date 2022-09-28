@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import domain
 
 public class ResultViewModel {
     
@@ -13,7 +14,7 @@ public class ResultViewModel {
     private let category: String
     private let score: Int
     
-    public init(score: Int, difficlty: Difficulty, category: String) {
+    public init(score: Int, difficlty: Difficulty, category: String, updateRecordUseCase: UpdateRecordUseCase, updateHighestScoreUseCase: UpdateHighestScoreUseCase) {
         self.difficulty = difficlty
         self.category = category
         self.score = score
