@@ -31,7 +31,6 @@ jobs:
 
       - name: Build and test
         run:  |
-          bundle exec fastlane test \
-          sonar_login:"$SONAR_TOKEN "
+          bundle exec fastlane test sonar_login:"$SONAR_TOKEN"
         env: 
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

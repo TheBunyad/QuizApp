@@ -31,7 +31,7 @@ platform :ios do
       proj: "QuizApp.xcodeproj",
       sonarqube_xml: true,
       github: true,
-      arch: "arm64"
+      arch: "x86_64"
     )
     lizard(
       source_folder: ".", 
