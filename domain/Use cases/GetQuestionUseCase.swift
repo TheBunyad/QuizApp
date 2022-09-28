@@ -16,7 +16,7 @@ public class GetQuestionsUseCase {
         self.repo = repo
     }
         
-    public func execute(category: Int) -> Promise<[QuestionEntity]> {
+    public func execute(category: String) -> Promise<[QuestionEntity]> {
         repo.getQuestions(category: category)
     }
 }

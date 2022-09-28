@@ -17,34 +17,42 @@ public class DomainAssembly: Assembly {
     
     public func assemble(container: Container) {
         
-        container.register(GetUserUseCase.self) { r in
-            GetUserUseCase(repo: r.resolve(UserRepoProtocol.self)!)
-        }
-        
         container.register(GetQuestionsUseCase.self) { r in
-            GetQuestionsUseCase(repo: r.resolve(QuestionRepoProtocol.self)!)
+            GetQuestionsUseCase(repo: r.resolve( QuestionRepoProtocol.self)!)
         }
-        
-        container.register(GetStatUseCase.self) { r in
-            GetStatUseCase(repo: r.resolve(StatsRepoProtocol.self)!)
-        }
-        
-//        container.register(SyncQuestionUseCase.self) { r in
-//            SyncQuestionUseCase(repo: r.resolve(QuestionRepoProtocol.self)!)
-//        }
-        
-//        container.register(ObserveQuestionUseCase.self) { r in
-//            ObserveQuestionUseCase(repo: r.resolve(QuestionRepoProtocol.self)!)
-//        }
-        
+
         container.register(GetCategoryUseCase.self) { r in
             GetCategoryUseCase(repo: r.resolve(CategoryRepoProtocol.self)!)
         }
         
-//        container.register(GetLoaclQuestionsUseCase.self) { r in
-//            GetLoaclQuestionsUseCase(repo: r.resolve(QuestionRepoProtocol.self)!)
-//        }
+        container.register(UpdateRecordUseCase.self) { r in
+            UpdateRecordUseCase(repo: r.resolve(ProfileRepoProtocol.self)!)
+        }
+        
+        container.register(UpdateHighestScoreUseCase.self) { r in
+            UpdateHighestScoreUseCase(repo: r.resolve(ProfileRepoProtocol.self)!)
+        }
+        
+        container.register(UpdateUsernameUseCase.self) { r in
+            UpdateUsernameUseCase(repo: r.resolve(ProfileRepoProtocol.self)!)
+        }
+        
+        container.register(GetRecordUseCase.self) { r in
+            GetRecordUseCase(repo: r.resolve(ProfileRepoProtocol.self)!)
+        }
+        
+        container.register(GetHighestScoresUseCase.self) { r in
+            GetHighestScoresUseCase(repo: r.resolve(ProfileRepoProtocol.self)!)
+        }
+        
+        container.register(GetUserNameUseCase.self) { r in
+            GetUserNameUseCase(repo: r.resolve(ProfileRepoProtocol.self)!)
+        }
+        
+        container.register(SetDataUseCase.self) { r in
+            SetDataUseCase(repo: r.resolve(ProfileRepoProtocol.self)!)
+        }
+
     }
-    
     
 }

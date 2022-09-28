@@ -15,6 +15,7 @@ public class CategoryViewController: BaseViewController<CategoryViewModel> {
     
     private var difficulty: String
     private var multiplayer: Bool
+    private var categories = [CategoryEntity]()
 
     init(difficulty: String, multiplayer: Bool, vm: CategoryViewModel, router: RouterProtocol) {
         
@@ -26,8 +27,6 @@ public class CategoryViewController: BaseViewController<CategoryViewModel> {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    private var categories = [CategoryEntity]()
     
     private lazy var pageTitle_lbl: UILabel = {
         let lbl = UILabel()
@@ -67,9 +66,9 @@ public class CategoryViewController: BaseViewController<CategoryViewModel> {
         
         self.view.backgroundColor = backgournd
         self.vm.getCategory().then {[weak self] response in
-            
+            self?.categories.append(CategoryEntity(id: 0, name: "Any Category"))
             DispatchQueue.main.async {
-                self?.categories = response
+                self?.categories.append(contentsOf: response)
                 self?.categoryTable.reloadData()
             }
         }
@@ -113,8 +112,14 @@ extension CategoryViewController: UITableViewDataSource, UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let item = categories[indexPath.row]
-        let vc = router.questionsViewController(difficulty: self.vm.getDiffiluty(difficulty: difficulty), category: item.id, multiplayer: false)
-        self.navigationController?.pushViewController(vc, animated: true)
+        if item.id == 0 {
+            let vc = router.questionsViewController(difficulty: self.vm.getDiffiluty(difficulty: difficulty), category: "", multiplayer: false)
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            let vc = router.questionsViewController(difficulty: self.vm.getDiffiluty(difficulty: difficulty), category: "&category=\(item.id)", multiplayer: false)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
     }
     
 }

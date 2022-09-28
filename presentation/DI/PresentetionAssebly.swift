@@ -31,6 +31,18 @@ public class PresentetionAssebly: Assembly {
             return StartViewModel()
         }
         
+        container.register(ProfileViewModel.self) { r in
+           
+            return ProfileViewModel(
+                updateRecordUseCase: r.resolve(UpdateRecordUseCase.self)!,
+                updateHighestScoreUseCase: r.resolve(UpdateHighestScoreUseCase.self)!,
+                updateUserNameUseCase: r.resolve(UpdateUsernameUseCase.self)!,
+                getRecordUseCase: r.resolve(GetRecordUseCase.self)!,
+                getHighestScoreUseCase: r.resolve(GetHighestScoresUseCase.self)!,
+                getUserNameUseCase: r.resolve(GetUserNameUseCase.self)!,
+                setDataUseCase: r.resolve(SetDataUseCase.self)!)
+        }
+        
 //        container.register(ResultViewModel.self) { r in
 //            return ResultViewModel(score: <#T##Int#>, difficlty: <#T##Difficulty#>, category: <#T##Int#>)
 //        }

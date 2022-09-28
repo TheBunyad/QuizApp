@@ -141,8 +141,11 @@ public class StartViewController: BaseViewController<StartViewModel> {
             make.center.equalToSuperview()
         }
         
-        let singlePlayerTabGesture = UITapGestureRecognizer(target: self, action: #selector(singlePlayer(_:)))
-        self.singlePlayer_ui.addGestureRecognizer(singlePlayerTabGesture)
+        let singlePlayerTapGesture = UITapGestureRecognizer(target: self, action: #selector(singlePlayer(_:)))
+        self.singlePlayer_ui.addGestureRecognizer(singlePlayerTapGesture)
+        
+        let profiletapGesture = UITapGestureRecognizer(target: self, action: #selector(profile(_:)))
+        self.profile_ui.addGestureRecognizer(profiletapGesture)
     }
     
     @objc func singlePlayer(_ sender: UITapGestureRecognizer) {
@@ -150,8 +153,10 @@ public class StartViewController: BaseViewController<StartViewModel> {
         let vc = router.difficultyViewController(multiplayer: true)
         self.navigationController?.pushViewController(vc, animated: true)
     }
-//
-//    @objc func pvp(_ sender: UIButton) {
-//
-//    }
+
+    @objc func profile(_ sender: UITapGestureRecognizer) {
+
+        let vc = router.profileViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }

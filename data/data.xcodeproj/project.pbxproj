@@ -11,6 +11,10 @@
 		BD0244EC28D0E06F00D6CDE7 /* CategoryRemoteDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0244EB28D0E06E00D6CDE7 /* CategoryRemoteDataSourceProtocol.swift */; };
 		BD0244EE28D0E0FC00D6CDE7 /* CategoryRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0244ED28D0E0FC00D6CDE7 /* CategoryRemoteDataSource.swift */; };
 		BD0244F828D0E92200D6CDE7 /* CaregoryRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0244F728D0E92100D6CDE7 /* CaregoryRepo.swift */; };
+		BD466CC328DC9AA800C96500 /* GameRecordLoaclDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD466CC228DC9AA800C96500 /* GameRecordLoaclDTO.swift */; };
+		BD466CC728DC9C6300C96500 /* GameRecordLocalDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD466CC628DC9C6300C96500 /* GameRecordLocalDataSourceProtocol.swift */; };
+		BD466CC928DDADA700C96500 /* GameRecordLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD466CC828DDADA700C96500 /* GameRecordLocalDataSource.swift */; };
+		BD466CCF28DEEEFC00C96500 /* ProfileRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD466CCE28DEEEFC00C96500 /* ProfileRepo.swift */; };
 		BD53033028BA51330057BD1F /* data.h in Headers */ = {isa = PBXBuildFile; fileRef = BD53032F28BA51330057BD1F /* data.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BD53038528BCE5840057BD1F /* domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD53038428BCE5840057BD1F /* domain.framework */; };
 		BD53038628BCE5840057BD1F /* domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BD53038428BCE5840057BD1F /* domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -62,6 +66,10 @@
 		BD0244EB28D0E06E00D6CDE7 /* CategoryRemoteDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRemoteDataSourceProtocol.swift; sourceTree = "<group>"; };
 		BD0244ED28D0E0FC00D6CDE7 /* CategoryRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRemoteDataSource.swift; sourceTree = "<group>"; };
 		BD0244F728D0E92100D6CDE7 /* CaregoryRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaregoryRepo.swift; sourceTree = "<group>"; };
+		BD466CC228DC9AA800C96500 /* GameRecordLoaclDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRecordLoaclDTO.swift; sourceTree = "<group>"; };
+		BD466CC628DC9C6300C96500 /* GameRecordLocalDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRecordLocalDataSourceProtocol.swift; sourceTree = "<group>"; };
+		BD466CC828DDADA700C96500 /* GameRecordLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRecordLocalDataSource.swift; sourceTree = "<group>"; };
+		BD466CCE28DEEEFC00C96500 /* ProfileRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepo.swift; sourceTree = "<group>"; };
 		BD53032C28BA51330057BD1F /* data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD53032F28BA51330057BD1F /* data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = data.h; sourceTree = "<group>"; };
 		BD53038428BCE5840057BD1F /* domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,6 +140,26 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
+		BD466CC428DC9BFC00C96500 /* Question */ = {
+			isa = PBXGroup;
+			children = (
+				BD5BDE1828C3B45300A8A09C /* QuestionLocalDataSourceProtocol.swift */,
+				BD5BDE1628C3B43400A8A09C /* QuestionLocalDataSource.swift */,
+				BD5BDE5628C8F87500A8A09C /* Questions.swift */,
+			);
+			path = Question;
+			sourceTree = "<group>";
+		};
+		BD466CC528DC9C1E00C96500 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				BD466CC228DC9AA800C96500 /* GameRecordLoaclDTO.swift */,
+				BD466CC628DC9C6300C96500 /* GameRecordLocalDataSourceProtocol.swift */,
+				BD466CC828DDADA700C96500 /* GameRecordLocalDataSource.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		BD53032228BA51330057BD1F = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +208,7 @@
 				BD5303D228BD38680057BD1F /* QuestionRepo.swift */,
 				BD5303D828BD3C480057BD1F /* StatsRepo.swift */,
 				BD0244F728D0E92100D6CDE7 /* CaregoryRepo.swift */,
+				BD466CCE28DEEEFC00C96500 /* ProfileRepo.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -204,9 +233,8 @@
 		BD5303CF28BD13930057BD1F /* Local data source */ = {
 			isa = PBXGroup;
 			children = (
-				BD5BDE1828C3B45300A8A09C /* QuestionLocalDataSourceProtocol.swift */,
-				BD5BDE1628C3B43400A8A09C /* QuestionLocalDataSource.swift */,
-				BD5BDE5628C8F87500A8A09C /* Questions.swift */,
+				BD466CC528DC9C1E00C96500 /* Profile */,
+				BD466CC428DC9BFC00C96500 /* Question */,
 			);
 			path = "Local data source";
 			sourceTree = "<group>";
@@ -376,9 +404,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD466CC928DDADA700C96500 /* GameRecordLocalDataSource.swift in Sources */,
 				BD5BDE1528C3A8C600A8A09C /* QuestionRemoteDTO.swift in Sources */,
 				BD5BDE1328C3A88200A8A09C /* QuestionRemoteDataSourceProtocol.swift in Sources */,
 				BD0244EC28D0E06F00D6CDE7 /* CategoryRemoteDataSourceProtocol.swift in Sources */,
+				BD466CC728DC9C6300C96500 /* GameRecordLocalDataSourceProtocol.swift in Sources */,
 				BD0244EA28D0DDC200D6CDE7 /* CategoryRemoteDTO.swift in Sources */,
 				BD5303BB28BCF0480057BD1F /* UserRepo.swift in Sources */,
 				BD5303D328BD38680057BD1F /* QuestionRepo.swift in Sources */,
@@ -387,9 +417,11 @@
 				BD5BDE5728C8F87500A8A09C /* Questions.swift in Sources */,
 				BD5303C928BD00E80057BD1F /* DataAssembly.swift in Sources */,
 				BD0244EE28D0E0FC00D6CDE7 /* CategoryRemoteDataSource.swift in Sources */,
+				BD466CCF28DEEEFC00C96500 /* ProfileRepo.swift in Sources */,
 				BD5BDE1728C3B43400A8A09C /* QuestionLocalDataSource.swift in Sources */,
 				BD5303D928BD3C480057BD1F /* StatsRepo.swift in Sources */,
 				BD5BDE1928C3B45300A8A09C /* QuestionLocalDataSourceProtocol.swift in Sources */,
+				BD466CC328DC9AA800C96500 /* GameRecordLoaclDTO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -21,7 +21,7 @@ public class QuestionRepo: QuestionRepoProtocol {
 //        self.localDataSource = localDataSource
     }
     
-    public func getQuestions(category: Int) -> Promise<[QuestionEntity]> {
+    public func getQuestions(category: String) -> Promise<[QuestionEntity]> {
         
         let promise: Promise<[QuestionEntity]> = .pending()
         self.remoteDataSource.fetchQuestions(category: category)

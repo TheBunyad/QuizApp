@@ -1,19 +1,20 @@
 //
-//  CategoryTableViewCell.swift
+//  GameRecordsTableViewCell.swift
 //  presentation
 //
-//  Created by Bunyad Majidzade on 21.09.22.
+//  Created by Bunyad Majidzade on 27.09.22.
 //
 
 import Foundation
 import UIKit
 import SnapKit
+import domain
 
-class CategoryTableViewCell: UITableViewCell {
+class GameRecordsTableViewCell: UITableViewCell {
     
     let blueButtonBackground = UIColor(hex: "#6CCDEDff")
     
-    private lazy var category_ui: UIView = {
+    private lazy var cellBackground_ui: UIView = {
         let view = UIView()
         self.contentView.addSubview(view)
         view.backgroundColor = blueButtonBackground
@@ -23,9 +24,17 @@ class CategoryTableViewCell: UITableViewCell {
         return view
     }()
     
-    private lazy var category_lbl: UILabel = {
+    private lazy var categoryName_lbl: UILabel = {
         let lbl = UILabel()
-        self.category_ui.addSubview(lbl)
+        self.cellBackground_ui.addSubview(lbl)
+        lbl.font = UIFont(font: FontFamily.Poppins.medium, size: 16)
+        
+        return lbl
+    }()
+    
+    private lazy var score_lbl: UILabel = {
+        let lbl = UILabel()
+        self.cellBackground_ui.addSubview(lbl)
         lbl.font = UIFont(font: FontFamily.Poppins.medium, size: 16)
         
         return lbl
@@ -41,11 +50,11 @@ class CategoryTableViewCell: UITableViewCell {
         setupView()
     }
     
+    
     func setupView() {
-        
         self.contentView.layer.cornerRadius = 6
         self.contentView.clipsToBounds = true
-        self.contentView.backgroundColor = .red
+        self.contentView.backgroundColor = .white
         
         self.contentView.snp.makeConstraints { make in
             make.left.equalToSuperview()
@@ -53,20 +62,26 @@ class CategoryTableViewCell: UITableViewCell {
             make.height.equalTo(60)
         }
         
-        self.category_ui.snp.makeConstraints { make in
+        self.cellBackground_ui.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.left.equalToSuperview()
-            make.right.equalToSuperview()
             make.height.equalTo(48)
         }
         
-        self.category_lbl.snp.makeConstraints { make in
-            make.center.equalToSuperview()
+        self.categoryName_lbl.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.left.equalToSuperview().offset(8)
         }
+        
+        self.score_lbl.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.right.equalToSuperview().offset(-8)
+        }
+        
     }
     
-    func setData(category: String) {
-        self.category_lbl.text = category
+    func setData(record: GameEntity) {
+        self.categoryName_lbl.text = record.categoryName
+        self.score_lbl.text = String(record.score)
     }
-
 }

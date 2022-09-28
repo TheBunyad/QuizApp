@@ -139,7 +139,7 @@ public class QuestionsViewController: BaseViewController<QuestionsViewModel> {
         self.view.addSubview(view)
         view.backgroundColor = orange
         view.clipsToBounds = true
-        view.layer.cornerRadius = 22
+        view.layer.cornerRadius = screenHeight * 0.028
         
         return view
     }()

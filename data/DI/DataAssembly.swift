@@ -32,10 +32,6 @@ public class DataAssembly: Assembly {
             )
         }
         
-        container.register(StatsRepoProtocol.self) { r in
-            StatsRepo()
-        }
-        
         container.register(QuestionRemoteDataSourceProtocol.self) { r in
             QuestionRemoteDataSource(networkProvider: r.resolve(Session.self)!)
         }
@@ -48,12 +44,20 @@ public class DataAssembly: Assembly {
 //            QuestionLocalDataSource(realm: r.resolve(Realm.self)!)
 //        }.inObjectScope(.container)
         
+        container.register(GameRecordLocalDataSourceProtocol.self) { r in
+            GameRecordLocalDataSource(realm: r.resolve(Realm.self)!)
+        }.inObjectScope(.container)
+        
         container.register(CategoryRemoteDataSource.self) { r in
             CategoryRemoteDataSource(networkProvider: r.resolve(Session.self)!)
         }
         
         container.register(CategoryRepoProtocol.self) { r in
             CaregoryRepo(remoteDataSource: r.resolve(CategoryRemoteDataSource.self)!)
+        }
+        
+        container.register(ProfileRepoProtocol.self) { r in
+            ProfileRepo(loaclDataSource: r.resolve(GameRecordLocalDataSourceProtocol.self)!)
         }
     }
     

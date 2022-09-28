@@ -10,10 +10,10 @@ import Foundation
 public class ResultViewModel {
     
     private let difficulty: Difficulty
-    private let category: Int
+    private let category: String
     private let score: Int
     
-    public init(score: Int, difficlty: Difficulty, category: Int) {
+    public init(score: Int, difficlty: Difficulty, category: String) {
         self.difficulty = difficlty
         self.category = category
         self.score = score
@@ -27,7 +27,7 @@ public class ResultViewModel {
         difficulty
     }
     
-    func getCategory() -> Int {
+    func getCategory() -> String {
         category
     }
 }

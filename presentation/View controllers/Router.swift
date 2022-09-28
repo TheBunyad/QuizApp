@@ -12,11 +12,12 @@ import UIKit
 
 public protocol RouterProtocol {
     
-    func questionsViewController(difficulty: Difficulty, category: Int, multiplayer: Bool) -> QuestionsViewController
+    func questionsViewController(difficulty: Difficulty, category: String, multiplayer: Bool) -> QuestionsViewController
     func catogoryViewController(difficulty: String, multiplayer: Bool) -> CategoryViewController
     func difficultyViewController(multiplayer: Bool) -> DifficultyViewController
     func startViewController() -> UINavigationController
-    func resultViewController(score: Int, difficulty: Difficulty, category: Int) -> ResultViewController
+    func resultViewController(score: Int, difficulty: Difficulty, category: String) -> ResultViewController
+    func profileViewController() -> ProfileViewController
     
 }
 
@@ -28,7 +29,7 @@ public class Router: RouterProtocol {
         self.resolver = resolver
     }
     
-    public func questionsViewController(difficulty: Difficulty, category: Int, multiplayer: Bool) -> QuestionsViewController {
+    public func questionsViewController(difficulty: Difficulty, category: String, multiplayer: Bool) -> QuestionsViewController {
         
         let question = resolver.resolve(GetQuestionsUseCase.self)!
         
@@ -61,7 +62,7 @@ public class Router: RouterProtocol {
         return navVC
     }
     
-    public func resultViewController(score: Int, difficulty: Difficulty, category: Int) -> ResultViewController {
+    public func resultViewController(score: Int, difficulty: Difficulty, category: String) -> ResultViewController {
         
         let vm = ResultViewModel(
             score: score,
@@ -70,6 +71,12 @@ public class Router: RouterProtocol {
         )
         
         return ResultViewController(vm: vm, router: self)
+    }
+    
+    public func profileViewController() -> ProfileViewController {
+        let vc = ProfileViewController(vm: self.resolver.resolve(ProfileViewModel.self)!, router: self)
+        
+        return vc
     }
     
         

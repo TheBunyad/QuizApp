@@ -16,7 +16,7 @@ public class QuestionsViewModel {
     
     public var disposebag = DisposeBag()
     private let difficulty: Difficulty
-    private let category: Int
+    private let category: String
     private var questions: [QuestionEntity] = []
     private var answers: [AnswerState] = []
     private var currentIndex = -1
@@ -56,7 +56,7 @@ public class QuestionsViewModel {
     
     public init(
         difficult: Difficulty,
-        category: Int,
+        category: String,
         multiplayer: Bool,
         getQuestionsUseCase: GetQuestionsUseCase
     ) {
@@ -170,7 +170,7 @@ public class QuestionsViewModel {
         self.difficulty
     }
     
-    func getCategory() -> Int {
+    func getCategory() -> String {
         self.category
     }
     
