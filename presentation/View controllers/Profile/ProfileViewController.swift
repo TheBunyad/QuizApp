@@ -27,9 +27,19 @@ public class ProfileViewController: BaseViewController<ProfileViewModel> {
     private lazy var recordTableCategoryName_lbl: UILabel = {
         let lbl = UILabel()
         self.view.addSubview(lbl)
-        lbl.text = "Username: "
-        lbl.textColor = bluePageTitle
-        lbl.font = UIFont(font: FontFamily.Poppins.semiBold, size: 24)
+        lbl.text = "Category: "
+        lbl.textColor = black
+        lbl.font = UIFont(font: FontFamily.Poppins.regular, size: 20)
+        
+        return lbl
+    }()
+    
+    private lazy var recordTableScore_lbl: UILabel = {
+        let lbl = UILabel()
+        self.view.addSubview(lbl)
+        lbl.text = "Score"
+        lbl.textColor = black
+        lbl.font = UIFont(font: FontFamily.Poppins.regular, size: 20)
         
         return lbl
     }()
@@ -43,7 +53,7 @@ public class ProfileViewController: BaseViewController<ProfileViewModel> {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private lazy var gameRecords_table: UITableView = {
+    private lazy var gameRecords_tbl: UITableView = {
         let table = UITableView()
         self.view.addSubview(table)
         table.register(GameRecordsTableViewCell.self, forCellReuseIdentifier: "game_record_table")
@@ -57,16 +67,22 @@ public class ProfileViewController: BaseViewController<ProfileViewModel> {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         view.backgroundColor = backgournd
-        
-        gameRecords_table.backgroundColor = .red
-//        vm.mockData()
-//        print("count: \(vm.getGameRecordsCount())")
         
         self.userName_lbl.snp.makeConstraints { make in
             make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(screenHeight * 0.02)
             make.left.equalTo(self.view.snp.left).offset(16)
+        }
+        
+        self.recordTableCategoryName_lbl.snp.makeConstraints { make in
+            make.top.equalTo(self.userName_lbl.snp.bottom).offset(16)
+            make.left.equalTo(self.userName_lbl.snp.left)
+        }
+        
+        self.recordTableScore_lbl.snp.makeConstraints { make in
+            make.top.equalTo(self.userName_lbl.snp.bottom).offset(16)
+            make.right.equalTo(self.view.safeAreaLayoutGuide.snp.right).offset(-24)
         }
     }
 }
@@ -92,13 +108,12 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension ProfileViewController: ProfileViewDelegate {
     public func reloadTableView() {
-        self.gameRecords_table.snp.makeConstraints { make in
+        self.gameRecords_tbl.snp.makeConstraints { make in
             make.left.equalTo(self.view.safeAreaLayoutGuide.snp.left).offset(16)
             make.right.equalTo(self.view.safeAreaLayoutGuide.snp.right).offset(-16)
-            make.top.equalTo(self.userName_lbl.snp.bottom).offset(16)
-//            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-16)
+            make.top.equalTo(self.recordTableCategoryName_lbl.snp.bottom).offset(16)
             make.height.equalTo(60 * vm.getGameRecordsCount())
         }
-        self.gameRecords_table.reloadData()
+        self.gameRecords_tbl.reloadData()
     }
 }
