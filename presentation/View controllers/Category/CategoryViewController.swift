@@ -113,10 +113,10 @@ extension CategoryViewController: UITableViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let item = categories[indexPath.row]
         if item.id == 0 {
-            let vc = router.questionsViewController(difficulty: self.vm.getDiffiluty(difficulty: difficulty), category: "", multiplayer: false)
+            let vc = router.questionsViewController(difficulty: self.vm.getDiffiluty(difficulty: difficulty), category: "", categoryNames: "Any Category", multiplayer: false)
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
-            let vc = router.questionsViewController(difficulty: self.vm.getDiffiluty(difficulty: difficulty), category: "&category=\(item.id)", multiplayer: false)
+            let vc = router.questionsViewController(difficulty: self.vm.getDiffiluty(difficulty: difficulty), category: "&category=\(item.id)", categoryNames: item.name, multiplayer: false)
             self.navigationController?.pushViewController(vc, animated: true)
         }
         

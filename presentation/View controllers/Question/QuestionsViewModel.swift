@@ -17,9 +17,11 @@ public class QuestionsViewModel {
     public var disposebag = DisposeBag()
     private let difficulty: Difficulty
     private let category: String
+    private var categoryNames: String
     private var questions: [QuestionEntity] = []
     private var answers: [AnswerState] = []
     private var currentIndex = -1
+    private var score = 0
     private let gameStateRelay: BehaviorRelay<GameState> = BehaviorRelay.init(value: .pending)
     private lazy var questionStateRelay: BehaviorRelay<QuestionState> = {
         BehaviorRelay.init(value: .pending(remainingSec: timerLimit))
@@ -53,14 +55,29 @@ public class QuestionsViewModel {
         }
     }
     
+    private var scoreMultiplier: Double {
+        get {
+            switch difficulty {
+            case .easy:
+                return 1.0
+            case .medium:
+                return 1.5
+            case .hard:
+                return 2.0
+            }
+        }
+    }
+    
     public init(
         difficult: Difficulty,
         category: String,
+        categoryNames: String,
         multiplayer: Bool,
         getQuestionsUseCase: GetQuestionsUseCase
     ) {
         self.difficulty = difficult
         self.category = category
+        self.categoryNames = categoryNames
         
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(onTick), userInfo: nil, repeats: true)
         
@@ -85,8 +102,7 @@ public class QuestionsViewModel {
             currentIndex = 0
             self.gameStateRelay.accept(
                 .inProgress(
-                    question: self.questions[currentIndex]
-                )
+                    question: self.questions[currentIndex])
             )
         case .inProgress(question: _):
             currentIndex += 1
@@ -121,6 +137,7 @@ public class QuestionsViewModel {
                 } else {
                     self.questionStateRelay.accept(.timeout)
                     self.answers.append(.wrong)
+                    
                 }
             default:
                 break
@@ -141,14 +158,16 @@ public class QuestionsViewModel {
             let questionState = self.questionStateRelay.value
             
             switch questionState {
-            case .pending(_):
+            case .pending(let remainingTime):
                 if option == getCorrectAnswer(correctAnswer: question.correctAnswer) {
                     self.questionStateRelay.accept(.correct)
                     self.answers.append(.correct)
+                    self.scoreUpdater(score: Int(Double(remainingTime) * scoreMultiplier))
                 } else {
                     self.questionStateRelay.accept(.wrong(option: option))
                     self.answers.append(.wrong)
                 }
+                
             default:
                 break
             }
@@ -184,6 +203,18 @@ public class QuestionsViewModel {
     func getCorrectAnswer( correctAnswer: String) -> String {
         let text: String = correctAnswer
          return stringFormatter(text: text)
+    }
+    
+    func scoreUpdater(score: Int) {
+        self.score += score
+    }
+    
+    func getScore() -> Int {
+        score
+    }
+    
+    func getCategoryNames() -> String {
+        categoryNames
     }
 }
 

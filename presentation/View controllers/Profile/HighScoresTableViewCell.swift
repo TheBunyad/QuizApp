@@ -1,8 +1,8 @@
 //
-//  GameRecordsTableViewCell.swift
+//  HighScoresTableViewCell.swift
 //  presentation
 //
-//  Created by Bunyad Majidzade on 27.09.22.
+//  Created by Bunyad Majidzade on 29.09.22.
 //
 
 import Foundation
@@ -10,13 +10,14 @@ import UIKit
 import SnapKit
 import domain
 
-class GameRecordsTableViewCell: UITableViewCell {
+class HighScoresTableViewCell: UITableViewCell {
     
     let blueButtonBackground = UIColor(hex: "#6CCDEDff")
     
     private lazy var cellBackground_ui: UIView = {
         let view = UIView()
         self.addSubview(view)
+//        view.backgroundColor = blueButtonBackground
         view.clipsToBounds = true
         view.layer.cornerRadius = 6
         
@@ -34,10 +35,11 @@ class GameRecordsTableViewCell: UITableViewCell {
     private lazy var score_lbl: UILabel = {
         let lbl = UILabel()
         self.cellBackground_ui.addSubview(lbl)
-        lbl.font = UIFont(font: FontFamily.Poppins.medium, size: 14)
+        lbl.font = UIFont(font: FontFamily.Poppins.medium, size: 16)
         
         return lbl
     }()
+    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -72,8 +74,8 @@ class GameRecordsTableViewCell: UITableViewCell {
         
     }
     
-    func setData(record: GameEntity) {
-        self.categoryName_lbl.text = record.categoryName
-        self.score_lbl.text = String(record.score)
+    func setData(score: GameEntity) {
+        self.categoryName_lbl.text = score.categoryName
+        self.score_lbl.text = String(score.score)
     }
 }

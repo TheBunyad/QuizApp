@@ -20,6 +20,7 @@
 		BD466CE128E30AB900C96500 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD466CE028E30AB900C96500 /* ProfileViewController.swift */; };
 		BD466CE328E30AC900C96500 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD466CE228E30AC900C96500 /* ProfileViewModel.swift */; };
 		BD466CE528E31E2C00C96500 /* GameRecordsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD466CE428E31E2C00C96500 /* GameRecordsTableViewCell.swift */; };
+		BD466CED28E5840C00C96500 /* HighScoresTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD466CEC28E5840C00C96500 /* HighScoresTableViewCell.swift */; };
 		BD5302FC28BA50A20057BD1F /* presentation.h in Headers */ = {isa = PBXBuildFile; fileRef = BD5302FB28BA50A20057BD1F /* presentation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BD53037D28BCE4F50057BD1F /* QuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD53037C28BCE4F50057BD1F /* QuestionsViewController.swift */; };
 		BD53038028BCE5600057BD1F /* domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD53037F28BCE5600057BD1F /* domain.framework */; };
@@ -63,6 +64,7 @@
 		BD466CE028E30AB900C96500 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		BD466CE228E30AC900C96500 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		BD466CE428E31E2C00C96500 /* GameRecordsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRecordsTableViewCell.swift; sourceTree = "<group>"; };
+		BD466CEC28E5840C00C96500 /* HighScoresTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoresTableViewCell.swift; sourceTree = "<group>"; };
 		BD5302F828BA50A20057BD1F /* presentation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = presentation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD5302FB28BA50A20057BD1F /* presentation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = presentation.h; sourceTree = "<group>"; };
 		BD53037C28BCE4F50057BD1F /* QuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				BD466CE028E30AB900C96500 /* ProfileViewController.swift */,
 				BD466CE228E30AC900C96500 /* ProfileViewModel.swift */,
 				BD466CE428E31E2C00C96500 /* GameRecordsTableViewCell.swift */,
+				BD466CEC28E5840C00C96500 /* HighScoresTableViewCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD466CED28E5840C00C96500 /* HighScoresTableViewCell.swift in Sources */,
 				BD0244F628D0E6EB00D6CDE7 /* CategoryViewController.swift in Sources */,
 				BD0244FE28D3A70000D6CDE7 /* StartViewContoller.swift in Sources */,
 				BD5BDE4B28C6393600A8A09C /* Fonts.swift in Sources */,

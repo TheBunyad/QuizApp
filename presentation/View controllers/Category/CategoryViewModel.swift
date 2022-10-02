@@ -13,6 +13,7 @@ import UIKit
 
 public class CategoryViewModel {
     private var getCategoryUseCase: GetCategoryUseCase
+    private var categoryName = [CategoryEntity]()
     
     public init(getCategoryUseCase: GetCategoryUseCase) {
         self.getCategoryUseCase = getCategoryUseCase
@@ -20,6 +21,13 @@ public class CategoryViewModel {
     
     func getCategory() -> Promise<[CategoryEntity]> {
         let useCase = self.getCategoryUseCase
+        useCase.execute().then {[weak self] response in
+            self?.categoryName.append(CategoryEntity(id: 0, name: "Any Category "))
+            DispatchQueue.main.async {
+                self?.categoryName.append(contentsOf: response)
+            }
+            
+        }
         
         return useCase.execute()
     }

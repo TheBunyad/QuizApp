@@ -189,11 +189,6 @@ public class QuestionsViewController: BaseViewController<QuestionsViewModel> {
     }
     //MARK: - ViewDidAppear
     
-    public override func viewDidAppear(_ animated: Bool) {
-        
-        super.viewDidAppear(animated)
-    }
-    
     //MARK: - ViewWillAppear
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -211,11 +206,6 @@ public class QuestionsViewController: BaseViewController<QuestionsViewModel> {
     }
     
     //MARK: ViewWillDisappear
-    
-    public override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-    }
     
     //MARK: - Functions
     
@@ -248,6 +238,7 @@ public class QuestionsViewController: BaseViewController<QuestionsViewModel> {
                         } else if self.answer4_lbl.text == correctAnswer {
                             self.answer4_ui.backgroundColor = .systemGreen
                         }
+                        
                     case .wrong(let option):
                         if self.answer1_lbl.text == option {
                             self.answer1_ui.backgroundColor = .systemRed
@@ -284,7 +275,7 @@ public class QuestionsViewController: BaseViewController<QuestionsViewModel> {
             questionSubscribtion.disposed(by: disposeBag)
             
         case .completed:
-            let vc = self.router.resultViewController(score: self.vm.correctAnswerCount, difficulty: vm.getDifficulty(), category: vm.getCategory())
+            let vc = self.router.resultViewController(correctAnswers: self.vm.correctAnswerCount, score: self.vm.getScore(), difficulty: vm.getDifficulty(), category: vm.getCategory(), categoryName: vm.getCategoryNames())
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

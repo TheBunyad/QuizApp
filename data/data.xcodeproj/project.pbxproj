@@ -15,6 +15,7 @@
 		BD466CC728DC9C6300C96500 /* GameRecordLocalDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD466CC628DC9C6300C96500 /* GameRecordLocalDataSourceProtocol.swift */; };
 		BD466CC928DDADA700C96500 /* GameRecordLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD466CC828DDADA700C96500 /* GameRecordLocalDataSource.swift */; };
 		BD466CCF28DEEEFC00C96500 /* ProfileRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD466CCE28DEEEFC00C96500 /* ProfileRepo.swift */; };
+		BD466CEF28E9E0BF00C96500 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD466CEE28E9E0BF00C96500 /* String.swift */; };
 		BD53033028BA51330057BD1F /* data.h in Headers */ = {isa = PBXBuildFile; fileRef = BD53032F28BA51330057BD1F /* data.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BD53038528BCE5840057BD1F /* domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD53038428BCE5840057BD1F /* domain.framework */; };
 		BD53038628BCE5840057BD1F /* domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BD53038428BCE5840057BD1F /* domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -70,6 +71,7 @@
 		BD466CC628DC9C6300C96500 /* GameRecordLocalDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRecordLocalDataSourceProtocol.swift; sourceTree = "<group>"; };
 		BD466CC828DDADA700C96500 /* GameRecordLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRecordLocalDataSource.swift; sourceTree = "<group>"; };
 		BD466CCE28DEEEFC00C96500 /* ProfileRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepo.swift; sourceTree = "<group>"; };
+		BD466CEE28E9E0BF00C96500 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		BD53032C28BA51330057BD1F /* data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD53032F28BA51330057BD1F /* data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = data.h; sourceTree = "<group>"; };
 		BD53038428BCE5840057BD1F /* domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,6 +165,7 @@
 		BD53032228BA51330057BD1F = {
 			isa = PBXGroup;
 			children = (
+				BD466CEE28E9E0BF00C96500 /* String.swift */,
 				BD5303CF28BD13930057BD1F /* Local data source */,
 				BD5303CE28BD137F0057BD1F /* Remote data source */,
 				BD5303C728BD00CC0057BD1F /* DI */,
@@ -404,6 +407,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD466CEF28E9E0BF00C96500 /* String.swift in Sources */,
 				BD466CC928DDADA700C96500 /* GameRecordLocalDataSource.swift in Sources */,
 				BD5BDE1528C3A8C600A8A09C /* QuestionRemoteDTO.swift in Sources */,
 				BD5BDE1328C3A88200A8A09C /* QuestionRemoteDataSourceProtocol.swift in Sources */,

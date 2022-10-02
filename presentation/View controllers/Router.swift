@@ -12,16 +12,17 @@ import UIKit
 
 public protocol RouterProtocol {
     
-    func questionsViewController(difficulty: Difficulty, category: String, multiplayer: Bool) -> QuestionsViewController
+    func questionsViewController(difficulty: Difficulty, category: String, categoryNames: String, multiplayer: Bool) -> QuestionsViewController
     func catogoryViewController(difficulty: String, multiplayer: Bool) -> CategoryViewController
     func difficultyViewController(multiplayer: Bool) -> DifficultyViewController
     func startViewController() -> UINavigationController
-    func resultViewController(score: Int, difficulty: Difficulty, category: String) -> ResultViewController
+    func resultViewController(correctAnswers: Int, score: Int, difficulty: Difficulty, category: String, categoryName: String) -> ResultViewController
     func profileViewController() -> ProfileViewController
     
 }
 
 public class Router: RouterProtocol {
+    
     
     private let resolver: Resolver
     
@@ -29,13 +30,14 @@ public class Router: RouterProtocol {
         self.resolver = resolver
     }
     
-    public func questionsViewController(difficulty: Difficulty, category: String, multiplayer: Bool) -> QuestionsViewController {
+    public func questionsViewController(difficulty: Difficulty, category: String, categoryNames: String, multiplayer: Bool) -> QuestionsViewController {
         
         let question = resolver.resolve(GetQuestionsUseCase.self)!
         
         let vm = QuestionsViewModel(
             difficult: difficulty,
             category: category,
+            categoryNames: categoryNames,
             multiplayer: multiplayer,
             getQuestionsUseCase: question
         )
@@ -62,12 +64,15 @@ public class Router: RouterProtocol {
         return navVC
     }
     
-    public func resultViewController(score: Int, difficulty: Difficulty, category: String) -> ResultViewController {
+    public func resultViewController(correctAnswers: Int, score: Int, difficulty: Difficulty, category: String, categoryName: String) -> ResultViewController {
         
         let vm = ResultViewModel(
-            score: score,
+            correctAnswers: correctAnswers, score: score,
             difficlty: difficulty,
-            category: category, updateRecordUseCase: resolver.resolve(UpdateRecordUseCase.self)!, updateHighestScoreUseCase: resolver.resolve(UpdateHighestScoreUseCase.self)!
+            category: category,
+            categoryName: categoryName,
+            updateRecordUseCase: resolver.resolve(UpdateRecordUseCase.self)!,
+            updateHighestScoreUseCase: resolver.resolve(UpdateHighestScoreUseCase.self)!
         )
         
         return ResultViewController(vm: vm, router: self)

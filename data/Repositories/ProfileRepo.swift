@@ -35,7 +35,6 @@ public class ProfileRepo: ProfileRepoProtocol {
     
     public func updateRecord(lastGame: GameEntity) -> Promise<Void> {
         let promise = Promise<Void>.pending()
-        
         localDataSource.updateRecord(
             lastGame: GameRecord(
             categoryName: lastGame.categoryName,
@@ -52,7 +51,7 @@ public class ProfileRepo: ProfileRepoProtocol {
     
     public func updateHighestScore(gameScore: GameEntity) -> Promises.Promise<Void> {
         let promise = Promise<Void>.pending()
-        
+        print("Profile repo: \(gameScore)")
         localDataSource.updateHighestScore(
             gameScore: GameScore(
             categoryName: gameScore.categoryName,
@@ -86,7 +85,6 @@ public class ProfileRepo: ProfileRepoProtocol {
         localDataSource.getRecords()
             .then { records in
             promise.fulfill(records)
-                print("profile repo: \(records)")
         }.catch { error in
             promise.reject(error)
         }

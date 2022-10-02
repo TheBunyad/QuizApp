@@ -15,13 +15,24 @@ public class ResultViewController: BaseViewController<ResultViewModel> {
     
     //MARK: - UI Elements
     
+    private lazy var correctAnswer_lbl: UILabel = {
+        let lbl = UILabel()
+        self.view.addSubview(lbl)
+        lbl.text = "\(String(vm.getCorrectAnswer())) / 10"
+        lbl.font = UIFont(font: FontFamily.Poppins.semiBold, size: 56)
+        lbl.textAlignment = .center
+        lbl.textColor = blueButtonBackground
+        
+        return lbl
+    }()
+    
     private lazy var score_lbl: UILabel = {
         let lbl = UILabel()
         self.view.addSubview(lbl)
-        lbl.text = "\(String(vm.getScore())) / 10"
-        lbl.font = UIFont(name: FontFamily.Poppins.semiBold.name, size: 56)
+        lbl.text = "\(vm.getScore())"
+        lbl.font = UIFont(name: FontFamily.Poppins.medium.name, size: 42)
         lbl.textAlignment = .center
-        lbl.textColor = blueButtonBackground
+        lbl.textColor = blueTextTitlePale
         
         return lbl
     }()
@@ -66,6 +77,7 @@ public class ResultViewController: BaseViewController<ResultViewModel> {
         return lbl
     }()
     
+    //MARK: - View Did Load
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,8 +86,13 @@ public class ResultViewController: BaseViewController<ResultViewModel> {
         self.navigationController?.navigationBar.isUserInteractionEnabled = false
         self.view.backgroundColor = .white
         
+        self.correctAnswer_lbl.snp.makeConstraints { make in
+            make.centerY.equalTo(self.view.snp.centerY).offset(-(screenHeight * 0.2))
+            make.centerX.equalToSuperview()
+        }
+        
         self.score_lbl.snp.makeConstraints { make in
-            make.centerY.equalTo(self.view.snp.centerY).offset(-(screenHeight * 0.1))
+            make.top.equalTo(self.correctAnswer_lbl.snp.bottom).offset(8)
             make.centerX.equalToSuperview()
         }
         
@@ -108,8 +125,16 @@ public class ResultViewController: BaseViewController<ResultViewModel> {
         self.mainMenu_ui.addGestureRecognizer(mainMenuTapGesture)
     }
     
+    //MARK: - View
+    
+    public override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        vm.updateRecord()
+        vm.updateHighestScore()
+    }
+    
     @objc func playAgain(_ sender: UITapGestureRecognizer) {
-        let vc = router.questionsViewController(difficulty: vm.getDifficulty(), category: vm.getCategory(), multiplayer: false)
+        let vc = router.questionsViewController(difficulty: vm.getDifficulty(), category: vm.getCategory(), categoryNames: vm.getCategoryName(), multiplayer: false)
         navigationController?.pushViewController(vc, animated: true)
     }
     

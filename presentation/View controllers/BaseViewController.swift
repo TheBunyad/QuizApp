@@ -13,6 +13,7 @@ public class BaseViewController<VM>: UIViewController {
     var backgournd = UIColor.white
     let bluePageTitle = UIColor(hex: "#16537eff")
     let blueButtonBackground = UIColor(hex: "#6CCDEDff")
+    let blueTextTitlePale = UIColor(hex: "#6CCDEDee")
     let redButtonTitle = UIColor(hex: "#000000ff")
     let orange = UIColor(hex: "#FC9956FF")
     let green = UIColor(hex: "#1F9C44FF")

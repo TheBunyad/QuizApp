@@ -17,6 +17,6 @@ public class UpdateHighestScoreUseCase {
     }
         
     public func execute(lastGame: GameEntity) -> Promise<Void> {
-        repo.updateRecord(lastGame: lastGame)
+        repo.updateHighestScore(gameScore: lastGame)
     }
 }
