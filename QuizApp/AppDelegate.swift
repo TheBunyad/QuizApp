@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let router: RouterProtocol = Router(resolver: assembler.resolver)
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        let vc = router.mainViewController()
+        let vc = router.startViewController()
         self.window?.rootViewController = vc
         self.window?.makeKeyAndVisible()
         

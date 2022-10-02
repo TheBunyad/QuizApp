@@ -16,10 +16,37 @@ public class PresentetionAssebly: Assembly {
     }
     
     public func assemble(container: Container) {
-        container.register(MainViewModel.self) { r in
-            let user = r.resolve(GetUserUseCase.self)
-            let question = r.resolve(GetQuestionUseCase.self)
-            return MainViewModel(getUserUseCase: user, getQuestionUseCase: question)
+        
+        container.register(CategoryViewModel.self) { r in
+            let category = r.resolve(GetCategoryUseCase.self)!
+            
+            return CategoryViewModel(getCategoryUseCase: category)
         }
+        
+        container.register(DifficultyViewModel.self) { r in
+            return DifficultyViewModel()
+        }
+        
+        container.register(StartViewModel.self) { r in
+            return StartViewModel()
+        }
+        
+        container.register(ProfileViewModel.self) { r in
+           
+            return ProfileViewModel(
+                updateRecordUseCase: r.resolve(UpdateRecordUseCase.self)!,
+                updateHighestScoreUseCase: r.resolve(UpdateHighestScoreUseCase.self)!,
+                updateUserNameUseCase: r.resolve(UpdateUsernameUseCase.self)!,
+                getRecordUseCase: r.resolve(GetRecordUseCase.self)!,
+                getHighestScoreUseCase: r.resolve(GetHighestScoresUseCase.self)!,
+                getUserNameUseCase: r.resolve(GetUserNameUseCase.self)!,
+                setDataUseCase: r.resolve(SetDataUseCase.self)!)
+        }
+        
+        
+        
+//        container.register(ResultViewModel.self) { r in
+//            return ResultViewModel(score: <#T##Int#>, difficlty: <#T##Difficulty#>, category: <#T##Int#>)
+//        }
     }
 }

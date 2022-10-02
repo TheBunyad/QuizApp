@@ -11,29 +11,57 @@ import RxSwift
 import Promises
 
 public class QuestionRepo: QuestionRepoProtocol {
-    public func getQuestion() -> Promise<QuestionEntity> {
-        let pendingData = Promise<QuestionEntity>.pending()
-        
-        // get data from server or DataBase
-        pendingData.fulfill(QuestionEntity(question: "What is an Oak?", correctAnswer: "tree", answer1: "animal", answer2: "mushroom", answer3: "human"))
-        
-        return pendingData
+   
+    
+//    private let localDataSource: QuestionLocalDataSourceProtocol
+    private let remoteDataSource: QuestionRemoteDataSourceProtocol
+    
+    init(remoteDataSource: QuestionRemoteDataSourceProtocol) {
+        self.remoteDataSource = remoteDataSource
+//        self.localDataSource = localDataSource
     }
     
-    public func observerQuestion() -> Observable<QuestionEntity> {
-        let behaviourSubject = BehaviorSubject<QuestionEntity?>.init(value: nil)
+    public func getQuestions(category: String) -> Promise<[QuestionEntity]> {
         
-        // return observed data
+        let promise: Promise<[QuestionEntity]> = .pending()
+        self.remoteDataSource.fetchQuestions(category: category)
+            .then { remoteDTOs in
+                promise.fulfill(remoteDTOs.toDomain())
+            }.catch { error in
+                promise.reject(error)
+            }
         
-        return behaviourSubject
-            .filter { question in
-                question != nil
-            }
-            .map { question in
-                question!
-            }
-            .asObservable()
+        return promise
     }
+    
+//    public func getLocalQuestions(category: Int) -> Promises.Promise<[domain.QuestionEntity]> {
+//        <#code#>
+//    }
+    
+//    public func observerQuestion() -> Observable<[QuestionEntity]> {
+//        self.localDataSource.observeQuestions()
+//            .map { localDTOs in
+//                localDTOs.map { $0.toDomain() }
+//            }
+//    }
+    
+//    public func syncQuestion(category: Int) -> Promise<Void> {
+//        let promise = Promise<Void>.pending()
+//        self.remoteDataSource.fetchQuestions(category: category)
+//            .then { dto -> Promise<Void> in
+//                let local = dto.toLocal()
+//                return self.localDataSource.save(questionDTO: local)
+//            }
+//            .then { void in
+//                promise.fulfill(void)
+//            }
+//            .catch { err in
+//                promise.reject(err)
+//            }
+//
+//        return promise
+//    }
+    
     
     
 }

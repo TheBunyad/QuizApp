@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD0244E828D0DD4200D6CDE7 /* CategoryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0244E728D0DD4200D6CDE7 /* CategoryEntity.swift */; };
+		BD0244F028D0E32A00D6CDE7 /* CategoryRepoProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0244EF28D0E32A00D6CDE7 /* CategoryRepoProtocol.swift */; };
+		BD0244F228D0E3B400D6CDE7 /* GetCategoryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0244F128D0E3B400D6CDE7 /* GetCategoryUseCase.swift */; };
+		BD466CCB28DED07C00C96500 /* GameEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD466CCA28DED07C00C96500 /* GameEntity.swift */; };
+		BD466CCD28DEED6600C96500 /* ProfileRepoProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD466CCC28DEED6600C96500 /* ProfileRepoProtocol.swift */; };
+		BD466CD128DEFB6600C96500 /* UpdateRecordUsaCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD466CD028DEFB6600C96500 /* UpdateRecordUsaCase.swift */; };
+		BD466CD428DEFC5D00C96500 /* UpdateHighestScoreUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD466CD328DEFC5D00C96500 /* UpdateHighestScoreUseCase.swift */; };
+		BD466CD628E1DBE800C96500 /* UpdateUsernameUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD466CD528E1DBE800C96500 /* UpdateUsernameUseCase.swift */; };
+		BD466CD828E1DC3500C96500 /* GetRecordUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD466CD728E1DC3500C96500 /* GetRecordUseCase.swift */; };
+		BD466CDA28E1DF2600C96500 /* GetHighestScoresUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD466CD928E1DF2600C96500 /* GetHighestScoresUseCase.swift */; };
+		BD466CDC28E1E0E900C96500 /* GetUserNameUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD466CDB28E1E0E900C96500 /* GetUserNameUseCase.swift */; };
+		BD466CDE28E1E13500C96500 /* SetHighestScoresUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD466CDD28E1E13500C96500 /* SetHighestScoresUseCase.swift */; };
 		BD53036428BA52220057BD1F /* domain.h in Headers */ = {isa = PBXBuildFile; fileRef = BD53036328BA52220057BD1F /* domain.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BD53039928BCEAB50057BD1F /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = BD53039828BCEAB50057BD1F /* RxRelay */; };
 		BD53039B28BCEAB50057BD1F /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BD53039A28BCEAB50057BD1F /* RxSwift */; };
@@ -16,27 +28,35 @@
 		BD5303B228BCEDDB0057BD1F /* StatsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5303B128BCEDDB0057BD1F /* StatsEntity.swift */; };
 		BD5303B528BCEEAC0057BD1F /* UserRepoProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5303B428BCEEAC0057BD1F /* UserRepoProtocol.swift */; };
 		BD5303B828BCEF640057BD1F /* Promises in Frameworks */ = {isa = PBXBuildFile; productRef = BD5303B728BCEF640057BD1F /* Promises */; };
-		BD5303BE28BCF3CA0057BD1F /* GetUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5303BD28BCF3CA0057BD1F /* GetUserUseCase.swift */; };
 		BD5303C628BD002F0057BD1F /* DomainAssesmly.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5303C528BD002F0057BD1F /* DomainAssesmly.swift */; };
 		BD5303D128BD377B0057BD1F /* QuestionRepoProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5303D028BD377B0057BD1F /* QuestionRepoProtocol.swift */; };
 		BD5303D528BD39D30057BD1F /* GetQuestionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5303D428BD39D30057BD1F /* GetQuestionUseCase.swift */; };
 		BD5303D728BD3BA60057BD1F /* StatsRepoProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5303D628BD3BA60057BD1F /* StatsRepoProtocol.swift */; };
-		BD5303DB28BD3D6E0057BD1F /* GetStatUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5303DA28BD3D6E0057BD1F /* GetStatUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BD0244E728D0DD4200D6CDE7 /* CategoryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEntity.swift; sourceTree = "<group>"; };
+		BD0244EF28D0E32A00D6CDE7 /* CategoryRepoProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRepoProtocol.swift; sourceTree = "<group>"; };
+		BD0244F128D0E3B400D6CDE7 /* GetCategoryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCategoryUseCase.swift; sourceTree = "<group>"; };
+		BD466CCA28DED07C00C96500 /* GameEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEntity.swift; sourceTree = "<group>"; };
+		BD466CCC28DEED6600C96500 /* ProfileRepoProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepoProtocol.swift; sourceTree = "<group>"; };
+		BD466CD028DEFB6600C96500 /* UpdateRecordUsaCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateRecordUsaCase.swift; sourceTree = "<group>"; };
+		BD466CD328DEFC5D00C96500 /* UpdateHighestScoreUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateHighestScoreUseCase.swift; sourceTree = "<group>"; };
+		BD466CD528E1DBE800C96500 /* UpdateUsernameUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUsernameUseCase.swift; sourceTree = "<group>"; };
+		BD466CD728E1DC3500C96500 /* GetRecordUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRecordUseCase.swift; sourceTree = "<group>"; };
+		BD466CD928E1DF2600C96500 /* GetHighestScoresUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHighestScoresUseCase.swift; sourceTree = "<group>"; };
+		BD466CDB28E1E0E900C96500 /* GetUserNameUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserNameUseCase.swift; sourceTree = "<group>"; };
+		BD466CDD28E1E13500C96500 /* SetHighestScoresUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetHighestScoresUseCase.swift; sourceTree = "<group>"; };
 		BD53036028BA52220057BD1F /* domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD53036328BA52220057BD1F /* domain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = domain.h; sourceTree = "<group>"; };
 		BD5303AD28BCEDAF0057BD1F /* UserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
 		BD5303AF28BCEDC40057BD1F /* QuestionEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionEntity.swift; sourceTree = "<group>"; };
 		BD5303B128BCEDDB0057BD1F /* StatsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsEntity.swift; sourceTree = "<group>"; };
 		BD5303B428BCEEAC0057BD1F /* UserRepoProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepoProtocol.swift; sourceTree = "<group>"; };
-		BD5303BD28BCF3CA0057BD1F /* GetUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserUseCase.swift; sourceTree = "<group>"; };
 		BD5303C528BD002F0057BD1F /* DomainAssesmly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainAssesmly.swift; sourceTree = "<group>"; };
 		BD5303D028BD377B0057BD1F /* QuestionRepoProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionRepoProtocol.swift; sourceTree = "<group>"; };
 		BD5303D428BD39D30057BD1F /* GetQuestionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetQuestionUseCase.swift; sourceTree = "<group>"; };
 		BD5303D628BD3BA60057BD1F /* StatsRepoProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsRepoProtocol.swift; sourceTree = "<group>"; };
-		BD5303DA28BD3D6E0057BD1F /* GetStatUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStatUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +74,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BD466CD228DEFC3300C96500 /* ProfilePage */ = {
+			isa = PBXGroup;
+			children = (
+				BD466CD028DEFB6600C96500 /* UpdateRecordUsaCase.swift */,
+				BD466CD328DEFC5D00C96500 /* UpdateHighestScoreUseCase.swift */,
+				BD466CD528E1DBE800C96500 /* UpdateUsernameUseCase.swift */,
+				BD466CD728E1DC3500C96500 /* GetRecordUseCase.swift */,
+				BD466CD928E1DF2600C96500 /* GetHighestScoresUseCase.swift */,
+				BD466CDB28E1E0E900C96500 /* GetUserNameUseCase.swift */,
+				BD466CDD28E1E13500C96500 /* SetHighestScoresUseCase.swift */,
+			);
+			path = ProfilePage;
+			sourceTree = "<group>";
+		};
 		BD53035628BA52220057BD1F = {
 			isa = PBXGroup;
 			children = (
@@ -86,8 +120,10 @@
 			isa = PBXGroup;
 			children = (
 				BD5303AD28BCEDAF0057BD1F /* UserEntity.swift */,
-				BD5303AF28BCEDC40057BD1F /* QuestionEntity.swift */,
 				BD5303B128BCEDDB0057BD1F /* StatsEntity.swift */,
+				BD5303AF28BCEDC40057BD1F /* QuestionEntity.swift */,
+				BD0244E728D0DD4200D6CDE7 /* CategoryEntity.swift */,
+				BD466CCA28DED07C00C96500 /* GameEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -98,6 +134,8 @@
 				BD5303B428BCEEAC0057BD1F /* UserRepoProtocol.swift */,
 				BD5303D028BD377B0057BD1F /* QuestionRepoProtocol.swift */,
 				BD5303D628BD3BA60057BD1F /* StatsRepoProtocol.swift */,
+				BD0244EF28D0E32A00D6CDE7 /* CategoryRepoProtocol.swift */,
+				BD466CCC28DEED6600C96500 /* ProfileRepoProtocol.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -105,9 +143,9 @@
 		BD5303BC28BCF3890057BD1F /* Use cases */ = {
 			isa = PBXGroup;
 			children = (
-				BD5303BD28BCF3CA0057BD1F /* GetUserUseCase.swift */,
+				BD466CD228DEFC3300C96500 /* ProfilePage */,
 				BD5303D428BD39D30057BD1F /* GetQuestionUseCase.swift */,
-				BD5303DA28BD3D6E0057BD1F /* GetStatUseCase.swift */,
+				BD0244F128D0E3B400D6CDE7 /* GetCategoryUseCase.swift */,
 			);
 			path = "Use cases";
 			sourceTree = "<group>";
@@ -212,14 +250,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD5303D128BD377B0057BD1F /* QuestionRepoProtocol.swift in Sources */,
+				BD466CD128DEFB6600C96500 /* UpdateRecordUsaCase.swift in Sources */,
+				BD466CD628E1DBE800C96500 /* UpdateUsernameUseCase.swift in Sources */,
+				BD466CCD28DEED6600C96500 /* ProfileRepoProtocol.swift in Sources */,
+				BD466CDE28E1E13500C96500 /* SetHighestScoresUseCase.swift in Sources */,
 				BD5303C628BD002F0057BD1F /* DomainAssesmly.swift in Sources */,
-				BD5303BE28BCF3CA0057BD1F /* GetUserUseCase.swift in Sources */,
+				BD0244F228D0E3B400D6CDE7 /* GetCategoryUseCase.swift in Sources */,
+				BD466CDA28E1DF2600C96500 /* GetHighestScoresUseCase.swift in Sources */,
+				BD466CCB28DED07C00C96500 /* GameEntity.swift in Sources */,
+				BD0244F028D0E32A00D6CDE7 /* CategoryRepoProtocol.swift in Sources */,
+				BD466CD428DEFC5D00C96500 /* UpdateHighestScoreUseCase.swift in Sources */,
 				BD5303D728BD3BA60057BD1F /* StatsRepoProtocol.swift in Sources */,
+				BD466CDC28E1E0E900C96500 /* GetUserNameUseCase.swift in Sources */,
 				BD5303B528BCEEAC0057BD1F /* UserRepoProtocol.swift in Sources */,
 				BD5303D528BD39D30057BD1F /* GetQuestionUseCase.swift in Sources */,
+				BD466CD828E1DC3500C96500 /* GetRecordUseCase.swift in Sources */,
 				BD5303B228BCEDDB0057BD1F /* StatsEntity.swift in Sources */,
 				BD5303B028BCEDC40057BD1F /* QuestionEntity.swift in Sources */,
-				BD5303DB28BD3D6E0057BD1F /* GetStatUseCase.swift in Sources */,
+				BD0244E828D0DD4200D6CDE7 /* CategoryEntity.swift in Sources */,
 				BD5303AE28BCEDAF0057BD1F /* UserEntity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -436,16 +484,16 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = exactVersion;
+				version = 6.5.0;
 			};
 		};
 		BD53039E28BCEAC90057BD1F /* XCRemoteSwiftPackageReference "Swinject" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Swinject/Swinject.git";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = exactVersion;
+				version = 2.8.2;
 			};
 		};
 		BD5303B628BCEF640057BD1F /* XCRemoteSwiftPackageReference "promises" */ = {
