@@ -13,3 +13,9 @@ strings:
     outputs:
       templateName: structured-swift5
       output: String.swift
+      
+fonts:
+    inputs: Fonts
+    outputs:
+      templateName: swift5
+      output: Fonts.swift

@@ -8,7 +8,7 @@
 import Foundation
 import Promises
 
-public class GetQuestionUseCase {
+public class GetQuestionsUseCase {
     
     private let repo: QuestionRepoProtocol
     
@@ -16,7 +16,7 @@ public class GetQuestionUseCase {
         self.repo = repo
     }
         
-    public func execute() -> Promise<QuestionEntity> {
-        repo.getQuestion()
+    public func execute(category: String) -> Promise<[QuestionEntity]> {
+        repo.getQuestions(category: category)
     }
 }

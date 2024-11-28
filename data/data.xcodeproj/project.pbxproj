@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD0244EA28D0DDC200D6CDE7 /* CategoryRemoteDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0244E928D0DDC200D6CDE7 /* CategoryRemoteDTO.swift */; };
+		BD0244EC28D0E06F00D6CDE7 /* CategoryRemoteDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0244EB28D0E06E00D6CDE7 /* CategoryRemoteDataSourceProtocol.swift */; };
+		BD0244EE28D0E0FC00D6CDE7 /* CategoryRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0244ED28D0E0FC00D6CDE7 /* CategoryRemoteDataSource.swift */; };
+		BD0244F828D0E92200D6CDE7 /* CaregoryRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0244F728D0E92100D6CDE7 /* CaregoryRepo.swift */; };
+		BD466CC328DC9AA800C96500 /* GameRecordLoaclDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD466CC228DC9AA800C96500 /* GameRecordLoaclDTO.swift */; };
+		BD466CC728DC9C6300C96500 /* GameRecordLocalDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD466CC628DC9C6300C96500 /* GameRecordLocalDataSourceProtocol.swift */; };
+		BD466CC928DDADA700C96500 /* GameRecordLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD466CC828DDADA700C96500 /* GameRecordLocalDataSource.swift */; };
+		BD466CCF28DEEEFC00C96500 /* ProfileRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD466CCE28DEEEFC00C96500 /* ProfileRepo.swift */; };
+		BD466CEF28E9E0BF00C96500 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD466CEE28E9E0BF00C96500 /* String.swift */; };
 		BD53033028BA51330057BD1F /* data.h in Headers */ = {isa = PBXBuildFile; fileRef = BD53032F28BA51330057BD1F /* data.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BD53038528BCE5840057BD1F /* domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD53038428BCE5840057BD1F /* domain.framework */; };
 		BD53038628BCE5840057BD1F /* domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BD53038428BCE5840057BD1F /* domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -21,6 +30,12 @@
 		BD5BDDC128BFC17D00A8A09C /* data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD53032C28BA51330057BD1F /* data.framework */; platformFilter = ios; };
 		BD5BDDE328BFC1DF00A8A09C /* dataUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BDDE228BFC1DF00A8A09C /* dataUITest.swift */; };
 		BD5BDDE528BFC1DF00A8A09C /* dataUITestLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BDDE428BFC1DF00A8A09C /* dataUITestLaunchTests.swift */; };
+		BD5BDE1128C3A6E600A8A09C /* QuestionRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BDE1028C3A6E600A8A09C /* QuestionRemoteDataSource.swift */; };
+		BD5BDE1328C3A88200A8A09C /* QuestionRemoteDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BDE1228C3A88200A8A09C /* QuestionRemoteDataSourceProtocol.swift */; };
+		BD5BDE1528C3A8C600A8A09C /* QuestionRemoteDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BDE1428C3A8C600A8A09C /* QuestionRemoteDTO.swift */; };
+		BD5BDE1728C3B43400A8A09C /* QuestionLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BDE1628C3B43400A8A09C /* QuestionLocalDataSource.swift */; };
+		BD5BDE1928C3B45300A8A09C /* QuestionLocalDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BDE1828C3B45300A8A09C /* QuestionLocalDataSourceProtocol.swift */; };
+		BD5BDE5728C8F87500A8A09C /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BDE5628C8F87500A8A09C /* Questions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +63,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BD0244E928D0DDC200D6CDE7 /* CategoryRemoteDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRemoteDTO.swift; sourceTree = "<group>"; };
+		BD0244EB28D0E06E00D6CDE7 /* CategoryRemoteDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRemoteDataSourceProtocol.swift; sourceTree = "<group>"; };
+		BD0244ED28D0E0FC00D6CDE7 /* CategoryRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRemoteDataSource.swift; sourceTree = "<group>"; };
+		BD0244F728D0E92100D6CDE7 /* CaregoryRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaregoryRepo.swift; sourceTree = "<group>"; };
+		BD466CC228DC9AA800C96500 /* GameRecordLoaclDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRecordLoaclDTO.swift; sourceTree = "<group>"; };
+		BD466CC628DC9C6300C96500 /* GameRecordLocalDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRecordLocalDataSourceProtocol.swift; sourceTree = "<group>"; };
+		BD466CC828DDADA700C96500 /* GameRecordLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRecordLocalDataSource.swift; sourceTree = "<group>"; };
+		BD466CCE28DEEEFC00C96500 /* ProfileRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepo.swift; sourceTree = "<group>"; };
+		BD466CEE28E9E0BF00C96500 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		BD53032C28BA51330057BD1F /* data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD53032F28BA51330057BD1F /* data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = data.h; sourceTree = "<group>"; };
 		BD53038428BCE5840057BD1F /* domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,6 +84,12 @@
 		BD5BDDE028BFC1DF00A8A09C /* dataUITest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = dataUITest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD5BDDE228BFC1DF00A8A09C /* dataUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataUITest.swift; sourceTree = "<group>"; };
 		BD5BDDE428BFC1DF00A8A09C /* dataUITestLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataUITestLaunchTests.swift; sourceTree = "<group>"; };
+		BD5BDE1028C3A6E600A8A09C /* QuestionRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionRemoteDataSource.swift; sourceTree = "<group>"; };
+		BD5BDE1228C3A88200A8A09C /* QuestionRemoteDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionRemoteDataSourceProtocol.swift; sourceTree = "<group>"; };
+		BD5BDE1428C3A8C600A8A09C /* QuestionRemoteDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionRemoteDTO.swift; sourceTree = "<group>"; };
+		BD5BDE1628C3B43400A8A09C /* QuestionLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionLocalDataSource.swift; sourceTree = "<group>"; };
+		BD5BDE1828C3B45300A8A09C /* QuestionLocalDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionLocalDataSourceProtocol.swift; sourceTree = "<group>"; };
+		BD5BDE5628C8F87500A8A09C /* Questions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,9 +122,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BD02450D28D4FC6300D6CDE7 /* Question */ = {
+			isa = PBXGroup;
+			children = (
+				BD5BDE1228C3A88200A8A09C /* QuestionRemoteDataSourceProtocol.swift */,
+				BD5BDE1028C3A6E600A8A09C /* QuestionRemoteDataSource.swift */,
+				BD5BDE1428C3A8C600A8A09C /* QuestionRemoteDTO.swift */,
+			);
+			path = Question;
+			sourceTree = "<group>";
+		};
+		BD02450E28D4FC7400D6CDE7 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				BD0244EB28D0E06E00D6CDE7 /* CategoryRemoteDataSourceProtocol.swift */,
+				BD0244ED28D0E0FC00D6CDE7 /* CategoryRemoteDataSource.swift */,
+				BD0244E928D0DDC200D6CDE7 /* CategoryRemoteDTO.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		BD466CC428DC9BFC00C96500 /* Question */ = {
+			isa = PBXGroup;
+			children = (
+				BD5BDE1828C3B45300A8A09C /* QuestionLocalDataSourceProtocol.swift */,
+				BD5BDE1628C3B43400A8A09C /* QuestionLocalDataSource.swift */,
+				BD5BDE5628C8F87500A8A09C /* Questions.swift */,
+			);
+			path = Question;
+			sourceTree = "<group>";
+		};
+		BD466CC528DC9C1E00C96500 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				BD466CC228DC9AA800C96500 /* GameRecordLoaclDTO.swift */,
+				BD466CC628DC9C6300C96500 /* GameRecordLocalDataSourceProtocol.swift */,
+				BD466CC828DDADA700C96500 /* GameRecordLocalDataSource.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		BD53032228BA51330057BD1F = {
 			isa = PBXGroup;
 			children = (
+				BD466CEE28E9E0BF00C96500 /* String.swift */,
 				BD5303CF28BD13930057BD1F /* Local data source */,
 				BD5303CE28BD137F0057BD1F /* Remote data source */,
 				BD5303C728BD00CC0057BD1F /* DI */,
@@ -139,6 +210,8 @@
 				BD5303BA28BCF0480057BD1F /* UserRepo.swift */,
 				BD5303D228BD38680057BD1F /* QuestionRepo.swift */,
 				BD5303D828BD3C480057BD1F /* StatsRepo.swift */,
+				BD0244F728D0E92100D6CDE7 /* CaregoryRepo.swift */,
+				BD466CCE28DEEEFC00C96500 /* ProfileRepo.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -154,6 +227,8 @@
 		BD5303CE28BD137F0057BD1F /* Remote data source */ = {
 			isa = PBXGroup;
 			children = (
+				BD02450D28D4FC6300D6CDE7 /* Question */,
+				BD02450E28D4FC7400D6CDE7 /* Category */,
 			);
 			path = "Remote data source";
 			sourceTree = "<group>";
@@ -161,6 +236,8 @@
 		BD5303CF28BD13930057BD1F /* Local data source */ = {
 			isa = PBXGroup;
 			children = (
+				BD466CC528DC9C1E00C96500 /* Profile */,
+				BD466CC428DC9BFC00C96500 /* Question */,
 			);
 			path = "Local data source";
 			sourceTree = "<group>";
@@ -330,10 +407,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD466CEF28E9E0BF00C96500 /* String.swift in Sources */,
+				BD466CC928DDADA700C96500 /* GameRecordLocalDataSource.swift in Sources */,
+				BD5BDE1528C3A8C600A8A09C /* QuestionRemoteDTO.swift in Sources */,
+				BD5BDE1328C3A88200A8A09C /* QuestionRemoteDataSourceProtocol.swift in Sources */,
+				BD0244EC28D0E06F00D6CDE7 /* CategoryRemoteDataSourceProtocol.swift in Sources */,
+				BD466CC728DC9C6300C96500 /* GameRecordLocalDataSourceProtocol.swift in Sources */,
+				BD0244EA28D0DDC200D6CDE7 /* CategoryRemoteDTO.swift in Sources */,
 				BD5303BB28BCF0480057BD1F /* UserRepo.swift in Sources */,
 				BD5303D328BD38680057BD1F /* QuestionRepo.swift in Sources */,
+				BD5BDE1128C3A6E600A8A09C /* QuestionRemoteDataSource.swift in Sources */,
+				BD0244F828D0E92200D6CDE7 /* CaregoryRepo.swift in Sources */,
+				BD5BDE5728C8F87500A8A09C /* Questions.swift in Sources */,
 				BD5303C928BD00E80057BD1F /* DataAssembly.swift in Sources */,
+				BD0244EE28D0E0FC00D6CDE7 /* CategoryRemoteDataSource.swift in Sources */,
+				BD466CCF28DEEEFC00C96500 /* ProfileRepo.swift in Sources */,
+				BD5BDE1728C3B43400A8A09C /* QuestionLocalDataSource.swift in Sources */,
 				BD5303D928BD3C480057BD1F /* StatsRepo.swift in Sources */,
+				BD5BDE1928C3B45300A8A09C /* QuestionLocalDataSourceProtocol.swift in Sources */,
+				BD466CC328DC9AA800C96500 /* GameRecordLoaclDTO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -657,16 +749,16 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = exactVersion;
+				version = 5.6.2;
 			};
 		};
 		BD5303A428BCEC8E0057BD1F /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = exactVersion;
+				version = 10.28.7;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

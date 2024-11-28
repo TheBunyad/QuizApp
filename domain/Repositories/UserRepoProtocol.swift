@@ -12,4 +12,5 @@ import RxSwift
 public protocol UserRepoProtocol {
     func getUser() -> Promise<UserEntity>
     func observeUSer() -> Observable<UserEntity>
+    func syncQuestion() -> Promise<Void>
 }
